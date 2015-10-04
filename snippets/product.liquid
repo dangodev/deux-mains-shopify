@@ -1,0 +1,18 @@
+<li class="store-product{{ ' store-product--sale' if product.compare_at_price_min > 0 }}{{ ' store-product--out' unless product.available }}" itemscope itemtype="http://schema.org/Product">
+  <a href="{{ product.url }}" itemprop: 'url'>
+    <div class="store-product-img"><img src="{{ product | img_url: 'grande' }}" alt="{{ product.featured_image.alt | escape }}" itemprop="image"/></div>
+    <div class="store-product-name" itemtype="name">{{ product.title }}</div>
+    <div class="store-product-price">
+      <span class="store-product-currency" content="{{ shop.currency }}" itemprop="priceCurrency">$</span>
+      <span class="store-product-amount" content="{{ product.price | money_without_currency }}" itemprop="price">{{ product.price | money_without_currency | replace_first '.', '<span class="store-product-cents">' }}</span></span>
+      {% if product.compare_at_price_min > 0 %}
+        <span class="store-product-ogPrice">
+          <span class="store-product-currency">$</span><span class="store-product-amount">{{ product.price | money_without_currency | replace_first '.', '<span class="store-product-cents">' }}</span></span>
+        </span>
+      {% endif %}
+      {% unless product.available %}
+        <div class="store-product-status">Out of Stock</div>
+      {% endunless %}
+    </div>
+  </a>
+</li>

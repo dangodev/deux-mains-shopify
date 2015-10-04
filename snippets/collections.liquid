@@ -1,0 +1,10 @@
+<nav class="store-nav">
+  <h3>Shop Collections</h3>
+  <ul class="nl">
+    {% for collection in collections %}
+      {% unless collection.handle == 'frontpage' or collection.handle == 'sale' %}
+        <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+      {% endunless %}
+    {% endfor %}
+  </ul>
+</nav>

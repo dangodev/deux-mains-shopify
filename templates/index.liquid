@@ -1,39 +1,46 @@
-{% comment %}
-  Re-use the 'rte' class wherever you output content that was added by a merchant using the Rich Text Editor ( 'rte' stands for rich text editor ).
-  Style all HTML elements in that content the same way across the board.
-  Use the 'rte' class in your CSS to help maintain that consistency.
-  Example: the h2 element should have the same size and color in:
-  - product descriptions
-  - collection descriptions
-  - page content
-  - blog posts
-{% endcomment %}
-
-{% comment %}
-  Very important reading:
-  http://docs.shopify.com/themes/liquid-basics/what-is-true-and-false-in-liquid
-  Learn how to read theme settings in your theme.
-{% endcomment %}
-
-{% unless settings.homepage_page == blank or pages[settings.homepage_page].empty? %}
-{% assign page = pages[settings.homepage_page] %}
-<div class="rte grid-margins">
-  {{ page.content }}
+{% if page.metafields.hero['image'] != blank and page.metafields.hero['title'] != blank %}
+  {% unless page.metafields.hero['url'] is blank %}
+    <a class="hero" href="{{ page.metafields.hero['url'] }}">
+  {% endunless %}
+      <div class="hero-image" style="background-image: url('{{ page.metafields.hero['image'] }}')"></div>
+      <div class="hero-content">
+        <h1>{{ page.metafields.hero['title'] }}</h1>
+        {% unless page.metafields.hero['subtitle'] is blank %}
+          {{ page.metafields.hero['subtitle'] }}
+        {% endunless %}
+      </div>
+  {% unless page.metafields.hero['url'] is blank %}
+    </a>
+  {% endunless %}
+{% endif %}
+<div class="row row--canvas">
+  <a href="/about" style="text-decoration: none;">
+    <div class="ptl pbl cell tac">
+      <div class="tfh ts24 tck lh1 mbs">Haitian-made and Haitian-operated since 2013.</div>
+      <div class="btn btn--i tr3 dib">Learn More</div>
+    </div>
+  </a>
 </div>
-{% endunless %}
-
-{% unless settings.homepage_collection == blank or collections[settings.homepage_collection].empty? %}
-{% assign collection = collections[settings.homepage_collection] %}
-<ul class="grid clearfix">
-{% for product in collection.products %}
-  {% include 'product-grid-item' with 'three-per-row' %}
-{% else %}
-<li>
-  <p>
-    You have no products in your {{ collections[settings.homepage_collection].title }} collection. 
-    <a href="http://www.shopify.com/admin/collections">Add some.</a>
-  <p>
-</li>
-{% endfor %}
-</ul>
-{% endunless %}
+<div class="row">
+  <div class="store">
+    <nav class="store-nav">
+      <h3>Shop Collections</h3>
+      {% include 'collections' %}
+    </nav>
+    <nav class="store-mobileNav">
+      <div class="form-select">
+        <select id="nav_collection">
+          <option>Browse Collections</option>
+          {% for collection in collections %}
+            <option value="{{ collection.url }}">{{ collection.title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </nav>
+    <ul class="store-list nl">
+      {% for product in collections.frontpage.products %}
+        {% include 'product', product %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>

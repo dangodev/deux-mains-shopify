@@ -9,7 +9,7 @@
             <input type="submit" value="Sign Up">
           </form>
         </div>
-        <ul class="nl footer-social"><li><a target="_blank" href="https://www.facebook.com/RGDeuxMainsDesigns"><svg aria-hidden class="icn icn--social" role="img" viewbox="0 0 512 512"><use xlink:href="assets/images/icons.svg#facebook"></use></svg></a></li><li><a target="_blank" href="https://www.pinterest.com/deuxmainsdesign/"><svg aria-hidden class="icn icn--social" role="img" viewbox="0 0 512 512"><use xlink:href="assets/images/icons.svg#pinterest"></use></svg></a></li><li><a target="_blank" href="https://twitter.com/DeuxMainsDesign"><svg aria-hidden class="icn icn--social" role="img" viewbox="0 0 512 512"><use xlink:href="assets/images/icons.svg#twitter"></use></svg></a></li><li><a target="_blank" href="https://instagram.com/DeuxMainsDesigns"><svg aria-hidden class="icn icn--social" role="img" viewbox="0 0 512 512"><use xlink:href="assets/images/icons.svg#instagram"></use></svg></a></li></ul>
+        <ul class="nl footer-social"><li><a target="_blank" href="https://www.facebook.com/RGDeuxMainsDesigns"><svg aria-hidden class="icn icn--social" role="img" viewbox="0 0 512 512"><use xlink:href="{{ 'icons.svg#facebook' | asset_url }}"></use></svg></a></li><li><a target="_blank" href="https://www.pinterest.com/deuxmainsdesign/"><svg aria-hidden class="icn icn--social" role="img" viewbox="0 0 512 512"><use xlink:href="{{ 'icons.svg#pinterest' | asset_url }}"></use></svg></a></li><li><a target="_blank" href="https://twitter.com/DeuxMainsDesign"><svg aria-hidden class="icn icn--social" role="img" viewbox="0 0 512 512"><use xlink:href="{{ 'icons.svg#twitter' | asset_url }}"></use></svg></a></li><li><a target="_blank" href="https://instagram.com/DeuxMainsDesigns"><svg aria-hidden class="icn icn--social" role="img" viewbox="0 0 512 512"><use xlink:href="{{ 'icons.svg#instagram' | asset_url }}"></use></svg></a></li></ul>
         <div class="footer-logo">
           <div class="logo logo--h">
             <div class="logo-mark"><img src="{{ 'image-deux-mains-logomark.svg' | asset_url }}"/></div>
@@ -23,17 +23,16 @@
           <div class="g-b g-b--1of2 g-b--m--1of3">
             <h5>Shop</h5>
             <ul class="nl">
-            {% for product_type in collection.all_types %}
-              {{ product_type }}
-              {% unless product_type == 'homepage' %}
-                <li>{{ product_type | link_to_type }}</li>
+            {% for collection in collections %}
+              {% unless collection.handle == 'frontpage' or collection.handle == 'sale' %}
+                <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
               {% endunless %}
             {% endfor %}
           </div>
           <div class="g-b g-b--1of2 g-b--m--1of3">
             <h5>News</h5>
             <ul class="nl">
-              <li><a href="/blog">Blog</a></li>
+              <li><a href="{{ blog.url }}">Blog</a></li>
               <li><a href="/news">In the News</a></li>
             </ul>
           </div>
