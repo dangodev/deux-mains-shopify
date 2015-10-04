@@ -12,8 +12,8 @@
         <ul class="nl footer-social"><li><a target="_blank" href="https://www.facebook.com/RGDeuxMainsDesigns"><svg aria-hidden class="icn icn--social" role="img" viewbox="0 0 512 512"><use xlink:href="assets/images/icons.svg#facebook"></use></svg></a></li><li><a target="_blank" href="https://www.pinterest.com/deuxmainsdesign/"><svg aria-hidden class="icn icn--social" role="img" viewbox="0 0 512 512"><use xlink:href="assets/images/icons.svg#pinterest"></use></svg></a></li><li><a target="_blank" href="https://twitter.com/DeuxMainsDesign"><svg aria-hidden class="icn icn--social" role="img" viewbox="0 0 512 512"><use xlink:href="assets/images/icons.svg#twitter"></use></svg></a></li><li><a target="_blank" href="https://instagram.com/DeuxMainsDesigns"><svg aria-hidden class="icn icn--social" role="img" viewbox="0 0 512 512"><use xlink:href="assets/images/icons.svg#instagram"></use></svg></a></li></ul>
         <div class="footer-logo">
           <div class="logo logo--h">
-            <div class="logo-mark"><img src="assets/images/deux-mains-logomark.svg"/></div>
-            <div class="logo-word"><img src="assets/images/deux-mains-wordmark.svg"/></div>
+            <div class="logo-mark"><img src="{{ 'image-deux-mains-logomark.svg' | asset_url }}"/></div>
+            <div class="logo-word"><img src="{{ 'image-deux-mains-wordmark.svg' | asset_url }}" alt="{{ shop.name }}"/></div>
             <div class="logo-tagline">A <a target="_blank" href="http://rebuildglobally.org">Rebuild Globally</a> Enterprise</div>
           </div>
         </div>
@@ -24,8 +24,8 @@
             <h5>Shop</h5>
             <ul class="nl">
             {% for product_type in collection.all_types %}
+              {{ product_type }}
               {% unless product_type == 'homepage' %}
-                {{ product_type }}
                 <li>{{ product_type | link_to_type }}</li>
               {% endunless %}
             {% endfor %}
@@ -42,7 +42,7 @@
             <ul class="nl">
               <li><a href="/about">Story / Artisans</a></li>
               <li><a href="/contact">Contact</a></li>
-              <li><a target="_blank" href="dropbox.com">Press Kit</a></li>
+              <li><a target="_blank" href="https://dropbox.com">Press Kit</a></li>
               <li><a href="/wholesale">Wholesale</a></li>
             </ul>
           </div>
