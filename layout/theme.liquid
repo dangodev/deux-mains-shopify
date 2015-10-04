@@ -23,6 +23,9 @@
     {{ '//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js' | script_tag }}
     {{ '//use.typekit.net/xnw3qea.js' | script_tag }}
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+    {{ content_for_header }}
+
   </head>
   <body itemscope itemtype="http://schema.org/Store" id="{{ page_title | handle }}">
     {% include 'navigation' %}
@@ -33,6 +36,8 @@
     {% include 'footer' %}
 
     <div class="modal-screen"></div>
+    {% include 'size-chart' %}
+
     {{ 'js-shopify_common.js' | asset_url | script_tag }}
     {% if template contains 'customers' %}
       {{ 'customer_area.js' | shopify_asset_url | script_tag }}
@@ -43,6 +48,9 @@
         DM.selectNav( '#nav_collection' );
         DM.modal();
         DM.vids();
+        {% if template == 'product' %}
+          DM.gallery();
+        {% endif %}
       })();
     </script>
   </body>

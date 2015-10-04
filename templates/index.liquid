@@ -23,20 +23,7 @@
 </div>
 <div class="row">
   <div class="store">
-    <nav class="store-nav">
-      <h3>Shop Collections</h3>
-      {% include 'collections' %}
-    </nav>
-    <nav class="store-mobileNav">
-      <div class="form-select">
-        <select id="nav_collection">
-          <option>Browse Collections</option>
-          {% for collection in collections %}
-            <option value="{{ collection.url }}">{{ collection.title }}</option>
-          {% endfor %}
-        </select>
-      </div>
-    </nav>
+    {% include 'collections' %}
     <ul class="store-list nl">
       {% for product in collections.frontpage.products %}
         {% include 'product', product %}

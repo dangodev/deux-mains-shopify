@@ -5,7 +5,9 @@
       <div class="logo-word"><img src="{{ 'image-deux-mains-wordmark.svg' | asset_url }}" alt="{{ shop.name }}"/></div>
     </div>
   </a>
-  <a class="header-back" href="/">← Back to Shop</a>
+  {% if template == 'product' or template == 'blog' or template == 'about' or template == 'artisan' %}
+    <a class="header-back" href="{{ shop.url }}">← Back to Shop</a>
+  {% endif %}
   <a class="header-cart" href="/cart">
     Cart
     {% if cart.item_count > 0 %}

@@ -8,3 +8,13 @@
     {% endfor %}
   </ul>
 </nav>
+<nav class="store-mobileNav">
+  <div class="form-select">
+    <select id="nav_collection">
+      <option>Browse Collections</option>
+      {% for collection in collections %}
+        <option value="{{ collection.url }}">{{ collection.title }}</option>
+      {% endfor %}
+    </select>
+  </div>
+</nav>
