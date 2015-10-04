@@ -1,0 +1,16 @@
+<header class="header">
+  <a class="header-logo" href="/">
+    <div class="logo logo--v">
+      <div class="logo-mark"><img src="assets/images/deux-mains-logomark.svg"/></div>
+      <div class="logo-word"><img src="assets/images/deux-mains-wordmark.svg"/></div>
+    </div>
+  </a>
+  <a class="header-back" href="/">← Back to Shop</a>
+  <a class="header-cart" href="/cart">
+    Cart
+    {% if cart.item_count > 0 %}
+      <div class="header-cart-badge">{{ cart.item_count }}</div>
+    {% %}
+  </a>
+  <h1 class="header-title" itemprop="name">{{ shop.name }}</h1>
+</header>

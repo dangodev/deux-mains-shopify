@@ -1,0 +1,53 @@
+<footer class="row row--dark">
+  <div class="well well--s cell">
+    <div class="g">
+      <div class="g-b g-b--s--1of2">
+        <div class="footer-email">
+          <form action="/" method="POST">
+            <label for="mc_newsletter">Discounts and updates sent straight to your inbox</label>
+            <input id="mc_newsletter" type="email">
+            <input type="submit" value="Sign Up">
+          </form>
+        </div>
+        <ul class="nl footer-social"><li><a target="_blank" href="https://www.facebook.com/RGDeuxMainsDesigns"><svg aria-hidden class="icn icn--social" role="img" viewbox="0 0 512 512"><use xlink:href="assets/images/icons.svg#facebook"></use></svg></a></li><li><a target="_blank" href="https://www.pinterest.com/deuxmainsdesign/"><svg aria-hidden class="icn icn--social" role="img" viewbox="0 0 512 512"><use xlink:href="assets/images/icons.svg#pinterest"></use></svg></a></li><li><a target="_blank" href="https://twitter.com/DeuxMainsDesign"><svg aria-hidden class="icn icn--social" role="img" viewbox="0 0 512 512"><use xlink:href="assets/images/icons.svg#twitter"></use></svg></a></li><li><a target="_blank" href="https://instagram.com/DeuxMainsDesigns"><svg aria-hidden class="icn icn--social" role="img" viewbox="0 0 512 512"><use xlink:href="assets/images/icons.svg#instagram"></use></svg></a></li></ul>
+        <div class="footer-logo">
+          <div class="logo logo--h">
+            <div class="logo-mark"><img src="assets/images/deux-mains-logomark.svg"/></div>
+            <div class="logo-word"><img src="assets/images/deux-mains-wordmark.svg"/></div>
+            <div class="logo-tagline">A <a target="_blank" href="http://rebuildglobally.org">Rebuild Globally</a> Enterprise</div>
+          </div>
+        </div>
+      </div>
+      <div class="g-b g-b--s--1of2">
+        <div class="g footer-nav">
+          <div class="g-b g-b--1of2 g-b--m--1of3">
+            <h5>Shop</h5>
+            <ul class="nl">
+            {% for product_type in collection.all_types %}
+              {% unless product_type == 'homepage' %}
+                {{ product_type }}
+                <li>{{ product_type | link_to_type }}</li>
+              {% endunless %}
+            {% endfor %}
+          </div>
+          <div class="g-b g-b--1of2 g-b--m--1of3">
+            <h5>News</h5>
+            <ul class="nl">
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/news">In the News</a></li>
+            </ul>
+          </div>
+          <div class="g-b g-b--1of2 g-b--m--1of3">
+            <h5>About</h5>
+            <ul class="nl">
+              <li><a href="/about">Story / Artisans</a></li>
+              <li><a href="/contact">Contact</a></li>
+              <li><a target="_blank" href="dropbox.com">Press Kit</a></li>
+              <li><a href="/wholesale">Wholesale</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
