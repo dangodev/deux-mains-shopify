@@ -1,54 +1,44 @@
-Skeleton theme
-============
+Deux Mains Shopify Template
+---------------------------
 
-The Skeleton theme is a simplified Shopify theme, to be used as a "blank slate" starting point for theme designers.
+Based on Shopify’s [Skeleton](https://github.com/Shopify/skeleton-theme) theme.
+And by “based on,” I mean completely gutted and minimalized.
 
-<b>Features:</b>
-- Almost no theme settings. Ready to be customized any way you want. 
-- Only ~500 lines of CSS including comments. 
-- Despite its 500 lines of CSS code, it is responsive and has styled drop-down menus.
-- Include SVG images to style select elements and cart icon.
-- Commented code to teach you Liquid concepts in practice.
+This theme favors simplicity over configuration. It requires the use of
+[Metafields2](https://apps.shopify.com/metafields2), and has virtually no global
+settings but has product-specific settings. It uses [MVCSS](http://mvcss.io/), a
+scalable CSS paradigm of Base Element → Modifiers → Scaffolding that employs
+single-responsibility, class-only, and (virtually) no-nesting philosophies. The
+JavaScript is just, uh, jQuery.
 
-<b>Demo:</b>
+### Installation
 
-- [Demo store](http://skeleton.myshopify.com/)
+Requires [Gulp](http://gulpjs.com/)
 
-Designing a store for a client? Earn 20% revenue through our <a href="http://www.shopify.com/partners">Partner program<a/>.
-
-Getting started
----------------------
-1. <a href="https://github.com/Shopify/skeleton-theme/archive/master.zip">Download</a> the latest version
-2. or clone the git repo: <code>git clone https://github.com/Shopify/skeleton-theme.git</code>
-
-Basic structure
----------------
 ```
-├── assets
-│   └── Javascript, CSS, and theme images
-├── config
-│   └── custom Theme Settings
-├── layout
-│   ├── theme.liquid
-│   └── optional alternate layouts
-├── snippets
-│   └── optional custom code snippets
-├── templates
-│   ├── 404.liquid
-│   ├── article.liquid
-│   ├── blog.liquid
-│   ├── cart.liquid
-│   ├── collection.liquid
-│   ├── index.liquid
-│   ├── page.liquid
-│   ├── product.liquid
-│   └── search.liquid
-│   └── list-collections.liquid
+npm install --save-dev gulp-autoprefixer gulp-minify-css gulp-rename gulp-sass gulp-uglify
 ```
 
-Additional resources
----------------------
-- <a href="http://meetup.shopify.com/">Free workshops</a>: Sign up for a free Shopify For Designers workshop in a city near you.
-- <a href="http://docs.shopify.com/themes">Theme Documentation</a>: Learn more about Liquid and theme templates.
-- <a href="http://apps.shopify.com/desktop-theme-editor">Desktop Theme Editor</a>: For Mac OS X users, we recommend our free app to sync theme files in development. 
-- Need more help? Ask a question in our <a href="http://ecommerce.shopify.com/c/ecommerce-design"> Design Forums</a>.
+### Developing
+
+Just run
+```
+gulp
+````
+when working to compile the necessary CSS / JS files.
+
+The way that Shopify’s asset pipeline & liquid templates are so deeply embedded
+into its system, unfortunately there’s not a way to truly develop locally. I
+originally had an easy-to-use [Middleman](https://middlemanapp.com/) app, but
+had to toss it because Shopify requires so much liquid templating the two became
+too divergent to be helpful (but I’d still recommend starting with Middleman
+anyway, until it comes time to port to Shopify).
+
+Gulp is included to take advantage of
+[autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer) as well as JS
+uglification. These are too good to just ditch, and isn’t worth bloating
+stylesheets with unnecessary prefixes.
+
+### How Do I…
+
+Read the [wiki](https://github.com/deux-mains/deux-mains-shopify/wiki).

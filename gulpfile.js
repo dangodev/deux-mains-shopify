@@ -3,12 +3,17 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
+var autoprefixer = require('gulp-autoprefixer');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 
 gulp.task('sass', function () {
   gulp.src('./assets/stylesheets/**/*.sass')
     .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions', '> 5%'],
+      cascade: false
+    }))
     .pipe(minifyCss())
     .pipe(rename(function(path) {
       path.basename = 'css-' + path.basename;
