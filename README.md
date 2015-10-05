@@ -16,7 +16,7 @@ JavaScript is just, uh, jQuery.
 Requires [Gulp](http://gulpjs.com/)
 
 ```
-npm install --save-dev gulp-autoprefixer gulp-minify-css gulp-rename gulp-sass gulp-uglify
+npm install --save-dev gulp-autoprefixer gulp-minify-css gulp-rename gulp-sass gulp-uglify gulp-zip
 ```
 
 ### Developing
@@ -26,6 +26,9 @@ Just run
 gulp
 ````
 when working to compile the necessary CSS / JS files.
+
+If you don’t want to use the *.zip method it generates, delete the pertinent
+lines in `gulpfile.js` and implement your own method.
 
 The way that Shopify’s asset pipeline & liquid templates are so deeply embedded
 into its system, unfortunately there’s not a way to truly develop locally. I

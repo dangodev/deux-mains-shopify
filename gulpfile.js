@@ -6,9 +6,10 @@ var minifyCss = require('gulp-minify-css');
 var autoprefixer = require('gulp-autoprefixer');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var zip = require('gulp-zip');
 
-gulp.task('sass', function () {
-  gulp.src('./assets/stylesheets/**/*.sass')
+gulp.task('export', function() {
+  gulp.src('./assets/stylesheets/application.sass')
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
       browsers: ['last 2 versions', '> 5%'],
@@ -20,25 +21,20 @@ gulp.task('sass', function () {
       path.extname += '.liquid';
     }))
     .pipe(gulp.dest('./assets'));
-});
 
-gulp.task('sass:watch', function () {
-  gulp.watch('./assets/stylesheets/**/*.sass', ['sass']);
-});
-
-gulp.task('minify-css', function() {
-  return gulp.src('assets/*.css')
-    .pipe(minifyCss())
-    .pipe(gulp.dest('dist'));
-});
-
-gulp.task('uglify', function() {
-  return gulp.src('assets/javascripts/*.js')
+  gulp.src('assets/javascripts/*.js')
     .pipe(uglify())
     .pipe(rename(function(path) {
       path.basename = 'js-' + path.basename;
     }))
     .pipe(gulp.dest('./assets'));
+
+  // Delete the Zip task below to skip generating a *.zip file on export
+  // ----- Zip task begin ----- //
+  gulp.src(['**', '!gulpfile.js', '!README.md', '!node_modules/**', '!assets/javascripts/**', '!assets/stylesheets/**'])
+    .pipe(zip('deux-main-shopify.zip'))
+    .pipe(gulp.dest('../'));
+  // ----- Zip task end ----- //
 });
 
-gulp.task('default', ['sass', 'uglify']);
+gulp.task('default', ['export']);
