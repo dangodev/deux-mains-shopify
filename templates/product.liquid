@@ -45,15 +45,15 @@
           </ul>
         </div>
       </aside>
-      <article class="store-details{{ ' store-details--sale' if product.compare_at_price_max > 0 }}">
+      <article class="store-details{% if product.price < product.compare_at_price_max %} store-details--sale{% endif %}">
         <div class="store-details-preview">{{ product.featured_image }}</div>
-        <h1 class="mbf" data-discount="{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round }}" itemprop="name">{{ product.title }}</h1>
+        <h1 class="mbf"{% if product.price < product.compare_at_price_max %} data-discount="{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round }}"{% endif %} itemprop="name">{{ product.title }}</h1>
         <div class="store-details-price">
           <span class="store-details-currency" content="{{ shop.currency }}" itemprop="priceCurrency">$</span>
           <span class="store-details-amount" content="{{ product.price | money_without_currency }}" itemprop="price">{{ product.price | money_without_currency | replace_first '.', '<span class="store-details-cents">' }}</span></span>
-          {% if product.compare_at_price_max > 0 %}
+          {% if product.price < product.compare_at_price_max %}
             <span class="store-details-ogPrice">
-              <span class="store-details-currency">$</span><span class="store-details-amount">{{ product.price | money_without_currency | replace_first '.', '<span class="store-details-cents">' }}</span></span>
+              <span class="store-details-currency">$</span><span class="store-details-amount">{{ product.compare_at_price_max | money_without_currency | replace_first '.', '<span class="store-details-cents">' }}</span></span>
             </span>
           {% endif %}
           {% unless product.available %}
