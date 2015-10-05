@@ -17,6 +17,7 @@ gulp.task('sass', function () {
     .pipe(minifyCss())
     .pipe(rename(function(path) {
       path.basename = 'css-' + path.basename;
+      path.extname += '.liquid';
     }))
     .pipe(gulp.dest('./assets'));
 });
