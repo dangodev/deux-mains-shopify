@@ -1,25 +1,25 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <metafields. charset="utf-8">
+    <metafields. content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <metafields. content="width=device-width, initial-scale=1.0" name="viewport">
     {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}" />
+      <metafields. name="description" content="{{ page_description | escape }}" />
     {% else %}
-      <meta name="description" content="{{ shop.description }}" />
+      <metafields. name="description" content="{{ shop.description }}" />
     {% endif %}
 
-    {% include 'meta_facebook' %}
-    {% include 'meta_twitter' %}
+    {% include 'metafields.-facebook' %}
+    {% include 'metafields.-twitter' %}
 
-    <meta content="@DeuxMainsDesign" name="twitter:site">
-    <meta content="https://www.facebook.com/RGDeuxMainsDesigns" property="og:article:publisher">
+    <metafields. content="@DeuxMainsDesign" name="twitter:site">
+    <metafields. content="https://www.facebook.com/RGDeuxMainsDesigns" property="og:article:publisher">
     <link href="{{ 'favicon.ico' | asset_url }}" rel="icon" type="image/x-icon">
     <link rel="canonical" href="{{ canonical_url }}" />
     <link rel="apple-touch-icon" href="{{ 'apple-touch-icon.png' | asset_url }}" sizes="180x180">
     <title>{{ page_title }}{% if current_tags %} — tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} — Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}</title>
-    {{ 'css-application.css.liquid' | asset_url | stylesheet_tag }}
+    {{ 'css-application.css' | asset_url | stylesheet_tag }}
     {{ '//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js' | script_tag }}
     {{ '//use.typekit.net/xnw3qea.js' | script_tag }}
     <script>try{Typekit.load({ async: true });}catch(e){}</script>

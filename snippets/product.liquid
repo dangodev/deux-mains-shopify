@@ -1,4 +1,4 @@
-<li class="store-product{{ ' store-product--sale' if product.price < product.compare_at_max }}{{ ' store-product--out' if product.available == false }}{{ ' store-product--related' if is_related }}" itemscope itemtype="http://schema.org/Product">
+<li class="store-product{% if product.price < product.compare_at_price_max %} store-product--sale{% endif %}{% unless product.available %} store-product--out{% endunless %}{% if is_related %} store-product--related{% endif %}" itemscope itemtype="http://schema.org/Product">
   <a href="{{ product.url }}" itemprop: 'url'>
     <div class="store-product-img"><img src="{{ product | img_url: 'grande' }}" alt="{{ product.featured_image.alt | escape }}" itemprop="image"/></div>
     <div class="store-product-name" itemtype="name">{{ product.title }}</div>
@@ -7,18 +7,18 @@
       <span class="store-product-amount" content="{{ product.price | money_without_currency }}" itemprop="price">{{ product.price | money_without_currency | replace_first '.', '<span class="store-product-cents">' }}</span></span>
       {% if product.price < product.compare_at_price_max %}
         <span class="store-product-ogPrice">
-          <span class="store-product-currency">$</span><span class="store-product-amount">{{ product.price | money_without_currency | replace_first '.', '<span class="store-product-cents">' }}</span></span>
+          <span class="store-product-currency">$</span><span class="store-product-amount">{{ product.compare_at_price_max | money_without_currency | replace_first '.', '<span class="store-product-cents">' }}</span></span>
         </span>
       {% endif %}
       {% unless product.available %}
         <div class="store-product-status">Out of Stock</div>
       {% endunless %}
-      {% if product.metatags.product['colors'] != blank %}
-        {% assign colors = product.metatags.product['colors'] | split: ',' %}
-        {% for color in colors %}
-          <div class="store-product-color" style="background-color: {{ color | strip }};"></div>
-        {% endfor %}
-      {% endif %}
     </div>
+    {% if product.metafields.product['colors'] != blank %}
+      {% assign colors = product.metafields.product['colors'] | split: ',' %}
+      {% for color in colors %}
+        <div class="store-product-color" style="background-color: {{ color | strip }};"></div>
+      {% endfor %}
+    {% endif %}
   </a>
 </li>

@@ -5,7 +5,7 @@ Based on Shopify’s [Skeleton](https://github.com/Shopify/skeleton-theme) theme
 And by “based on,” I mean completely gutted and minimalized.
 
 This theme favors simplicity over configuration. It requires the use of
-[Metafields2](https://apps.shopify.com/metafields2), and has virtually no global
+[metafields.fields2](https://apps.shopify.com/metafields.fields2), and has virtually no global
 settings but has product-specific settings. It uses [MVCSS](http://mvcss.io/), a
 scalable CSS paradigm of Base Element → Modifiers → Scaffolding that employs
 single-responsibility, class-only, and (virtually) no-nesting philosophies. The

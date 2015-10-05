@@ -1,6 +1,6 @@
 <div class="div" itemscope itemtype="https://schema.org/Blog">
   <div class="hero">
-    <div class="hero-image" style="background-image: url('{{ article.metatags.hero['image'] }}')  %>')"></div>
+    <div class="hero-image" style="background-image: url('{{ article.metafields.field.hero['image'] }}')  %>')"></div>
     <div class="hero-content">
       <h1 itemprop="headline">{{ article.title }}</h1>
       <time class="ttu" datetime="{{ article.published_at | date: "%d-%m-%y %R" }}" itemprop="datePublished">{{ article.published_at | date: "%b %d %Y" }}</time>

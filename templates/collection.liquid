@@ -1,19 +1,19 @@
-{% if page.metafields.hero['image'] != blank and page.metafields.hero['title'] != blank %}
-  {% unless page.metafields.hero['url'] is blank %}
-    <a class="hero" href="{{ page.metafields.hero['url'] }}">
+{% if page.metafields.fields.hero['image'] != blank and page.metafields.fields.hero['title'] != blank %}
+  {% unless page.metafields.fields.hero['url'] is blank %}
+    <a class="hero" href="{{ page.metafields.fields.hero['url'] }}">
   {% endunless %}
-      <div class="hero-image" style="background-image: url('{{ page.metafields.hero['image'] }}')"></div>
+      <div class="hero-image" style="background-image: url('{{ page.metafields.fields.hero['image'] }}')"></div>
       <div class="hero-content">
-        <h1>{{ page.metafields.hero['title'] }}</h1>
-        {% unless page.metafields.hero['subtitle'] is blank %}
-          {{ page.metafields.hero['subtitle'] }}
+        <h1>{{ page.metafields.fields.hero['title'] }}</h1>
+        {% unless page.metafields.fields.hero['subtitle'] is blank %}
+          {{ page.metafields.fields.hero['subtitle'] }}
         {% endunless %}
       </div>
-  {% unless page.metafields.hero['url'] is blank %}
+  {% unless page.metafields.fields.hero['url'] is blank %}
     </a>
   {% endunless %}
 {% endif %}
-<div class="row row--canvas">
+<div class="row row--emote">
   <a href="/about" style="text-decoration: none;">
     <div class="ptl pbl cell tac">
       <div class="tfh ts24 tck lh1 mbs">Haitian-made and Haitian-operated since 2013.</div>
