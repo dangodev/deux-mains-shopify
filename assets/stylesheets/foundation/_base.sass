@@ -1,0 +1,152 @@
+// *************************************
+//
+//   Base
+//   -> Tag-level settings
+//
+// *************************************
+
+html
+  background: $black
+  color: $c-text
+  font-family: $t-text-fontFamily
+  font-size: $t-text-fontSize
+  font-weight: $t-text-fontWeight
+  line-height: $t-text-lineHeight
+
+body
+  font-size: 100%
+  font-variant-ligatures: common-ligatures
+  text-rendering: optimizeLegibility
+
+*
+  box-sizing: border-box
+
+main
+  background: $c-background
+
+// -------------------------------------
+//   Text
+// -------------------------------------
+
+ul, p
+  margin-bottom: $b-space
+  margin-top: 0
+
+q
+  display: block
+
+p
+  line-height: $t-text-lineHeight
+  margin: 0 auto $b-space
+  max-width: 42em
+
+li
+  margin-bottom: $b-space-s
+  margin-top: 0
+
+blockquote
+  color: $ironRed
+  font-family: $t-heading-fontFamily
+  font-size: 0.5 * $t-heading-fontSize
+  font-style: italic
+  margin: $b-space 0
+  +respond-to( $g-s )
+    font-size: 0.75 * $t-heading-fontSize
+    margin: $b-space-l 0
+
+q
+  &::before
+    content: ""
+  &::after
+    content: ""
+
+// ----- Headings ----- //
+
+h1, .h1
+  font-family: $t-heading-fontFamily
+  font-size: 0.75 * $t-heading-fontSize
+  font-weight: $t-heading-fontWeight
+  line-height: $t-heading-lineHeight
+  margin-bottom: $b-space
+  margin-top: 0
+  +respond-to( $g-s )
+    font-size: $t-heading-fontSize
+
+h2, .h2
+  font-family: $t-heading-fontFamily
+  font-size: 0.5 * $t-heading-fontSize
+  font-weight: $t-heading-fontWeight
+  line-height: $t-heading-lineHeight
+  margin-bottom: $b-space
+  margin-top: 0
+  +respond-to( $g-s )
+    font-size: 0.75 * $t-heading-fontSize
+
+h3, .h3
+  font-family: $t-heading-fontFamily
+  font-size: 1.25 * $t-text-fontSize
+  font-weight: $t-heading-fontWeight
+  line-height: $t-heading-lineHeight
+  margin-bottom: $b-space
+  margin-top: 0
+  +respond-to( $g-s )
+    font-size: 0.5 * $t-heading-fontSize
+
+h4, .h4
+  font-family: $t-text-fontFamily
+  font-size: $t-text-fontSize
+  font-weight: 600
+  letter-spacing: 0.25em
+  line-height: $t-heading-lineHeight
+  margin-bottom: $b-space
+  margin-top: 0
+  text-transform: uppercase
+  +respond-to( $g-s )
+    font-size: 1.5 * $t-text-fontSize
+
+h5, .h5
+  color: $c-subdue
+  font-family: $t-text-fontFamily
+  font-size: $t-text-fontSize
+  font-weight: 600
+  letter-spacing: 0.125em
+  line-height: $t-heading-lineHeight
+  margin-bottom: $b-space
+  margin-top: 0
+  +respond-to( $g-s )
+    font-size: 1.25 * $t-text-fontSize
+
+// -------------------------------------
+//   Inline Content
+// -------------------------------------
+
+// ----- Links ----- //
+
+a
+  color: $c-action
+  text-decoration: underline
+  &:hover,
+  &:focus
+    color: scale-color( $c-action, $saturation: 20%, $lightness: 10% )
+
+// ----- Images ----- //
+
+img
+  height: auto
+  max-width: 100%
+
+// -------------------------------------
+//   Forms
+// -------------------------------------
+
+[type=email],
+[type=number],
+[type=password],
+[type=tel],
+[type=text]
+  border: 1px solid $c-border
+  color: $c-text
+  padding: 0.5em 0.75em
+
+[type=submit]
+  @extend .btn

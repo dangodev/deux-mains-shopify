@@ -1,0 +1,37 @@
+// *************************************
+//
+//   Crop
+//   -> Image cropping utility
+//
+// *************************************
+
+.crop
+  height: 0
+  overflow: hidden
+  padding-top: 100%
+  position: relative
+  img
+    display: block
+    height: 100%
+    left: 50%
+    max-width: none
+    position: absolute
+    top: 50%
+    transform: translate( -50%, -50% )
+    width: auto
+
+// -------------------------------------
+//  Modifiers
+// -------------------------------------
+
+.crop--4-3
+  padding-top: 75%
+
+.crop--immerse
+  padding-top: 75vh
+  img
+    height: 100%
+    width: auto
+    +respond-to( $g-m )
+      height: auto
+      width: 100%

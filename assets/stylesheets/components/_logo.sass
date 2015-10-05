@@ -1,0 +1,73 @@
+// *************************************
+//
+//   Logo
+//   -> Layout styles for the (very textured) logo
+//
+// *************************************
+
+.logo
+  position: relative
+  svg
+    position: absolute
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Horizontal ----- //
+
+.logo--h
+  height: 0
+  padding-top: 26.02%
+  .logo-mark
+    height: 100%
+    left: 0
+    position: absolute
+    top: 0
+    width: auto
+    img
+      height: 100%
+      width: auto
+  .logo-word
+    height: 47.5%
+    position: absolute
+    top: 20%
+    right: 0
+    img
+      height: 100%
+      width: auto
+  .logo-tagline
+    font-weight: 100
+    left: 32.5%
+    letter-spacing: 0.25em
+    line-height: 1
+    position: absolute
+    text-transform: uppercase
+    top: 75%
+    width: 100%
+    +respond-to( 350px )
+      bottom: 0
+      text-align: right
+      top: auto
+      white-space: nowrap
+    a
+      text-decoration: none
+
+// ----- Vertical ----- //
+
+.logo--v
+  height: 0
+  padding-top: 92%
+  .logo-mark
+    left: 50%
+    margin-left: auto
+    margin-right: auto
+    position: absolute
+    transform: translateX( -50% )
+    top: 5%
+    width: 50%
+  .logo-word
+    bottom: 0
+    left: 0
+    position: absolute
+    width: 100%

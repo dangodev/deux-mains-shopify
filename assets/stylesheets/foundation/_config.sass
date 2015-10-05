@@ -1,0 +1,113 @@
+// *************************************
+//
+//   Config
+//   -> Fonts, Variables
+//
+// *************************************
+
+// -------------------------------------
+//   Colors
+// -------------------------------------
+
+// ----- Palette ----- //
+
+$black: #130F0F
+$cerulean: #64A4A7
+$gold: #A27D51
+$ironRed: #9A3E37
+
+// ----- Base ----- //
+
+$c-action: $cerulean
+$c-background: white
+$c-border: scale-color( $black, $lightness: 75% )
+$c-label: $ironRed
+$c-subdue: scale-color( $black, $lightness: 75% )
+$c-text: $black
+
+// ----- Components ----- //
+
+
+
+// ----- Structures ----- //
+
+// ...
+
+// -------------------------------------
+//   Base
+// -------------------------------------
+
+// ----- Typography ----- //
+
+// Heading
+
+$didot: "Diet Didot", Didot, Bodoni, Georgia, serif
+
+@font-face
+  font-family: "Diet Didot"
+  font-style: normal
+  font-weight: 400
+  src: font-url("diet_didot.woff2") format("woff2"), font-url("diet_didot.woff") format("woff")
+
+@font-face
+  font-family: "Diet Didot"
+  font-style: italic
+  font-weight: 400
+  src: font-url("diet_didot_italic.woff2") format("woff2"), font-url("diet_didot_italic.woff") format("woff")
+
+$t-heading-fontFamily: $didot
+$t-heading-fontSize: 52px
+$t-heading-fontWeight: 400
+$t-heading-lineHeight: 1.2
+
+// Text
+
+$sofia: "sofia-pro", "Avenir", "Century Gothic", sans-serif
+
+$t-text-fontFamily: $sofia
+$t-text-fontSize: 14px
+$t-text-fontWeight: 300
+$t-text-lineHeight: 2
+
+// ----- Sizing ----- //
+
+$b-maxWidth: 1024px
+$b-space: 20px
+$b-space-xs: 0.25 * $b-space
+$b-space-s: 0.5 * $b-space
+$b-space-l: 2 * $b-space
+$b-space-xl: 4 * $b-space
+
+// -------------------------------------
+//   Components
+// -------------------------------------
+
+// Breakpoints
+
+$g-s: 480px
+$g-m: 960px
+$g-l: 1280px
+
+// Responsive Image sizes (full widths)
+
+$i-s: 960px
+$i-m: 2048px
+$i-l: 4096px
+
+// Margins (name small large, name small large …)
+
+$b-margins: f 0, s 0.5, m 1, l 2, xl 4
+
+// Settings
+
+$g-columns: 12
+$g-defaults: 's' $g-s, 'm' $g-m, 'l' $g-l
+$g-gutter: $b-space
+
+$z-layers: base, overlay, nav, modal
+
+// -------------------------------------
+//   Structures
+// -------------------------------------
+
+// ...

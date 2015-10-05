@@ -1,0 +1,80 @@
+// *************************************
+//
+//   Grid
+//   -> Based on the following:
+//      * https://github.com/necolas/suit-grid
+//      * https://github.com/csswizardry/csswizardry-grids
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .g
+//
+//   .g-b[center 1of2|...]
+//     / ...
+//
+//   .g-b[center 1of2|...]
+//     / ...
+//
+// *************************************
+
+// -------------------------------------
+//   Base
+// -------------------------------------
+
+.g
+  @extend .group
+  display: flex
+  flex-wrap: wrap
+  margin-left: -$b-space
+
+.g-b
+  margin: 0
+  padding-left: $b-space
+  width: 100%
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Center ----- //
+
+.g--c
+  align-items: center
+
+// ----- Large ----- //
+
+.g--l
+  margin-left: -$b-space-l
+  .g-b
+    padding-left: $b-space-l
+
+// -------------------------------------
+//   Setup
+// -------------------------------------
+
+=g-device-type($namespace: '')
+
+  .g-b--#{$namespace}1of1
+    width: 100%
+
+  @each $unit in $g-columns
+    @for $column from 1 to $unit + 1
+      .g-b--#{$namespace}#{$column}of#{$unit}
+        width: percentage($column / $unit)
+
+      @for $division from 1 to $unit
+        @if $column % $division == 0 and $unit % $division == 0
+          .g-b--#{$namespace}#{$column / $division}of#{$unit / $division}
+            @extend .g-b--#{$namespace}#{$column}of#{$unit}
+
+// -------------------------------------
+//   Creation
+// -------------------------------------
+
++g-device-type()
+
+@each $device in $g-defaults
+  @media screen and (min-width: nth($device, 2))
+    +g-device-type("#{nth($device, 1)}--")

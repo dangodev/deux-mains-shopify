@@ -1,0 +1,97 @@
+// *************************************
+//
+//   Helpers
+//   -> Functions, Mixins, Extends, Animations
+//
+// *************************************
+
+// -------------------------------------
+//   Functions
+// -------------------------------------
+
+// ----- Z-index ----- //
+
+=z-index( $layer, $add: 0 )
+  z-index: #{ 10 * index( $z-layers, $layer ) + $add }
+
+// -------------------------------------
+//   Mixins
+// -------------------------------------
+
+// ----- Respond-to ----- //
+// -> Generates a media query
+//
+// $val - the breakpoint size
+// $query - the type of query ('min-width', 'max-width')
+// $media - the media type ('screen', 'print', etc.)
+// @content - the generated content within the mixin
+
+=respond-to($val, $query: min-width, $media: screen)
+  @media #{$media} and ($query: $val)
+    @content
+
+// ----- Background ----- //
+// -> Generates a full-width background responsively.
+// Requires @2x and @3x images be generated,
+// otherwise it’ll result in a 404 and broken layout.
+//
+// image-path('hero/desk.jpg')
+// image-path('hero/desk@2x.jpg')
+// image-path('hero/desk@3x.jpg')
+//
+// becomes:
+//
+// +background('hero/desk')
+
+=background($basename, $extension: 'jpg')
+  background-image: image-url("#{$basename}.#{$extension}")
+  @media screen and (min-width: #{0.5 * $i-m + 1}) and (min-resolution: 1.5dppx)
+    background-image: image-url("#{$basename}@2x.#{$extension}")
+  @media screen and (min-width: #{$i-s + 1})
+    background-image: image-url("#{$basename}@2x.#{$extension}")
+  @media screen and (min-width: #{0.5 * $i-m + 1}) and (min-resolution: 1.5dppx)
+    background-image: image-url("#{$basename}@3x.#{$extension}")
+  @media screen and (min-width: #{$i-m + 1})
+    background-image: image-url("#{$basename}@3x.#{$extension}")
+
+// -------------------------------------
+//   Extends
+// -------------------------------------
+
+// ----- Clearfix ----- //
+
+.group::after
+  clear: both
+  content: ''
+  display: table
+
+// ----- Debug ----- //
+
+.debug
+  background-color: pink !important
+
+// ----- Ellipsis ----- //
+
+.ellipsis
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+// ----- Image Replacement ----- //
+
+.ir
+  background-color: transparent
+  border: 0
+  overflow: hidden
+
+  &::before
+    content: ''
+    display: block
+    height: 150%
+    width: 0
+
+// -------------------------------------
+//   Animations
+// -------------------------------------
+
+// ...

@@ -1,0 +1,97 @@
+// *************************************
+//
+//   Artisan
+//   -> DM Employees
+//
+// *************************************
+
+.artisan
+  ul
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    margin: 0 0 0 -#{ $b-space-s }
+    padding: 0
+    +respond-to( $g-s )
+      margin-left: -$b-space
+  li
+    margin: 0 0 $b-space-s
+    padding-left: $b-space-s
+    text-align: center
+    width: percentage( 1 / 3 )
+    +respond-to( $g-s )
+      padding-left: $b-space
+      width: 25%
+    +respond-to( $g-m )
+      width: 20%
+  a
+    color: $c-text
+    display: block
+    padding: $b-space-s
+    text-decoration: none
+    +respond-to( $g-s )
+      padding: $b-space
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Name ----- //
+
+.artisan-name
+  margin: 0
+
+// ----- Photo ----- //
+
+.artisan-photo
+  background: image-url( 'bg-redcanvas.png' ) no-repeat center center
+  background-size: cover
+  border-radius: 50%
+  margin-bottom: $b-space-s
+  padding: $b-space-xs
+  +respond-to( $g-s )
+    margin-bottom: $b-space
+    padding: $b-space-s
+  img
+    border-radius: 50%
+    display: block
+
+// ----- Quote ----- //
+
+.artisan-quote
+  color: $c-subdue
+  display: none
+  font-family: $t-heading-fontFamily
+  font-size: 1.25 * $t-text-fontSize
+  font-style: italic
+  line-height: 0.6
+  margin-top: $b-space-s
+  +respond-to( $g-s )
+    display: block
+  &::before
+    content: "“"
+    font-size: 2.5 * $t-text-fontSize
+    line-height: 1
+    vertical-align: middle
+
+// ----- Title ----- //
+
+.artisan-title
+  color: $c-action
+  display: none
+  font-weight: 300
+  letter-spacing: 0.25em
+  line-height: 1
+  margin: 0
+  text-transform: uppercase
+  +respond-to( $g-s )
+    display: block
+
+// -------------------------------------
+//   States
+// -------------------------------------
+
+.artisan li.is-current
+  opacity: 0.6
+  img
+    filter: grayscale( 100% )

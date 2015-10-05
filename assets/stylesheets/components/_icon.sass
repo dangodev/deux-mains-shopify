@@ -1,0 +1,52 @@
+// *************************************
+//
+//   Icon
+//   -> Icon styles for vector assets
+//
+// *************************************
+
+.icn
+  fill: none
+  stroke: currentColor
+  stroke-width: 16
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+.icn-label
+  font-size: 0.875 * $t-text-fontSize
+  letter-spacing: 0.25em
+  line-height: 1.2
+  text-transform: uppercase
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Arrow ----- //
+
+.icn--arrow
+  stroke-width: 48
+
+// ----- Social ----- //
+
+.icn--social
+  fill: currentColor
+  height: 1.25 * $b-space
+  stroke-width: 0
+  width: 1.25 * $b-space
+
+// ----- Product ----- //
+
+.icn--product
+  border-radius: 50%
+  border: 3px solid $c-action
+  color: $cerulean
+  height: 1.5 * $b-space-l
+  margin-bottom: $b-space-s
+  stroke-width: 12
+  width: 1.5 * $b-space-l
+  +respond-to( $g-m )
+    height: $b-space-xl
+    width: $b-space-xl

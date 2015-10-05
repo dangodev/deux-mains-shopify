@@ -1,0 +1,72 @@
+// *************************************
+//
+//   Footer
+//   -> Footer styles
+//
+// *************************************
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Email ----- //
+
+.footer-email
+  label
+    display: block
+  [type=email]
+    background: none
+    border: 1px solid $c-action
+    color: white
+    height: $b-space-l
+    margin: $b-space-s 0 0
+    transition: border 200ms linear
+    outline: none
+    width: calc( 100% - #{ 5 * $b-space } )
+    +respond-to( $g-s )
+      width: 10 * $b-space
+    &:focus
+      border-color: scale-color( $cerulean, $lightness: 25%, $saturation: 20% )
+      + [type=submit]
+        background: scale-color( $cerulean, $lightness: 25%, $saturation: 20% )
+  [type=submit]
+    height: $b-space-l
+    letter-spacing: 0.125em
+    transition: background-color 200ms linear
+    width: 5 * $b-space
+    +respond-to( $g-s )
+      width: auto
+
+// ----- Logo ----- //
+
+.footer-logo
+  font-size: 11px
+  margin-bottom: $b-space-l
+  width: 10 * $b-space
+
+// ----- Nav ----- //
+
+.footer-nav
+  ul
+    padding: 0
+  li
+    margin: 0
+  h5
+    font-size: 1.125 * $t-text-fontSize
+    font-weight: 100
+    letter-spacing: 0.25em
+    margin: 0
+    opacity: 0.6
+    text-transform: uppercase
+  a
+    text-decoration: none
+
+// ----- Social ----- //
+
+.footer-social
+  padding: 0
+  margin: $b-space-s 0
+  li
+    display: inline-block
+    + li
+      margin-left: $b-space-s

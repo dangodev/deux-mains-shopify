@@ -1,0 +1,75 @@
+// *************************************
+//
+//   Form
+//   -> Form styles
+//
+// *************************************
+
+// ----- Label ----- //
+
+.form-label
+  color: $c-subdue
+  letter-spacing: 0.125em
+  text-transform: uppercase
+
+// ----- Pair ----- //
+
+.form-pair
+  display: flex
+  align-items: center
+  > *
+    flex: 1
+
+// ----- Select ----- //
+
+.form-select
+  position: relative
+  select
+    -webkit-appearance: none
+    appearance: none
+    background: white
+    border: 1px solid $c-action
+    border-radius: 2em
+    cursor: pointer
+    letter-spacing: 0.0625em
+    margin: 0
+    outline: none
+    padding: 0.5em 1em
+    transition: background-color 150ms linear
+    width: 100%
+  option
+    font-weight: normal
+  &:hover,
+  &:focus
+    select
+      background-color: scale-color( $c-action, $lightness: 90% )
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
+  .form-select select
+    &::-ms-expand
+      display: none
+    &:focus::-ms-value
+      background: transparent
+      color: #222
+
+@-moz-document url-prefix()
+  .form-select
+    overflow: hidden
+    select
+      width: calc(100% + 3em)
+
+.form-select select:-moz-focusring
+  color: transparent
+  text-shadow: 0 0 0 #000
+
+// Scaffolding
+
+.form-select-icn
+  height: $b-space
+  margin-top: -$b-space-s
+  position: absolute
+  right: $b-space-s
+  stroke: $cerulean
+  top: 50%
+  width: $b-space
+  +z-index( overlay )

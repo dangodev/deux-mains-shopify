@@ -1,0 +1,47 @@
+// *************************************
+//
+//   Row
+//   -> Width-spanning blocks
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .row[a|b]
+//   / ...
+//
+// *************************************
+
+.row
+  overflow: hidden
+  padding: 0 $b-space
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Dark ----- //
+
+.row--dark
+  background: $black
+  color: #BBAFAC
+
+// ----- Emote ----- //
+
+.row--emote
+  +background( 'bg-canvas', 'png' )
+  background-color: white
+  background-position: center center
+  background-repeat: no-repeat
+  background-size: 100% auto
+  box-shadow: inset 0 0 0 $b-space white
+
+// ----- Related ----- //
+
+.row--related
+  +background( 'bg-canvas', 'png' )
+  background-color: white
+  background-position: center center
+  background-repeat: no-repeat
+  background-size: cover
+  border-top: 2px solid scale-color( $gold, $lightness: 50% )

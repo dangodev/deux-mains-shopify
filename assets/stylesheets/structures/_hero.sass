@@ -1,0 +1,81 @@
+// *************************************
+//
+//   Hero
+//   -> Head image
+//
+// *************************************
+
+.hero
+  color: white
+  display: block
+  height: 3 * $b-space-xl
+  overflow: hidden
+  padding: $b-space
+  position: relative
+  +respond-to( $g-m )
+    height: 0
+    padding: 30% 0 0
+  +respond-to( $g-l )
+    height: 4 * $b-space-xl
+    padding: $b-space
+  &:hover,
+  &:focus
+    color: white
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Image ----- //
+
+.hero-image
+  background-position: center center
+  background-repeat: none
+  background-size: cover
+  bottom: 0
+  left: 0
+  position: absolute
+  right: 0
+  top: 0
+  +z-index( overlay )
+  &::after
+    background: rgba( black, 0.4 )
+    bottom: 0
+    content: ""
+    left: 0
+    position: absolute
+    right: 0
+    top: 0
+    transition: opacity 350ms linear
+
+// ----- Content ----- //
+
+.hero-content
+  left: 50%
+  letter-spacing: 0.25em
+  line-height: 1.5
+  max-width: $b-maxWidth
+  position: absolute
+  text-align: center
+  top: 50%
+  transform: translate( -50%, -50% )
+  width: 100%
+  +z-index( overlay, 1 )
+  +respond-to( $g-m )
+    white-space: nowrap
+  h1
+    line-height: 1
+    margin-bottom: 0
+    font-size: 0.5 * $t-heading-fontSize
+    +respond-to( $g-s )
+      font-size: 0.75 * $t-heading-fontSize
+    +respond-to( $g-m )
+      font-size: $t-heading-fontSize
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+.hero--home
+  +respond-to($g-m)
+    padding-top: 50%
