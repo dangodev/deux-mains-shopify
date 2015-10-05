@@ -1,0 +1,37 @@
+// *************************************
+//
+//   Flash
+//   -> Top-screen notices
+//
+// *************************************
+
+.flash
+  +background( 'bg-canvas', 'png' )
+  background-position: center top
+  background-repeat: no-repeat
+  background-size: cover
+  padding-bottom: $b-space
+  padding-top: $b-space
+  text-align: center
+  visibility: hidden
+  transform: translateY( -200% ), visibility 0ms 250ms
+  width: 100%
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+.flash-action
+  position: absolute
+  right: $b-space
+  top: 50%
+  transform: translateY( -50% )
+
+// -------------------------------------
+//   States
+// -------------------------------------
+
+.flash.is-showing
+  transform: translateY( 0 )
+  transition: transform 250ms ease-oun
+  visibility: visibile

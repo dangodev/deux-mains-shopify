@@ -1,92 +1,33 @@
-{% paginate blog.articles by 5 %}
-
-{% if current_tags %}
-<h1 class="delta">{{ blog.title | link_to: blog.url }} <span class="quiet">&raquo;</span> {{ current_tags.first }}</h1>
-{% else %}
-<h1 class="delta">{{ blog.title }}</h1>
-{% endif %}
-
-<div class="articles">
-
-  {% for article in blog.articles %}
-  
-  {% comment %}
-    Let's extract a blog image.
-    We will look for an image in the excerpt first, and in the blog post itself second.
-    We will remove the image suffix to grab as big an image as we can.
-  {% endcomment %}
-    
-  {% assign article_has_image = false %}
-  {% assign img_tag = '<' | append: 'img' %}
-  {% if article.excerpt_or_content contains img_tag %}
-    {% assign src = article.excerpt_or_content | split: 'src="' %}
-    {% assign src = src[1] | split: '"' | first %}
-    {% if src %}
-      {% assign article_has_image = true %}
-      {% assign image_src = src | replace: '_small', '' | replace: '_compact', '' | replace: '_medium', '' | replace: '_large', '' | replace: '_grande', '' %}
-    {% endif %}
-  {% endif %}  
-  
-  <div class="article{% if forloop.first %} first{% endif %}{% if forloop.last %} last{% endif %} clear">
-    <h2 class="title">
-      <a href="{{ article.url }}">{{ article.title }}</a>
-    </h2>
-    <h3 class="date">
-      <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time>
-    </h3>
-    <div class="row">
-      {% if article_has_image %}
-      <div class="third column">
-        <a href="{{ article.url }}">
-          <span class="square-holder" style="background-image: url({{ image_src }})">
-          </span>
-        </a>
-      </div>
-      <div class="two-thirds column">
-        <div class="rte fadeout-overflow-bottom grid-margins">          
-      {% else %}
-      <div class="full column">
-        <div class="rte">
-      {% endif %}        
-          {% if article.excerpt.size > 0 %}
-          <div class="no-images">{{ article.excerpt }}</div>
-          {% else %}
-          <p>{{ article.content | strip_html | truncatewords: 120 }}</p>
-          {% endif %}
-        </div>
-        <p>
-          <a class="blog-read-more" href="{{ article.url }}">Read more →</a>
-        </p>
-      </div>
-    </div>
-    <div class="meta">
-      {% if blog.comments_enabled? and article.comments_count > 0 %}
-      <span class="meta-comments">
-        <a href="{{ article.url }}#comments"><i class="fa fa-comment"></i> {{ article.comments_count }} {{ article.comments_count | pluralize: 'comment','comments' }}</a>
-      </span>
-      {% endif %}
-      {% if article.tags.size > 0 %}
-      <span class="tags">
-        {% for tag in article.tags %} 
-        <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{% if forloop.first %}<i class="fa fa-tag"></i> {% endif %}{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
-        {% endfor %}
-      </span>
-      {% endif %}
+<div class="hero">
+  <div class="hero-image" style="background-image: url('{{ blog.metafields['image'] }}')"></div>
+  <div class="hero-content">
+    <h1>Blog</h1>
   </div>
 </div>
-  
-{% endfor %}
-
+<div class="row" itemscope itemtype="https://schema.org/Blog">
+  {% paginate blog.articles by 10 %}
+    {% for article in blog.articles %}
+      <div class="well well--l cell cell--story">
+        <article class="story story--mini" itemtype="blogPost">
+          {% unless article.metatags.hero['image'] is blank %}
+            <img src="{{ article.metatags.hero['image'] }}" alt="{{ article.title }}" itemprop="image" />
+          {% endunless %}
+          <h1 class="h2 tac" itemtype="headline">{{ article.title }}</h1>
+          <time datetime="{{ article.published_at | date: "%d-%m-%y %R" }}" itemprop="datePublished">{{ article.published_at | date: "%b %d %Y" }}</time>
+          <p class="story-excerpt" itemprop="description">{{ article.excerpt }}</p>
+          <div class="tac"><a href="{{ article.url }}" class="btn btn--r story-link">Read More</a></div>
+        </article>
+      </div>
+    {% endfor %}
+    {% if paginate.pages > 1 %}
+      <div class="well cell tac">
+        {% if paginate.prev.is_link %}
+          <a href="{{ paginate.prev.url }}" class="story-prev">← Newer</a>
+        {% endif %}
+        {% if paginate.next.is_link %}
+          <a href="{{ paginate.next.url }}" class="story-next">Older →</a>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endpaginate %}
 </div>
-  
-{% if paginate.pages > 1 %}
-<div class="pagination">
-{% comment %}
-  When paginating blog articles, a previous article is actually a newer article, not an older one,
-  because blog articles are shown and paginated in a reversed chronological order.
-  The word 'previous' can be confusing, hence we'll change it.
-{% endcomment %}
-{{ paginate | default_pagination | replace: 'Previous', 'Newer articles' | replace: 'Next', 'Older articles' }}
-{% endif %}
-
-{% endpaginate %}

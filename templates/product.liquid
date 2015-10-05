@@ -79,7 +79,7 @@
             <div class="form-select">
               <select>
                 <option>Size</option>
-                {% for option in product.options %}
+                {% for size in product.options.size %}
                   <option>{{ option }}</option>
                 {% endfor %}
               </select>
@@ -115,11 +115,11 @@
 <div class="row row--related">
   <div class="well well--s cell">
     <h3 class="tac ttu tr3">You may also be interested in:</h3>
-    <div class="g">
+    <ul class="store-details-related nl">
       {% assign first_collection = product.collections | first %}
       {% for i in (1..4) %}
         {% include 'product', first_collection.products[i], is_related: true %}
       {% endfor %}
-    </div>
+    </ul>
   </div>
 </div>
