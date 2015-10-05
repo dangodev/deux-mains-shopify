@@ -32,7 +32,7 @@ gulp.task('export', function() {
   // Delete the Zip task below to skip generating a *.zip file on export
   // ----- Zip task begin ----- //
   gulp.src(['**', '!gulpfile.js', '!README.md', '!node_modules/**', '!assets/javascripts/**', '!assets/stylesheets/**'])
-    .pipe(zip('deux-main-shopify.zip'))
+    .pipe(zip('deux-mains-shopify.zip'))
     .pipe(gulp.dest('../'));
   // ----- Zip task end ----- //
 });
