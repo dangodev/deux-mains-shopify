@@ -44,15 +44,15 @@
 // +background('hero/desk')
 
 =background($basename, $extension: 'jpg')
-  background-image: url( "{{ '#{$basename}.#{$extension}' | asset_url }}" )
+  background-image: url( "{{ #{$basename}.#{$extension} | asset_url }}" )
   @media screen and (min-width: #{0.5 * $i-m + 1}) and (min-resolution: 1.5dppx)
-    background-image: url( "{{ '#{$basename}@2x.#{$extension}' | asset_url }}" )
+    background-image: url( "{{ #{$basename}@2x.#{$extension} | asset_url }}" )
   @media screen and (min-width: #{$i-s + 1})
-    background-image: url( "{{ '#{basename}@2x.#{$extension}' | asset_url }}" )
+    background-image: url( "{{ #{basename}@2x.#{$extension} | asset_url }}" )
   @media screen and (min-width: #{0.5 * $i-m + 1}) and (min-resolution: 1.5dppx)
-    background-image: url( "{{ '#{basename}@3x.#{$extension}' | asset_url }}" )
+    background-image: url( "{{ #{basename}@3x.#{$extension} | asset_url }}" )
   @media screen and (min-width: #{$i-m + 1})
-    background-image: url( "{{ '#{basename}@3x.#{$extension}' | asset_url }}" )
+    background-image: url( "{{ #{basename}@3x.#{$extension} | asset_url }}" )
 
 // -------------------------------------
 //   Extends
