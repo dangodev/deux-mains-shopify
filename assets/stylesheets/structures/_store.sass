@@ -205,8 +205,10 @@
   +respond-to( $g-s )
     flex: 1
     order: 0
+    padding-right: $b-space
   +respond-to( $g-m )
     flex: 3
+    padding-right: $b-space-l
 
 // Scaffolding
 
@@ -218,6 +220,7 @@
     position: relative
   li
     bottom: 0
+    display: block
     left: 0
     margin: 0
     opacity: 0
@@ -231,7 +234,10 @@
 
 .store-gallery-thumb
   ul
-    margin: 0
+    margin-bottom: 0
+    margin-left: 0
+    margin-right: 0
+    margin-top: $b-space
     padding: 0
   li
     display: inline-block
