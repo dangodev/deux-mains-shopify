@@ -43,14 +43,17 @@
     </div>
   {% endif %}
 </div>
-<div class="row row--related">
-  <div class="well well--s cell">
-    <h3 class="tac ttu tr3">You may also be interested in:</h3>
-    <ul class="store-details-related nl">
-      <% 3.times do %>
-        <%= partial 'shared/product', is_related: true %>
-      <% end %>
-      <%= partial 'shared/product', is_related: true, on_sale: true %>
-    </ul>
+
+{% assign cart_collection = collection.cart %}
+{% if cart_collection.products_count %}
+  <div class="row row--related">
+    <div class="well well--s cell">
+      <h3 class="tac ttu tr3">You may also be interested in:</h3>
+      <ul class="store-details-related nl">
+        {% for i in (1..4) %}
+          {% include 'product', cart_collection.products[i], is_related: true %}
+        {% endfor %}
+      </ul>
+    </div>
   </div>
-</div>
+{% endif %}
