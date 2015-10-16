@@ -19,6 +19,8 @@
   {% case template %}
     {% when 'index' %}
       <h1 class="header-title" itemprop="name">{{ shop.name }}</h1>
+    {% when 'collection' %}
+      <h1 class="header-title" itemprop="name">{{ collection.title }}</h1>
     {% when 'blog' or 'article' %}
       <h1 class="header-title" itemprop="name">Blog</h1>
     {% else %}
