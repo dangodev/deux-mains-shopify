@@ -1,17 +1,21 @@
 {% if page.metafields.fields.hero['image'] != blank and page.metafields.fields.hero['title'] != blank %}
-  {% unless page.metafields.fields.hero['url'] is blank %}
+  {% if page.metafields.fields.hero['url'] != blank %}
     <a class="hero" href="{{ page.metafields.fields.hero['url'] }}">
-  {% endunless %}
-      <div class="hero-image" style="background-image: url('{{ page.metafields.fields.hero['image'] }}')"></div>
-      <div class="hero-content">
-        <h1>{{ page.metafields.fields.hero['title'] }}</h1>
-        {% unless page.metafields.fields.hero['subtitle'] is blank %}
-          {{ page.metafields.fields.hero['subtitle'] }}
-        {% endunless %}
-      </div>
-  {% unless page.metafields.fields.hero['url'] is blank %}
+  {% else %}
+    <div class="hero">
+  {% endif %}
+    <div class="hero-image" style="background-image: url('{{ page.metafields.fields.hero['image'] }}')"></div>
+    <div class="hero-content">
+      <h1>{{ page.metafields.fields.hero['title'] }}</h1>
+      {% unless page.metafields.fields.hero['subtitle'] is blank %}
+        {{ page.metafields.fields.hero['subtitle'] }}
+      {% endunless %}
+    </div>
+  {% if page.metafields.fields.hero['url'] != blank %}
     </a>
-  {% endunless %}
+  {% else %}
+    </div>
+  {% endif %}
 {% endif %}
 <div class="row row--emote">
   <a href="/about" style="text-decoration: none;">

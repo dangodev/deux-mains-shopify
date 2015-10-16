@@ -25,8 +25,8 @@
 // ----- Bleed ----- //
 
 .story-bleed
-  margin-bottom: $b-space
-  margin-top: $b-space
+  margin-bottom: $b-space-l
+  margin-top: $b-space-l
   +respond-to( $g-m )
     margin-bottom: 0
     margin-top: 0
@@ -91,7 +91,12 @@
     font-size: 1.25 * $t-text-fontSize
   p
     letter-spacing: 0.0625em
-    max-width: 24em
+    max-width: 35em
+    margin-bottom: 0
+    padding-left: $b-space
+    padding-right: $b-space
+    + *
+      margin-top: $b-space-l
   h1,
   h2,
   h3,
@@ -110,6 +115,14 @@
     +respond-to( $g-s )
       font-size: 1.5 * $t-text-fontSize
       margin-bottom: $b-space-l
+  * +
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6
+      margin-top: $b-space-l
 
 // -------------------------------------
 //   Modifiers

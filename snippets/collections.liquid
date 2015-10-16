@@ -16,5 +16,8 @@
         <option value="{{ collection.url }}">{{ collection.title }}</option>
       {% endfor %}
     </select>
+    <svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512">
+      <use xlink:href="{{ image-icons.svg | asset_url }}#arrow"></use>
+    </svg>
   </div>
 </nav>

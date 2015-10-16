@@ -47,13 +47,13 @@ $didot: "Diet Didot", Didot, Bodoni, Georgia, serif
   font-family: "Diet Didot"
   font-style: normal
   font-weight: 400
-  src: font-url("diet_didot.woff2") format("woff2"), font-url("diet_didot.woff") format("woff")
+  src: url( '{{ font-diet-didot.woff2 | asset_url }}' ) format( 'woff2' ), url( '{{ font-diet-didot.woff | asset_url }}' ) format( 'woff' )
 
 @font-face
   font-family: "Diet Didot"
   font-style: italic
   font-weight: 400
-  src: font-url("diet_didot_italic.woff2") format("woff2"), font-url("diet_didot_italic.woff") format("woff")
+  src: url( '{{ font-diet-didot-italic.woff2 | asset_url }}' ) format( 'woff2' ), url( '{{ diet_didot_italic.woff | asset_url }}' ) format( 'woff' )
 
 $t-heading-fontFamily: $didot
 $t-heading-fontSize: 52px
@@ -104,7 +104,7 @@ $g-columns: 12
 $g-defaults: 's' $g-s, 'm' $g-m, 'l' $g-l
 $g-gutter: $b-space
 
-$z-layers: base, overlay, nav, modal
+$z-layers: base, overlay, nav, flash, modal
 
 // -------------------------------------
 //   Structures

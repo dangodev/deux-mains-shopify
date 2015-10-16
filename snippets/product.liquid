@@ -3,11 +3,18 @@
     <div class="store-product-img"><img src="{{ product | img_url: 'grande' }}" alt="{{ product.featured_image.alt | escape }}" itemprop="image"/></div>
     <div class="store-product-name" itemtype="name">{{ product.title }}</div>
     <div class="store-product-price">
-      <span class="store-product-currency" content="{{ shop.currency }}" itemprop="priceCurrency">$</span>
-      <span class="store-product-amount" content="{{ product.price | money_without_currency }}" itemprop="price">{{ product.price | money_without_currency | replace_first '.', '<span class="store-product-cents">' }}</span></span>
+      <span class="price">
+        <span class="price-currency" content="{{ shop.currency }}" itemprop="priceCurrency">$</span>
+        <span class="price-amount" content="{{ product.price | money_without_currency }}" itemprop="price">
+          <span class="price-dollars">{{ product.price | money_without_currency | replace_first '.', '</span><span class="price-cents">' }}</span>
+        </span>
+      </span>
       {% if product.price < product.compare_at_price_max %}
-        <span class="store-product-ogPrice">
-          <span class="store-product-currency">$</span><span class="store-product-amount">{{ product.compare_at_price_max | money_without_currency | replace_first '.', '<span class="store-product-cents">' }}</span></span>
+        <span class="price price--og">
+          <span class="price-currency">$</span>
+          <span class="price-amount">
+            <span class="price-dollars">{{ product.compare_at_price_max | money_without_currency | replace_first '.', '</span><span class="price-cents">' }}</span>
+          </span>
         </span>
       {% endif %}
       {% unless product.available %}

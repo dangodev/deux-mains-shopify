@@ -20,25 +20,25 @@
           <ul class="nl tac">
             <li>
               <svg aria-hidden class="icn icn--product" role="img" viewbox="0 0 512 512">
-                <use xlink:href="{{ 'icons.svg' | asset_url }}#haiti"></use>
+                <use xlink:href="{{ 'image-icons.svg' | asset_url }}#haiti"></use>
               </svg>
               <div class="icn-label">100% Haitian-made</div>
             </li>
             <li>
               <svg aria-hidden class="icn icn--product" role="img" viewbox="0 0 512 512">
-                <use xlink:href="{{ 'icons.svg' | asset_url }}#tire"></use>
+                <use xlink:href="{{ 'image-icons.svg' | asset_url }}#tire"></use>
               </svg>
               <div class="icn-label">Made from up-cycled tires</div>
             </li>
             <li>
               <svg aria-hidden class="icn icn--product" role="img" viewbox="0 0 512 512">
-                <use xlink:href="{{ 'icons.svg' | asset_url }}#eco"></use>
+                <use xlink:href="{{ 'image-icons.svg' | asset_url }}#eco"></use>
               </svg>
               <div class="icn-label">Eco-friendly</div>
             </li>
             <li>
               <svg aria-hidden class="icn icn--product" role="img" viewbox="0 0 512 512">
-                <use xlink:href="{{ 'icons.svg' | asset_url }}#leather"></use>
+                <use xlink:href="{{ 'image-icons.svg' | asset_url }}#leather"></use>
               </svg>
               <div class="icn-label">Sustainable leather</div>
             </li>
@@ -46,80 +46,106 @@
         </div>
       </aside>
       <article class="store-details{% if product.price < product.compare_at_price_max %} store-details--sale{% endif %}">
-        <div class="store-details-preview">{{ product.featured_image }}</div>
-        <h1 class="mbf"{% if product.price < product.compare_at_price_max %} data-discount="{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round }}"{% endif %} itemprop="name">{{ product.title }}</h1>
-        <div class="store-details-price">
-          <span class="store-details-currency" content="{{ shop.currency }}" itemprop="priceCurrency">$</span>
-          <span class="store-details-amount" content="{{ product.price | money_without_currency }}" itemprop="price">{{ product.price | money_without_currency | replace_first '.', '<span class="store-details-cents">' }}</span></span>
-          {% if product.price < product.compare_at_price_max %}
-            <span class="store-details-ogPrice">
-              <span class="store-details-currency">$</span><span class="store-details-amount">{{ product.compare_at_price_max | money_without_currency | replace_first '.', '<span class="store-details-cents">' }}</span></span>
+        <form action="/cart/add" method="post" enctype="multipart/form-data">
+          <div class="store-details-preview">{{ product.featured_image }}</div>
+          <h1 class="mbf"{% if product.price < product.compare_at_price_max %} data-discount="{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round }}"{% endif %} itemprop="name">{{ product.title }}</h1>
+          <div class="store-details-price">
+            <span class="price">
+              <span class="price-currency" content="{{ shop.currency }}" itemprop="priceCurrency">$</span>
+              <span class="price-amount" content="{{ product.price | money_without_currency }}" itemprop="price">
+                <span class="price-dollars">{{ product.price | money_without_currency | replace_first '.', '</span><span class="price-cents">' }}</span>
+              </span>
             </span>
-          {% endif %}
-          {% unless product.available %}
-            <div class="store-details-status">Out of Stock</div>
-          {% endunless %}
-        </div>
-        {{ product.description }}
-        <div class="mtm">
-          <div class="form-select">
-            <select>
-              <option>Variation</option>
-              {% for variant in product.variants %}
-                <option>{{ variant.title }} – {{ variant.price | money_with_currency }}</option>
-              {% endfor %}
-            </select>
-            <svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512">
-              <use xlink:href="{{ 'icons.svg' | asset_url }}#arrow"></use>
-            </svg>
+            {% if product.price < product.compare_at_price_max %}
+              <span class="price price--og">
+                <span class="price-currency">$</span>
+                <span class="price-amount">
+                  <span class="price-dollars">{{ product.compare_at_price_max | money_without_currency | replace_first '.', '</span><span class="price-cents">' }}</span>
+                </span>
+              </span>
+            {% endif %}
+            {% unless product.available %}
+              <div class="store-details-status">Out of Stock</div>
+            {% endunless %}
           </div>
-        </div>
-        <div class="g mtm">
-          <div class="g-b g-b--1of2 tac">
+          {{ product.description }}
+          <div class="mtm">
             <div class="form-select">
-              <select>
-                <option>Size</option>
-                {% for size in product.options.size %}
-                  <option>{{ option }}</option>
+              <select name="option1">
+                <option>Variation</option>
+                {% for option in product.variants.option1 %}
+                  <option>{{ option.title }} – {{ option.price | money_with_currency }}</option>
                 {% endfor %}
               </select>
               <svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512">
-                <use xlink:href="{{ 'icons.svg' | asset_url }}#arrow"></use>
+                <use xlink:href="{{ 'image-icons.svg' | asset_url }}#arrow"></use>
               </svg>
             </div>
-            <a href="javascript:" data-modal="#size_chart">View size chart</a>
           </div>
-          <div class="g-b g-b--1of2">
-            <div class="form-pair">
-              <div class="form-label">Quantity</div>
+          <div class="g mtm">
+            <div class="g-b g-b--1of2 tac">
               <div class="form-select">
-                <select>
-                  {% for i in (1..5) %}
-                    <option>{{ i }}</option>
+                <select name="option2">
+                  <option>Size</option>
+                  {% for size in product.variants.option2 %}
+                    <option>{{ option }}</option>
                   {% endfor %}
                 </select>
                 <svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512">
-                  <use xlink:href="{{ 'icons.svg' | asset_url }}#arrow"></use>
+                  <use xlink:href="{{ 'image-icons.svg' | asset_url }}#arrow"></use>
                 </svg>
+              </div>
+              <a href="javascript:" data-modal="#size_chart">View size chart</a>
+            </div>
+            <div class="g-b g-b--1of2">
+              <div class="form-pair">
+                <div class="form-label">Quantity</div>
+                <div class="form-select">
+                  <select name="quantity">
+                    {% for i in (1..10) %}
+                      <option>{{ i }}</option>
+                    {% endfor %}
+                  </select>
+                  <svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512">
+                    <use xlink:href="{{ 'image-icons.svg' | asset_url }}#arrow"></use>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="mtl tac">
-          <a href="{{ cart.url }}" class="btn btn--l">Add to Cart</a>
-        </div>
+          <div class="mtl tac">
+            <input id="cart_add" name="add" class="btn btn--l" value="{{ add_to_cart | escape }}" />
+            <script>
+              $( document ).ready( function() {
+                $( '#cart_add' ).on( 'click', function( e ) {
+                  $( '#flash_added' ).addClass( 'is-showing' );
+                  e.preventDefault();
+                });
+                $( '.flash-close' ).on( 'click', function( e ) {
+                  $( this ).closest( '.flash' ).removeClass( 'is-showing' );
+                });
+              });
+            </script>
+          </div>
+        </form>
       </article>
     </div>
   </div>
 </div>
+
 <div class="row row--related">
   <div class="well well--s cell">
     <h3 class="tac ttu tr3">You may also be interested in:</h3>
     <ul class="store-details-related nl">
-      {% assign first_collection = product.collections | first %}
+      {% assign first_collection = product.collections.first %}
       {% for i in (1..4) %}
         {% include 'product', first_collection.products[i], is_related: true %}
       {% endfor %}
     </ul>
   </div>
+</div>
+
+<div id="flash_added" class="flash">
+  <span class="tfh ts18 tcr">{{ product.title }}</span> has been added to &nbsp;<a class="btn btn--r" href="{{ cart.url }}">Cart</a>&nbsp;.
+  <a href="javascript:" class="flash-action flash-close">✕</a>
 </div>
