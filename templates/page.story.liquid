@@ -1,6 +1,8 @@
-<div class="hero-image" style="background-image: url('{{ page.metafields.story.hero }}'"></div>
-<div class="hero-content">
-  <h1>{{ page.title }}</h1>
+<div class="hero">
+  <div class="hero-image" style="background-image: url('{{ page.metafields.story.hero }}'"></div>
+  <div class="hero-content">
+    <h1>{{ page.title }}</h1>
+  </div>
 </div>
 <div class="row">
   {% assign story = page.content | split: '<p>' %}

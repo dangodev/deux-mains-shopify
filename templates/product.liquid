@@ -95,68 +95,69 @@
           <div class="tac">
             <a href="javascript:" data-modal="#size_chart">View size chart</a>
           </div>
-          <div class="mtl tac">
+          <div class="well tac">
             <input id="add" name="add" type="submit" class="btn btn--l" value="Add to Cart"{% if product.available == false %} disabled{% endif %} />
-            {% assign max = blog.artisans.articles_count %}
+            {% assign max = blogs.artisans.articles_count %}
             {% capture day_of_year %}{{ 'now' | '%j' }}{% endcapture %}
             {% assign random = day_of_year | plus: 0 | modulo: max %}
-            {% assign artisan = blog.artisans.articles[random] %}
-            <a href="{{ artisan.url }}" class="artisan-leadIn">
-              <div class="artisan-leadIn-img"><img src="{{ artisan.metafields.artisan.thumb }}" alt="{{ artisan.title }}" /></div>
-              <span class="btn btn--s btn--r">Meet the Team</span>
-              <h2 class="mts ld1 mbs tck">{{ artisan.title }}</h2>
-              <span class="tcb ld1">Hear my story &rarr;</span>
-            </a>
-            <script>
-              $( document ).ready( function() {
-                DM.form.number();
-                $( '#add' ).on( 'click', function( e ) {
-                  $( '#flash_added' ).addClass( 'is-showing' );
-                  e.preventDefault();
-                });
-                $( '.flash-close' ).on( 'click', function( e ) {
-                  $( this ).closest( '.flash' ).removeClass( 'is-showing' );
-                });
+            {% assign artisan = blogs.artisans.articles[random] %}
+          </div>
+          <a href="{{ artisan.url }}" class="artisan-leadIn">
+            <div class="artisan-leadIn-img"><img src="{{ artisan.metafields.artisan.thumb }}" alt="{{ artisan.title }}" /></div>
+            <span class="btn btn--s btn--r">Meet the Team</span>
+            <h2 class="mts ld1 mbs tck">{{ artisan.title }}</h2>
+            <span class="tcb ld1">Hear my story &rarr;</span>
+          </a>
+          <script>
+            $( document ).ready( function() {
+              DM.form.number();
+              $( '#add' ).on( 'click', function( e ) {
+                $( '#flash_added' ).addClass( 'is-showing' );
+                e.preventDefault();
               });
+              $( '.flash-close' ).on( 'click', function( e ) {
+                $( this ).closest( '.flash' ).removeClass( 'is-showing' );
+              });
+            });
 
-              // Shopify code from https://github.com/Shopify/skeleton-theme/blob/master/templates/product.liquid
+            // Shopify code from https://github.com/Shopify/skeleton-theme/blob/master/templates/product.liquid
 
-              var selectCallback = function(variant, selector) {
-                if (variant) {
-                  if (variant.featured_image) {
-                    // Custom image selection
-                    $( '[data-id=' + variant.featured_image.id + ']' ).trigger( 'click' );
-                  }
-                  if (variant.available) {
-                    jQuery('#add').removeClass('disabled').prop('disabled', false).val({{ add_to_cart | json }});
-                    if (variant.inventory_management && variant.inventory_quantity <= 0) {
-                      jQuery('#selected-variant').html({{ product.title | json }}{% unless hide_default_title %} + ' - ' + variant.title{% endunless %});
-                    }
-                  } else {
-                    jQuery('#add').val({{ sold_out | json }}).addClass('disabled').prop('disabled', true);
+            var selectCallback = function(variant, selector) {
+              if (variant) {
+                if (variant.featured_image) {
+                  // Custom image selection
+                  $( '[data-id=' + variant.featured_image.id + ']' ).trigger( 'click' );
+                }
+                if (variant.available) {
+                  jQuery('#add').removeClass('disabled').prop('disabled', false).val({{ add_to_cart | json }});
+                  if (variant.inventory_management && variant.inventory_quantity <= 0) {
+                    jQuery('#selected-variant').html({{ product.title | json }}{% unless hide_default_title %} + ' - ' + variant.title{% endunless %});
                   }
                 } else {
-                  jQuery('#add').val({{ unavailable | json }}).addClass('disabled').prop('disabled', true);
+                  jQuery('#add').val({{ sold_out | json }}).addClass('disabled').prop('disabled', true);
                 }
-              };
+              } else {
+                jQuery('#add').val({{ unavailable | json }}).addClass('disabled').prop('disabled', true);
+              }
+            };
 
-              jQuery(function($) {
-                new Shopify.OptionSelectors('product-variants', { product: {{ product | json }}, onVariantSelected: selectCallback, enableHistoryState: true });
-                {% if product.options.size == 1 and product.options.first != 'Title' %}
-                  $('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
-                {% endif %}
+            jQuery(function($) {
+              new Shopify.OptionSelectors('product-variants', { product: {{ product | json }}, onVariantSelected: selectCallback, enableHistoryState: true });
+              {% if product.options.size == 1 and product.options.first != 'Title' %}
+                $('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
+              {% endif %}
 
-                // Custom formatting
+              // Custom formatting
 
-                $( 'select' ).each( function( i, el ) {
-                  $( this ).prev( 'label' ).addClass( 'form-label' );
-                  $( this ).wrap( '<div class="form-select"></div>' );
-                  $( this ).after( '<svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512"><use xlink:href="{{ 'image-icons.svg' | asset_url }}#arrow"></use></svg>' );
-                  $( this ).closest( '.form-select' ).parent().find( 'label, .form-select' ).wrapAll( '<div class="form-pair"></div>' );
-                  $( this ).closest( '.selector-wrapper' ).addClass( 'mtm' );
-                });
+              $( 'select' ).each( function( i, el ) {
+                $( this ).prev( 'label' ).addClass( 'form-label' );
+                $( this ).wrap( '<div class="form-select"></div>' );
+                $( this ).after( '<svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512"><use xlink:href="{{ 'image-icons.svg' | asset_url }}#arrow"></use></svg>' );
+                $( this ).closest( '.form-select' ).parent().find( 'label, .form-select' ).wrapAll( '<div class="form-pair"></div>' );
+                $( this ).closest( '.selector-wrapper' ).addClass( 'mtm' );
               });
-              </script>
+            });
+            </script>
           </div>
         {% if product.available %}
           </form>
