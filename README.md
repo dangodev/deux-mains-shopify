@@ -25,16 +25,17 @@ Just run
 ```
 gulp
 ````
-when working to compile the necessary CSS / JS files.
+when working to compile the necessary CSS / JS files. It’ll also spit out a `.zip`
+file automatically to upload to Shopify.
 
 If you don’t want to use the *.zip method it generates, delete the pertinent
 lines in `gulpfile.js` and implement your own method.
 
 The way that Shopify’s asset pipeline & liquid templates are so deeply embedded
 into its system, unfortunately there’s not a way to truly develop locally. I
-originally had an easy-to-use [Middleman](https://middlemanapp.com/) app, but
-had to toss it because Shopify requires so much liquid templating the two became
-too divergent to be helpful (but I’d still recommend starting with Middleman
+originally had an easy-to-use [Middleman](https://middlemanapp.com/) static site, but
+tossed it because it turned out to be too much micro-management converting `.liquid`
+to pure `.erb` and vice-versa (but I’d still recommend starting with Middleman
 anyway, until it comes time to port to Shopify).
 
 Gulp is included to take advantage of
