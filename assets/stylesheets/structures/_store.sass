@@ -32,6 +32,10 @@
     display: block
     +respond-to( $g-s )
       display: table-row-group
+  .form-pair
+    display: block
+    +respond-to( $g-s )
+      display: flex
 
 // Scaffolding
 
@@ -46,7 +50,6 @@
   width: 50%
   +respond-to( $g-s )
     float: right
-    font-weight: 600
     margin-left: $b-space-l
     width: auto
 
@@ -106,13 +109,14 @@
       width: 1.5 * $b-space-xl
 
 .store-cart-price
+  font-size: 125%
   position: absolute
   right: 0
   top: 1.25 * $b-space-l
-  font-size: 125%
   +respond-to( $g-s )
     font-size: 150%
     padding-right: $b-space
+    position: static
     text-align: center
     width: 10%
 
@@ -123,11 +127,13 @@
   +respond-to( $g-s )
     margin-top: 0
     text-align: center
-    width: 10%
-  .form-select
-    display: inline-block
-    margin-left: $b-space-xs
-    width: 4em
+    width: 25%
+  label
+    font-size: 75%
+    margin-right: $b-space-xs
+  input
+    min-width: 3em
+    width: 3em
 
 .store-cart-remove
   position: absolute
@@ -136,14 +142,6 @@
   +respond-to( $g-s )
     padding-left: $b-space-s
     position: static
-    width: 10%
-
-.store-cart-size
-  line-height: 1
-  margin-top: $b-space-s
-  +respond-to( $g-s )
-    margin-top: 0
-    text-align: center
     width: 10%
 
 // ----- Details ----- //
@@ -205,10 +203,8 @@
   +respond-to( $g-s )
     flex: 1
     order: 0
-    padding-right: $b-space
   +respond-to( $g-m )
     flex: 3
-    padding-right: $b-space-l
 
 // Scaffolding
 
@@ -220,7 +216,6 @@
     position: relative
   li
     bottom: 0
-    display: block
     left: 0
     margin: 0
     opacity: 0
@@ -234,10 +229,7 @@
 
 .store-gallery-thumb
   ul
-    margin-bottom: 0
-    margin-left: 0
-    margin-right: 0
-    margin-top: $b-space
+    margin: 0
     padding: 0
   li
     display: inline-block
@@ -274,7 +266,7 @@
     filter: grayscale( 0% )
     opacity: 1
     &::after
-      box-shadow: inset 0 0 0 2px $cerulean
+      box-shadow: inset 0 0 0 1px $cerulean
       opacity: 1
 
 // ----- Features ----- //

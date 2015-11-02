@@ -1,24 +1,8 @@
-{% if page.metafields.fields.hero['image'] != blank and page.metafields.fields.hero['title'] != blank %}
-  {% if page.metafields.fields.hero['url'] != blank %}
-    <a class="hero" href="{{ page.metafields.fields.hero['url'] }}">
-  {% else %}
-    <div class="hero">
-  {% endif %}
-    <div class="hero-image" style="background-image: url('{{ page.metafields.fields.hero['image'] }}')"></div>
-    <div class="hero-content">
-      <h1>{{ page.metafields.fields.hero['title'] }}</h1>
-      {% unless page.metafields.fields.hero['subtitle'] is blank %}
-        {{ page.metafields.fields.hero['subtitle'] }}
-      {% endunless %}
-    </div>
-  {% if page.metafields.fields.hero['url'] != blank %}
-    </a>
-  {% else %}
-    </div>
-  {% endif %}
-{% endif %}
+<div class="hero hero--image">
+  <div class="hero-image" style="background-image: url('{{ collection.image.src | img_url: 'master' }}}')"></div>
+</div>
 <div class="row row--emote">
-  <a href="/about" style="text-decoration: none;">
+  <a href="{{ pages.about.url }}" style="text-decoration: none;">
     <div class="ptl pbl cell tac">
       <div class="tfh ts24 tck lh1 mbs">Haitian-made and Haitian-operated since 2013.</div>
       <div class="btn btn--r dib">Learn More</div>
@@ -29,7 +13,7 @@
   <div class="store">
     {% include 'collections' %}
     <ul class="store-list nl">
-      {% for product in collections.frontpage.products %}
+      {% for product in collection.products %}
         {% include 'product', product %}
       {% endfor %}
     </ul>

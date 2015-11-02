@@ -1,0 +1,17 @@
+<h2 class="tac mbl">Our Artisans</h2>
+<nav class="artisan">
+  <ul class="nl">
+    {% for artisan in blogs.artisans.articles %}
+      <li>
+        <a href="{{ artisan.url }}">
+          <div class="artisan-photo">
+            <img src="{{ artisan.metafields.artisan.thumb }}" />
+          </div>
+          <h3 class="artisan-name">{{ artisan.title }}</h3>
+          <h5 class="artisan-title">{{ artisan.metafields.artisan.job_title }}</h5>
+          <q class="artisan-quote">{{ artisan.metafields.artisan.quote }}</q>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

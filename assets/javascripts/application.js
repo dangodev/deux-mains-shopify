@@ -31,6 +31,51 @@ DM = {};
 //   Mobile Select Nav
 // -------------------------------------
 
+// ----- Form ----- //
+
+window.DM.form = {};
+
+window.DM.form.number = function() {
+  var numbers = document.querySelectorAll( '[type=number]' );
+  var i = 0;
+  for( i; i < numbers.length; i ++ ) {
+    numbers[i].addEventListener( 'keypress', function( e ) {
+      e = e || window.event;
+      var allowedKeys = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57];
+      var selection = window.getSelection().toString() || '';
+      var newVal = parseInt( e.target.value + allowedKeys.indexOf( e.which ) );
+      var max = parseInt( e.target.getAttribute( 'max' ) );
+      if( allowedKeys.indexOf( e.which ) < 0 || selection.length === 0 && newVal > max)
+        e.preventDefault();
+    });
+  }
+  $( '.form-quantity-dec' ).on( 'click', function( e ) {
+    $( this ).next( 'input' ).val( function( i, val ) {
+      var number = parseInt( val );
+      var step = parseInt( $( this ).attr( 'step' ) ) || 1;
+      var min = parseInt( $( this ).attr( 'min' ) ) || null;
+      console.log( min )
+      if( min && val <= min )
+        return val;
+      else
+        return number - step;
+    });
+    e.preventDefault();
+  });
+  $( '.form-quantity-inc' ).on( 'click', function( e ) {
+    $( this ).prev( 'input' ).val( function( i, val ) {
+      var number = parseInt( val );
+      var step = parseInt( $( this ).attr( 'step' ) ) || 1;
+      var max = parseInt( $( this ).attr( 'max' ) ) || null;
+      if( max && val >= max )
+        return val;
+      else
+        return number + step;
+    });
+    e.preventDefault();
+  });
+};
+
 // ----- Gallery ----- //
 
 window.DM.gallery = function() {

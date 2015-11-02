@@ -7,22 +7,25 @@
 
 .btn
   background-color: transparent
-  border: none
   border-radius: 2em
-  box-shadow: 0 0 0 2px $c-action
+  border: none
+  box-shadow: 0 0 0 1px $c-action
   color: $c-action
   font-family: $t-text-fontFamily
+  font-weight: 100
+  letter-spacing: 0.125em
+  outline: none
   padding: 0.25em 0.75em
   text-decoration: none
+  text-transform: uppercase
   transition: background-color 250ms ease-out, box-shadow 250ms ease-out
   +respond-to( $g-s )
-    box-shadow: 0 0 0 3px $c-action
-    font-size: 1.25 * $t-text-fontSize
     padding: 0.5em 1em
-  &:hover
+  &:hover,
+  &:focus
     background-color: scale-color( $c-action, $lightness: 20%, $saturation: 15% )
+    box-shadow: 0 0 0 1px scale-color( $c-action, $lightness: 20%, $saturation: 15% )
     color: white
-    box-shadow: 0 0 0 3px scale-color( $c-action, $lightness: 20%, $saturation: 15% )
 
 // -------------------------------------
 //   Modifiers
@@ -31,18 +34,30 @@
 // ----- Large ----- //
 
 .btn--l
-  font-weight: 600
+  background-color: $c-action
+  border-radius: 0
+  box-shadow: none
+  color: white
   padding: 0.625em 1.75em
+  +respond-to( $g-s )
+    font-size: 1.25 * $t-text-fontSize
+  &:hover,
+  &:focus
+    background-color: scale-color( $c-action, $saturation: 50%, $lightness: 15% )
+    box-shadow: none
 
-// ----- Invert ----- //
+// ----- Small ----- //
 
-.btn--i
+.btn--s
   background: rgba( white, 0.6 )
+  border-radius: 4px
   box-shadow: 0 0 0 1px $c-action
   color: $c-action
-  font-size: $t-text-fontSize
-  font-weight: 600
-  &:hover
+  font-size: 0.75 * $t-text-fontSize
+  font-weight: 300
+  padding: 0.25em 1em
+  &:hover,
+  &:focus
     background: rgba( white, 0.95 )
     box-shadow: 0 0 0 1px $c-action
     color: $c-action
@@ -57,7 +72,8 @@
   font-size: 0.75 * $t-text-fontSize
   letter-spacing: 0.125em
   text-transform: uppercase
-  &:hover
+  &:hover,
+  &:focus
     background: rgba( white, 0.8 )
     box-shadow: 0 0 0 1px scale-color( $ironRed, $lightness: 20%, $saturation: 15% )
     color: scale-color( $ironRed, $lightness: 20%, $saturation: 15% )

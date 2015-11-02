@@ -1,16 +1,18 @@
-<div class="div" itemscope itemtype="https://schema.org/Blog">
-  <div class="hero">
-    <div class="hero-image" style="background-image: url('{{ article.metafields.field.hero['image'] }}')  %>')"></div>
-    <div class="hero-content">
-      <h1 itemprop="headline">{{ article.title }}</h1>
-      <time class="ttu" datetime="{{ article.published_at | date: "%d-%m-%y %R" }}" itemprop="datePublished">{{ article.published_at | date: "%b %d %Y" }}</time>
-    </div>
-  </div>
-  <div class="row">
-    <div class="well cell cell--story" itemprop="text">
-      <article class="story-text">
-        {{ article.content }}
-      </article>
-    </div>
-  </div>
-</div>
+{% comment %}
+  The reason for this obtuse logic is because Shopify won’t let you iterate through pages.
+  Because of the need to add / remove team members over time, setting team members up as the
+  `artisans` blog, strangely, met the needs better than pages did. Hence this nonsense.
+{% endcomment %}
+
+{% comment %}
+  Standard article layout
+{% endcomment %}
+{% unless blog.handle == 'artisans' %}
+  {% include 'article' %}
+
+{% comment %}
+  Team member layout
+{% endcomment %}
+{% else %}
+  {% include 'artisan' %}
+{% endunless %}

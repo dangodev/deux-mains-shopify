@@ -1,5 +1,5 @@
 <div class="hero">
-  <div class="hero-image" style="background-image: url('{{ blog.metafields.fields['image'] }}')"></div>
+  <div class="hero-image" style="background-image: url('{{ blog.metafields.hero.image }}')"></div>
   <div class="hero-content">
     <h1>Blog</h1>
   </div>
@@ -9,11 +9,11 @@
     {% for article in blog.articles %}
       <div class="well well--l cell cell--story">
         <article class="story story--mini" itemtype="blogPost">
-          {% unless article.metafields.field.hero['image'] is blank %}
-            <img src="{{ article.metafields.field.hero['image'] }}" alt="{{ article.title }}" itemprop="image" />
+          {% unless article.image.src == blank %}
+            <img src="{{ article.image.src | img_url: 'master' }}" alt="{{ article.title }}" itemprop="image" />
           {% endunless %}
           <h1 class="h2 tac" itemtype="headline">{{ article.title }}</h1>
-          <time datetime="{{ article.published_at | date: "%d-%m-%y %R" }}" itemprop="datePublished">{{ article.published_at | date: "%b %d %Y" }}</time>
+          <time class="mbl" datetime="{{ article.published_at | date: "%d-%m-%y %R" }}" itemprop="datePublished">{{ article.published_at | date: "%b %d %Y" }}</time>
           <p class="story-excerpt" itemprop="description">{{ article.excerpt }}</p>
           <div class="tac"><a href="{{ article.url }}" class="btn btn--r story-link">Read More</a></div>
         </article>

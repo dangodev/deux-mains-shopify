@@ -1,3 +1,7 @@
+{% assign add_to_cart = 'Add to cart' %}
+{% assign sold_out = 'Sold Out' %}
+{% assign unavailable = 'Unavailable' %}
+
 <div class="row">
   <div class="well cell">
     <div class="store" itemscope itemtype="http://schema.org/Product">
@@ -5,14 +9,14 @@
         <div class="store-gallery-lg">
           <ul class="nl">
             {% for image in product.images %}
-              <li class="crop crop--4-3"><img src="{{ image.src | product_img_url: 'grande' }}", itemprop="image" alt="{{ product.title | escape }}"/></li>
+              <li class="crop crop--4-3" {{  }}><img src="{{ image.src | product_img_url: 'grande' }}", itemprop="image" alt="{{ product.title | escape }}"/></li>
             {% endfor %}
           </ul>
         </div>
         <div class="store-gallery-thumb">
           <ul class="nl">
             {% for thumb in product.images %}
-              <li><a href="javascript:" class="crop"><img src="{{ thumb.src | product_img_url: 'medium' }}" itemprop="image" alt="{{ product.title | escape }}"/></a></li>
+              <li><a href="javascript:" data-id="{{ thumb.id }}" class="crop"><img src="{{ thumb.src | product_img_url: 'medium' }}" itemprop="image" alt="{{ product.title | escape }}"/></a></li>
             {% endfor %}
           </ul>
         </div>
@@ -46,21 +50,23 @@
         </div>
       </aside>
       <article class="store-details{% if product.price < product.compare_at_price_max %} store-details--sale{% endif %}">
-        <form action="/cart/add" method="post" enctype="multipart/form-data">
+        {% if product.available %}
+          <form action="/cart/add" method="post" enctype="multipart/form-data">
+        {% endif %}
           <div class="store-details-preview">{{ product.featured_image }}</div>
           <h1 class="mbf"{% if product.price < product.compare_at_price_max %} data-discount="{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round }}"{% endif %} itemprop="name">{{ product.title }}</h1>
           <div class="store-details-price">
             <span class="price">
               <span class="price-currency" content="{{ shop.currency }}" itemprop="priceCurrency">$</span>
               <span class="price-amount" content="{{ product.price | money_without_currency }}" itemprop="price">
-                <span class="price-dollars">{{ product.price | money_without_currency | replace_first '.', '</span><span class="price-cents">' }}</span>
+                <span class="price-dollars">{{ product.price | money_without_currency | replace_first: '.', '</span><span class="price-cents">' }}</span>
               </span>
             </span>
             {% if product.price < product.compare_at_price_max %}
               <span class="price price--og">
                 <span class="price-currency">$</span>
                 <span class="price-amount">
-                  <span class="price-dollars">{{ product.compare_at_price_max | money_without_currency | replace_first '.', '</span><span class="price-cents">' }}</span>
+                  <span class="price-dollars">{{ product.compare_at_price_max | money_without_currency | replace_first: '.', '</span><span class="price-cents">' }}</span>
                 </span>
               </span>
             {% endif %}
@@ -69,41 +75,14 @@
             {% endunless %}
           </div>
           {{ product.description }}
-          <div class="mtm">
-            <div class="form-select">
-              <select name="option1">
-                <option>Variation</option>
-                {% for option in product.options %}
-                  <option>{{ option.title }} – {{ option.price | money_with_currency }}</option>
-                {% endfor %}
-              </select>
-              <svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512">
-                <use xlink:href="{{ 'image-icons.svg' | asset_url }}#arrow"></use>
-              </svg>
-            </div>
-          </div>
-          <div class="g mtm">
-            <div class="g-b g-b--1of2 tac">
-              <div class="form-select">
-                <select name="option2">
-                  <option>Size</option>
-                  {% for size in product.variants %}
-                    <option>{{ size.title }}</option>
-                  {% endfor %}
-                </select>
-                <svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512">
-                  <use xlink:href="{{ 'image-icons.svg' | asset_url }}#arrow"></use>
-                </svg>
-              </div>
-              <a href="javascript:" data-modal="#size_chart">View size chart</a>
-            </div>
-            <div class="g-b g-b--1of2">
+          <div class="store-variant mtm">
+            <div id="product-variants">
               <div class="form-pair">
-                <div class="form-label">Quantity</div>
+                <label class="form-label" for="product-select-{{ product.id }}">Variation</label>
                 <div class="form-select">
-                  <select name="quantity">
-                    {% for i in (1..10) %}
-                      <option>{{ i }}</option>
+                  <select id="product-select-{{ product.id }}" name="id">
+                    {% for option in product.variants %}
+                      <option value="{{ option.id }}" data-price="{{ option.price | money_without_currency }}"{% if option == product.selected_or_first_available_variant %} selected="selected"{% endif %}>{{ option.title | escape }}</option>
                     {% endfor %}
                   </select>
                   <svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512">
@@ -113,11 +92,25 @@
               </div>
             </div>
           </div>
+          <div class="tac">
+            <a href="javascript:" data-modal="#size_chart">View size chart</a>
+          </div>
           <div class="mtl tac">
-            <input id="cart_add" name="add" type="submit" class="btn btn--l" value="{{ add_to_cart | escape }}" />
+            <input id="add" name="add" type="submit" class="btn btn--l" value="Add to Cart"{% if product.available == false %} disabled{% endif %} />
+            {% assign max = blog.artisans.articles_count %}
+            {% capture day_of_year %}{{ 'now' | '%j' }}{% endcapture %}
+            {% assign random = day_of_year | plus: 0 | modulo: max %}
+            {% assign artisan = blog.artisans.articles[random] %}
+            <a href="{{ artisan.url }}" class="artisan-leadIn">
+              <div class="artisan-leadIn-img"><img src="{{ artisan.metafields.artisan.thumb }}" alt="{{ artisan.title }}" /></div>
+              <span class="btn btn--s btn--r">Meet the Team</span>
+              <h2 class="mts ld1 mbs tck">{{ artisan.title }}</h2>
+              <span class="tcb ld1">Hear my story &rarr;</span>
+            </a>
             <script>
               $( document ).ready( function() {
-                $( '#cart_add' ).on( 'click', function( e ) {
+                DM.form.number();
+                $( '#add' ).on( 'click', function( e ) {
                   $( '#flash_added' ).addClass( 'is-showing' );
                   e.preventDefault();
                 });
@@ -125,9 +118,49 @@
                   $( this ).closest( '.flash' ).removeClass( 'is-showing' );
                 });
               });
-            </script>
+
+              // Shopify code from https://github.com/Shopify/skeleton-theme/blob/master/templates/product.liquid
+
+              var selectCallback = function(variant, selector) {
+                if (variant) {
+                  if (variant.featured_image) {
+                    // Custom image selection
+                    $( '[data-id=' + variant.featured_image.id + ']' ).trigger( 'click' );
+                  }
+                  if (variant.available) {
+                    jQuery('#add').removeClass('disabled').prop('disabled', false).val({{ add_to_cart | json }});
+                    if (variant.inventory_management && variant.inventory_quantity <= 0) {
+                      jQuery('#selected-variant').html({{ product.title | json }}{% unless hide_default_title %} + ' - ' + variant.title{% endunless %});
+                    }
+                  } else {
+                    jQuery('#add').val({{ sold_out | json }}).addClass('disabled').prop('disabled', true);
+                  }
+                } else {
+                  jQuery('#add').val({{ unavailable | json }}).addClass('disabled').prop('disabled', true);
+                }
+              };
+
+              jQuery(function($) {
+                new Shopify.OptionSelectors('product-variants', { product: {{ product | json }}, onVariantSelected: selectCallback, enableHistoryState: true });
+                {% if product.options.size == 1 and product.options.first != 'Title' %}
+                  $('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
+                {% endif %}
+
+                // Custom formatting
+
+                $( 'select' ).each( function( i, el ) {
+                  $( this ).prev( 'label' ).addClass( 'form-label' );
+                  $( this ).wrap( '<div class="form-select"></div>' );
+                  $( this ).after( '<svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512"><use xlink:href="{{ 'image-icons.svg' | asset_url }}#arrow"></use></svg>' );
+                  $( this ).closest( '.form-select' ).parent().find( 'label, .form-select' ).wrapAll( '<div class="form-pair"></div>' );
+                  $( this ).closest( '.selector-wrapper' ).addClass( 'mtm' );
+                });
+              });
+              </script>
           </div>
-        </form>
+        {% if product.available %}
+          </form>
+        {% endif %}
       </article>
     </div>
   </div>
@@ -139,13 +172,13 @@
     <ul class="store-details-related nl">
       {% assign first_collection = product.collections.first %}
       {% for i in (1..4) %}
-        {% include 'product', first_collection.products[i], is_related: true %}
+        {% include 'product', product: first_collection.product[i], is_related: true %}
       {% endfor %}
     </ul>
   </div>
 </div>
 
 <div id="flash_added" class="flash">
-  <span class="tfh ts18 tcr">{{ product.title }}</span> has been added to &nbsp;<a class="btn btn--r" href="{{ cart.url }}">Cart</a>&nbsp;.
+  <span class="tfh ts18 tcr">{{ product.title }}</span> has been added to &nbsp;<a class="btn btn--r" href="/cart">Cart</a>&nbsp;.
   <a href="javascript:" class="flash-action flash-close">✕</a>
 </div>

@@ -16,7 +16,7 @@
     height: 0
     padding: 30% 0 0
   +respond-to( $g-l )
-    height: 4 * $b-space-xl
+    height: 62.5vh
     padding: $b-space
   &:hover,
   &:focus
@@ -29,6 +29,7 @@
 // ----- Image ----- //
 
 .hero-image
+  background-image: url( "{{ 'image-hero-default.jpg' | asset_url }}" )
   background-position: center center
   background-repeat: none
   background-size: cover
@@ -61,8 +62,6 @@
   transform: translate( -50%, -50% )
   width: 100%
   +z-index( overlay, 1 )
-  +respond-to( $g-m )
-    white-space: nowrap
   h1
     line-height: 1
     margin-bottom: 0
@@ -79,8 +78,14 @@
 // ----- 404 ----- //
 
 .hero--404
-  +background( 'placeholder/hero' )
+  +background( 'image-hero' )
   height: calc( 100vh - #{ $b-space-xl })
+
+// ----- Image ----- //
+
+.hero--image
+  .hero-image::after
+    display: none
 
 // ----- Home ----- //
 

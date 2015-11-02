@@ -1,23 +1,24 @@
-<div class="hero-image" style="background-image: url('<%=  image_path('{{ page.metafields.fields.hero['image'] }}')  %>')"></div>
+<div class="hero-image" style="background-image: url('{{ page.metafields.story.hero }}'"></div>
 <div class="hero-content">
   <h1>{{ page.title }}</h1>
 </div>
 <div class="row">
+  {% assign story = page.content | split: '<p>' %}
   <div class="well cell cell--story">
-    <p>Nineteen degrees north of the equator you'll find a small workshop where artisan owners turn local leathers and discarded tires into Deux Mains (deu-meh) designs. Inspired by its French translation, craftsmen use their own "two hands" to sculpt sidewalls into soles with a pride that comes from not only making something valuable for others, but also making a meaningful life for themselves.</p>
+    {{ story[0] | prepend: '<p>' }}
   </div>
 </div>
 <div class="crop crop--immerse mtl mbl">
-  <%= image_tag 'placeholder/hero.jpg' %>
+  <img src="{{ page.metafields.story.big_1 }}" alt="© 2015 Deux Mains" />
 </div>
 <div class="has-story-bleed">
   <div class="well cell">
     <div class="g g--l">
       <div class="g-b g-b--m--1of2 story-text">
-        <p>Nineteen degrees north of the equator you'll find a small workshop where artisan owners turn local leathers and discarded tires into Deux Mains (deu-meh) designs. Inspired by its French translation, craftsmen use their own "two hands" to sculpt sidewalls into soles with a pride that comes from not only making something valuable for others, but also making a meaningful life for themselves.</p>
+        {{ story[1] | prepend: '<p>' }}
       </div>
       <div class="g-b g-b--m--1of2 story-bleed">
-        <%= image_tag 'placeholder/hero.jpg' %>
+        <img src="{{ page.metafields.story.small_1 }}" alt="© 2015 Deux Mains" />
       </div>
     </div>
   </div>
@@ -26,27 +27,24 @@
   <div class="well cell">
     <div class="g g--l">
       <div class="g-b g-b--m--1of2 story-bleed story-bleed--l">
-        <%= image_tag 'placeholder/hero.jpg' %>
+        <img src="{{ page.metafields.story.small_2 }}" alt="© 2015 Deux Mains" />
       </div>
       <div class="g-b g-b--m--1of2 story-text">
-        <p>Nineteen degrees north of the equator you'll find a small workshop where artisan owners turn local leathers and discarded tires into Deux Mains (deu-meh) designs. Inspired by its French translation, craftsmen use their own "two hands" to sculpt sidewalls into soles with a pride that comes from not only making something valuable for others, but also making a meaningful life for themselves.</p>
+        {{ story[2] | prepend: '<p>' }}
       </div>
     </div>
   </div>
 </div>
 <div class="crop crop--immerse mtl mbl">
-  <%= image_tag 'placeholder/hero.jpg' %>
+  <img src="{{ page.metafields.story.big_2 }}" alt="© 2015 Deux Mains" />
 </div>
 <div class="row">
-  <div class="well cell">
-    <iframe allowfullscreen="<%= true %>" frameborder="0" height="281" mozallowfullscreen="<%= true %>" src="https://player.vimeo.com/video/132550202" webkitallowfullscreen="<%= true %>" width="500"></iframe>
-  </div>
   <div class="well cell cell--story">
-    <p>Nineteen degrees north of the equator you'll find a small workshop where artisan owners turn local leathers and discarded tires into Deux Mains (deu-meh) designs. Inspired by its French translation, craftsmen use their own "two hands" to sculpt sidewalls into soles with a pride that comes from not only making something valuable for others, but also making a meaningful life for themselves.</p>
+    {{ story[3] | prepend: '<p>' }}
   </div>
 </div>
 <div class="row">
   <div class="well cell">
-    <%= partial 'shared/artisans' %>
+    {% include 'artisans' %}
   </div>
 </div>
