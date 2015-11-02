@@ -9,7 +9,7 @@
         <div class="store-gallery-lg">
           <ul class="nl">
             {% for image in product.images %}
-              <li class="crop crop--4-3" {{  }}><img src="{{ image.src | product_img_url: 'grande' }}", itemprop="image" alt="{{ product.title | escape }}"/></li>
+              <li class="crop crop--4-3"><img src="{{ image.src | product_img_url: 'grande' }}", itemprop="image" alt="{{ product.title | escape }}"/></li>
             {% endfor %}
           </ul>
         </div>
@@ -24,25 +24,25 @@
           <ul class="nl tac">
             <li>
               <svg aria-hidden class="icn icn--product" role="img" viewbox="0 0 512 512">
-                <use xlink:href="{{ 'image-icons.svg' | asset_url }}#haiti"></use>
+                <use xlink:href="#icon_haiti"></use>
               </svg>
               <div class="icn-label">100% Haitian-made</div>
             </li>
             <li>
               <svg aria-hidden class="icn icn--product" role="img" viewbox="0 0 512 512">
-                <use xlink:href="{{ 'image-icons.svg' | asset_url }}#tire"></use>
+                <use xlink:href="#icon_tire"></use>
               </svg>
               <div class="icn-label">Made from up-cycled tires</div>
             </li>
             <li>
               <svg aria-hidden class="icn icn--product" role="img" viewbox="0 0 512 512">
-                <use xlink:href="{{ 'image-icons.svg' | asset_url }}#eco"></use>
+                <use xlink:href="#icon_eco"></use>
               </svg>
               <div class="icn-label">Eco-friendly</div>
             </li>
             <li>
               <svg aria-hidden class="icn icn--product" role="img" viewbox="0 0 512 512">
-                <use xlink:href="{{ 'image-icons.svg' | asset_url }}#leather"></use>
+                <use xlink:href="#icon_leather"></use>
               </svg>
               <div class="icn-label">Sustainable leather</div>
             </li>
@@ -86,7 +86,7 @@
                     {% endfor %}
                   </select>
                   <svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512">
-                    <use xlink:href="{{ 'image-icons.svg' | asset_url }}#arrow"></use>
+                    <use xlink:href="#icon_arrow"></use>
                   </svg>
                 </div>
               </div>
@@ -98,21 +98,30 @@
           <div class="well tac">
             <input id="add" name="add" type="submit" class="btn btn--l" value="Add to Cart"{% if product.available == false %} disabled{% endif %} />
             {% assign max = blogs.artisans.articles_count %}
-            {% capture day_of_year %}{{ 'now' | '%j' }}{% endcapture %}
+            {% capture day_of_year %}{{ 'now' | date: '%j' }}{% endcapture %}
             {% assign random = day_of_year | plus: 0 | modulo: max %}
             {% assign artisan = blogs.artisans.articles[random] %}
+            {% assign name = artisan.title | split: ' ' %}
           </div>
           <a href="{{ artisan.url }}" class="artisan-leadIn">
-            <div class="artisan-leadIn-img"><img src="{{ artisan.metafields.artisan.thumb }}" alt="{{ artisan.title }}" /></div>
-            <span class="btn btn--s btn--r">Meet the Team</span>
-            <h2 class="mts ld1 mbs tck">{{ artisan.title }}</h2>
-            <span class="tcb ld1">Hear my story &rarr;</span>
+            <div class="artisan-leadIn-img"><img src="{{ artisan.metafields.artisan.thumb }}" alt="{{ name[0] }}" /></div><span class="btn btn--s btn--r">Meet the Team</span><h2 class="mts ld1 mbf tck">{{ artisan.title }}</h2><span class="tcb ld1">Hear my story &rarr;</span>
           </a>
           <script>
             $( document ).ready( function() {
               DM.form.number();
               $( '#add' ).on( 'click', function( e ) {
-                $( '#flash_added' ).addClass( 'is-showing' );
+                var $form = $( 'form[action="/cart/add"]' );
+                $.ajax( {
+                  type: "POST",
+                  url: $form.attr( 'action' ),
+                  data: $form.serialize(),
+                  success: function( data ) {
+                    $( '#flash_added' ).addClass( 'is-showing' );
+                  },
+                  error: function( data ) {
+                    $( '#flash_error' ).addClass( 'is-showing' ).find( '.error-message' ).text( data );
+                  }
+                });
                 e.preventDefault();
               });
               $( '.flash-close' ).on( 'click', function( e ) {
@@ -152,7 +161,7 @@
               $( 'select' ).each( function( i, el ) {
                 $( this ).prev( 'label' ).addClass( 'form-label' );
                 $( this ).wrap( '<div class="form-select"></div>' );
-                $( this ).after( '<svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512"><use xlink:href="{{ 'image-icons.svg' | asset_url }}#arrow"></use></svg>' );
+                $( this ).after( '<svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512"><use xlink:href="#icon_arrow"></use></svg>' );
                 $( this ).closest( '.form-select' ).parent().find( 'label, .form-select' ).wrapAll( '<div class="form-pair"></div>' );
                 $( this ).closest( '.selector-wrapper' ).addClass( 'mtm' );
               });
@@ -171,7 +180,7 @@
   <div class="well well--s cell">
     <h3 class="tac ttu tr3">You may also be interested in:</h3>
     <ul class="store-details-related nl">
-      {% assign first_collection = product.collections.first %}
+      {% assign first_collection = product.collection.first %}
       {% for i in (1..4) %}
         {% include 'product', product: first_collection.product[i], is_related: true %}
       {% endfor %}
@@ -181,5 +190,9 @@
 
 <div id="flash_added" class="flash">
   <span class="tfh ts18 tcr">{{ product.title }}</span> has been added to &nbsp;<a class="btn btn--r" href="/cart">Cart</a>&nbsp;.
+  <a href="javascript:" class="flash-action flash-close">✕</a>
+</div>
+<div id="flash_error" class="flash">
+  <span class="tcr">There was an error adding <span class="tfh ts18 tcr">{{ product.title }}</span> to the cart: <span class="error-message"></span></span>
   <a href="javascript:" class="flash-action flash-close">✕</a>
 </div>

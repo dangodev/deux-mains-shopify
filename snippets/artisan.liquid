@@ -8,14 +8,14 @@
   </div>
   {% assign story = article.content | split: '<p>' %}
   <div class="well cell cell--story">
-    {{ story[0] | prepend: '<p>' }}
+    {{ story[1] | prepend: '<p>' }}
   </div>
 </div>
 <div class="has-story-bleed">
   <div class="cell">
     <div class="g g--l g--c">
       <div class="g-b g-b--m--1of2 story-text">
-        {{ story[1] | prepend: '<p>' }}
+        {{ story[2] | prepend: '<p>' }}
       </div>
       <div class="g-b g-b--m--1of2 story-bleed">
         <img src="{{ article.metafields.artisan.inline_1 }}" alt="{{ article.title }}" />
@@ -30,16 +30,16 @@
         <img src="{{ article.metafields.artisan.inline_2 }}" alt="{{ article.title }}" />
       </div>
       <div class="g-b g-b--m--1of2 story-text">
-        {{ story[2] | prepend: '<p>' }}
+        {{ story[3] | prepend: '<p>' }}
       </div>
     </div>
   </div>
 </div>
 <div class="row">
   <div class="well cell cell--story">
-    {% for paragraph in story %}
-      {% if forloop.index0 > 2 %}
-        {{ paragraph | prepend: '<p>' }}
+    {% for p in story %}
+      {% if forloop.index0 > 3 %}
+        {{ p | prepend: '<p>' }}
       {% endif %}
     {% endfor %}
   </div>

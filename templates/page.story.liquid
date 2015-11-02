@@ -1,5 +1,5 @@
 <div class="hero">
-  <div class="hero-image" style="background-image: url('{{ page.metafields.story.hero }}'"></div>
+  <div class="hero-image" style="background-image: url('{{ page.metafields.story.hero }}')"></div>
   <div class="hero-content">
     <h1>{{ page.title }}</h1>
   </div>
@@ -7,7 +7,7 @@
 <div class="row">
   {% assign story = page.content | split: '<p>' %}
   <div class="well cell cell--story">
-    {{ story[0] | prepend: '<p>' }}
+    {{ story[1] | prepend: '<p>' }}
   </div>
 </div>
 <div class="crop crop--immerse mtl mbl">
@@ -17,7 +17,7 @@
   <div class="well cell">
     <div class="g g--l">
       <div class="g-b g-b--m--1of2 story-text">
-        {{ story[1] | prepend: '<p>' }}
+        {{ story[2] | prepend: '<p>' }}
       </div>
       <div class="g-b g-b--m--1of2 story-bleed">
         <img src="{{ page.metafields.story.small_1 }}" alt="© 2015 Deux Mains" />
@@ -32,7 +32,7 @@
         <img src="{{ page.metafields.story.small_2 }}" alt="© 2015 Deux Mains" />
       </div>
       <div class="g-b g-b--m--1of2 story-text">
-        {{ story[2] | prepend: '<p>' }}
+        {{ story[3] | prepend: '<p>' }}
       </div>
     </div>
   </div>
@@ -42,7 +42,11 @@
 </div>
 <div class="row">
   <div class="well cell cell--story">
-    {{ story[3] | prepend: '<p>' }}
+    {% for p in story %}
+      {% if forloop.index0 > 3 %}
+        {{ p | prepend: '<p>' }}
+      {% endif %}
+    {% endfor %}
   </div>
 </div>
 <div class="row">

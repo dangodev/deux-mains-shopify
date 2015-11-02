@@ -2,12 +2,13 @@
 <nav class="artisan">
   <ul class="nl">
     {% for artisan in blogs.artisans.articles %}
+      {% assign name = artisan.title | split: ' ' %}
       <li>
         <a href="{{ artisan.url }}">
           <div class="artisan-photo">
             <img src="{{ artisan.metafields.artisan.thumb }}" />
           </div>
-          <h3 class="artisan-name">{{ artisan.title }}</h3>
+          <h3 class="artisan-name">{{ name[0] }}</h3>
           <h5 class="artisan-title">{{ artisan.metafields.artisan.job_title }}</h5>
           <q class="artisan-quote">{{ artisan.metafields.artisan.quote }}</q>
         </a>

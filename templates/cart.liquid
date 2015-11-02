@@ -39,12 +39,12 @@
   {% else %}
     <div class="well cell tac">
       <h1>Cart Empty</h1>
-      <p>Well, what are you waiting for? <a href="{{ shop.url }}">pick out something you like</a>! (And if you’re not in the mood to shop, how about catching up <a href="{{ blog.url }}">on our blog?</a>)</p>
+      <p>Well, what are you waiting for? <a href="{{ shop.url }}">pick out something you like</a>! (And if you’re not in the mood to shop, how about catching up <a href="{{ blogs.news.url }}">on our blog?</a>)</p>
     </div>
   {% endif %}
 </div>
 
-{% assign cart_collection = collections.cart %}
+{% assign cart_collection = collection.cart %}
 {% if cart_collection.products_count %}
   <div class="row row--related">
     <div class="well well--s cell">

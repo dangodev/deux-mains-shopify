@@ -14,9 +14,7 @@
     <div class="form-pair">
       <label class="form-label" for="quantity">Quantity</label>
       <div class="form-quantity">
-        <button class="form-quantity-dec">–</button>
-        <input class="form-number" name="updates[]" id="updates_{{ item.id }}" type="number" min="1" max="999" value="{{ item.quantity }}" />
-        <button class="form-quantity-inc">+</button>
+        <button class="form-quantity-dec">–</button><input class="form-number" name="updates[]" id="updates_{{ item.id }}" type="number" min="1" max="999" value="{{ item.quantity }}" /><button class="form-quantity-inc">+</button>
       </div>
     </div>
   </td>
@@ -45,8 +43,8 @@
   <td class="store-cart-thumb"><a href="{{ item.url }}"><img src="{{ item | img_url: 'medium' }}" alt="{{ item.title }}" /></a></td>
   <td class="store-cart-name"><a href="{{ item.url }}"><h3>{{ item.title }}</h3><small>{{ item.variant.option1 }}</small></a></td>
   <td class="store-cart-size"><small>Size</small>{{ item.variant.option2 }}</td>
-  <td class="store-cart-price tac"><small>Removed</small></td>
-  <td class="store-cart-q"></td>
+  <td class="store-cart-price"></td>
+  <td class="store-cart-q tac"><small>Removed</small></td>
   <td class="store-cart-remove tar"><a id="undo_{{ item.id }}" href="/cart/change?line={{ forloop.index }}&quantity=1" class="tcs">Undo</a></td>
 </tr>
 

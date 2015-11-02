@@ -2,7 +2,7 @@
   <h3>Shop Collections</h3>
   <ul class="nl">
     {% for link in collections %}
-      {% unless link.handle == 'frontpage' or link.handle == 'sale' %}
+      {% unless link.handle == 'frontpage' or link.handle == 'sale' or link.handle == 'cart' %}
         <li><a href="{{ link.url }}"{% if collection.id == link.id %} class="is-current"{% endif %}>{{ link.title }}</a></li>
       {% endunless %}
     {% endfor %}
@@ -17,7 +17,7 @@
       {% endfor %}
     </select>
     <svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512">
-      <use xlink:href="{{ image-icons.svg | asset_url }}#arrow"></use>
+      <use xlink:href="#icon_arrow"></use>
     </svg>
   </div>
 </nav>

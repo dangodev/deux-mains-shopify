@@ -1,23 +1,23 @@
-<div class="g">
+<div class="g g--f">
+  <div class="g-b g-b--s--1of2" style="background-image: url({{ page.metafields.hero.image }}); background-size: cover; background-position: center center; background-repeat: no-repeat;"></div>
   <div class="g-b g-b--s--1of2">
-    <img src="{{ pages.metafields.field.hero['image'] }}" alt="{{ page.title }}" />
-  </div>
-  <div class="g-b g-b--s--1of2">
-    <div class="well cell cell--half">
-      <h5>US / Int’l</h5>
-      <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
-      <br/>
-      {{ shop.address.street }}<br/>
-      {{ shop.address.city }}, {{ shop.address.province_code }} {{ shop.address.zip }}
-      <a href="https://maps.apple.com/?q={{ shop.address | escape }}" class="btn btn--s">map</a>
-    </div>
-    <div class="well cell cell--half">
-      <h5>Haiti Boutique</h5>
-      <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
-      <br/>
-      10 Tanbarre 35 Blvd.<br/>
-      T. Louverture, PAP, Haiti
-      <a href="https://maps.apple.com/?q={{ '10 Tanbarre 35 Blvd., T. 10 Tabarre 35 Blvd. T. Louverture, PAP Haiti' | escape }}" class="btn btn--s">map</a>
+    <div class="pam">
+      <div class="well cell cell--half">
+        <h5>US / Int’l</h5>
+        <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
+        <br/>
+        {{ shop.address.street }}<br/>
+        {{ shop.address.city }}, {{ shop.address.province_code }} {{ shop.address.zip }}&nbsp;
+        <a href="https://maps.apple.com/?q={{ shop.address | escape }}" class="btn btn--s">map</a>
+      </div>
+      <div class="well cell cell--half">
+        <h5>Haiti Boutique</h5>
+        <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
+        <br/>
+        10 Tanbarre 35 Blvd.<br/>
+        T. Louverture, PAP, Haiti&nbsp;
+        <a href="https://maps.apple.com/?q={{ '10 Tanbarre 35 Blvd., T. 10 Tabarre 35 Blvd. T. Louverture, PAP Haiti' | escape }}" class="btn btn--s">map</a>
+      </div>
     </div>
   </div>
 </div>
