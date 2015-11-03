@@ -45,13 +45,13 @@
   <td class="store-cart-size"><small>Size</small>{{ item.variant.option2 }}</td>
   <td class="store-cart-price"></td>
   <td class="store-cart-q tac"><small>Removed</small></td>
-  <td class="store-cart-remove tar"><a id="undo_{{ item.id }}" href="/cart/change?line={{ forloop.index }}&quantity=1" class="tcs">Undo</a></td>
+  <td class="store-cart-remove tar">{% comment %}<a id="undo_{{ item.id }}" href="/cart/change?line={{ forloop.index }}" class="tcs">Undo</a>{% endcomment %}</td>
 </tr>
 
 <script>
   $( '#undo_{{ item.id }}' ).on( 'click', function( e ) {
     var url = $( this ).attr( 'href' );
-    $.get( url, function( data ) {
+    $.get( url, { quantity: $( 'updates_{{ item.id }}' ).val() }, function( data ) {
       $( '#cart_item_removed_{{ item.id }}' ).hide();
       $( '#cart_item_{{ item.id }}' ).show();
     });

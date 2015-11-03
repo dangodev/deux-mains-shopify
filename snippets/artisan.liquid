@@ -3,7 +3,7 @@
 </div>
 <div class="row">
   <div class="well cell">
-    <h1 class="tac">{{ article.title }}</h1>
+    <h1 class="tac mbf">{{ article.title }}</h1>
     <h4 class="tac tcr">{{ article.metafields.artisan.job_title }}</h4>
   </div>
   {% assign story = article.content | split: '<p>' %}
@@ -11,28 +11,20 @@
     {{ story[1] | prepend: '<p>' }}
   </div>
 </div>
-<div class="has-story-bleed">
-  <div class="cell">
-    <div class="g g--l g--c">
-      <div class="g-b g-b--m--1of2 story-text">
-        {{ story[2] | prepend: '<p>' }}
-      </div>
-      <div class="g-b g-b--m--1of2 story-bleed">
-        <img src="{{ article.metafields.artisan.inline_1 }}" alt="{{ article.title }}" />
-      </div>
-    </div>
+<div class="g g--l g--c">
+  <div class="g-b g-b--m--1of2 story-split story-split--r">
+    {{ story[2] | prepend: '<p>' }}
+  </div>
+  <div class="g-b g-b--m--1of2 story-bleed">
+    <img src="{{ article.metafields.artisan.inline_1 }}" alt="{{ article.title }}" />
   </div>
 </div>
-<div class="has-story-bleed">
-  <div class="cell">
-    <div class="g g--l g--c">
-      <div class="g-b g-b--m--1of2 story-bleed story-bleed--l">
-        <img src="{{ article.metafields.artisan.inline_2 }}" alt="{{ article.title }}" />
-      </div>
-      <div class="g-b g-b--m--1of2 story-text">
-        {{ story[3] | prepend: '<p>' }}
-      </div>
-    </div>
+<div class="g g--l g--c">
+  <div class="g-b g-b--m--1of2 story-bleed story-bleed--l">
+    <img src="{{ article.metafields.artisan.inline_2 }}" alt="{{ article.title }}" />
+  </div>
+  <div class="g-b g-b--m--1of2 story-split">
+    {{ story[3] | prepend: '<p>' }}
   </div>
 </div>
 <div class="row">

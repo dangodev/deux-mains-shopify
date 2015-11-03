@@ -25,8 +25,8 @@
   <div class="store">
     {% include 'collections' %}
     <ul class="store-list nl">
-      {% for product in collections.frontpage.products %}
-        {% include 'product', product %}
+      {% for item in collections.frontpage.products %}
+        {% include 'product', item: item %}
       {% endfor %}
     </ul>
   </div>

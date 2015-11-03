@@ -152,6 +152,7 @@
   +respond-to( $g-s )
     flex: 1
     order: 1
+    padding-left: $b-space-s
   +respond-to( $g-m )
     flex: 2
 
@@ -167,6 +168,7 @@
 
 .store-details-price
   font-size: 2 * $t-text-fontSize
+  line-height: 1.2
   margin-bottom: $b-space-l
 
 .store-details-related
@@ -203,6 +205,7 @@
   +respond-to( $g-s )
     flex: 1
     order: 0
+    padding-right: $b-space-s
   +respond-to( $g-m )
     flex: 3
 
@@ -296,11 +299,14 @@
   width: 100%
   +respond-to( $g-s )
     flex: 1
+    padding-left: $b-space
+    padding-right: $b-space-s
   li
     margin: 0
-    padding: $b-space-xs
+    padding: $b-space-s
     width: percentage( 1 / 2 )
     +respond-to( $g-m )
+      padding: $b-space
       width: percentage( 1 / 3 )
     +respond-to( $g-l )
       width: 25%
@@ -328,6 +334,7 @@
     + li
       margin-top: 1.5 * $b-space-s
   h3
+    font-family: $t-text-fontFamily
     padding-bottom: $b-space-s
     padding-top: $b-space-s
     +respond-to( $g-l )
@@ -335,6 +342,7 @@
       margin-left: auto
       margin-right: auto
   a
+    font-family: $t-heading-fontFamily
     text-decoration: none
 
   // States
@@ -347,6 +355,7 @@
 
 .store-mobileNav
   display: block
+  margin-bottom: $b-space-l
   width: 100%
   +respond-to( $g-s )
     display: none
@@ -429,8 +438,8 @@
     color: scale-color( $c-text, $lightness: 60% )
 
 .store-product--related
-  background: white
   a
+    background: white
     padding: $b-space-s
     &:hover .store-product-img::after
       box-shadow: none
@@ -441,11 +450,9 @@
     @extend .sale
     content: "Sale"
     position: absolute
-    right: $b-space
-    top: $b-space-xs
+    right: 1.5 * $b-space
+    top: $b-space
     +z-index( overlay, 1 )
-  &.store-product--related::after
-    top: 0
   .store-product-img::after
     box-shadow: inset 0 0 0 1px scale-color( $ironRed, $lightness: 50% )
   .store-product-price

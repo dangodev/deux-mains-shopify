@@ -27,23 +27,9 @@
 .story-bleed
   margin-bottom: $b-space-l
   margin-top: $b-space-l
-  +respond-to( $g-m )
-    margin-bottom: 0
-    margin-top: 0
   img
-    margin-left: -$b-space
-    max-width: none
-    width: calc( 100% + #{ $b-space-l } )
-    +respond-to( $g-s )
-      margin-left: 0
-      margin-right: 0
-      min-height: 28em
-      width: auto
-    +respond-to( $g-m )
-      position: absolute
-      top: 50%
-      transform: translateY( -50% )
-      width: 50%
+    display: block
+    width: 100%
 
 // Modifiers
 
@@ -53,21 +39,6 @@
     order: 0
   img
     right: 50%
-
-// Context
-
-.has-story-bleed
-  margin-bottom: $b-space-l
-  margin-top: $b-space-l
-  overflow: hidden
-  padding-left: $b-space
-  padding-right: $b-space
-  position: relative
-  +respond-to( $g-s )
-    margin-bottom: 0
-    margin-top: 0
-    padding-left: 0
-    padding-right: 0
 
 // ----- Next / Prev ----- //
 
@@ -84,6 +55,30 @@
 .story-prev + .story-next
   margin-left: $b-space-xl
 
+// ----- Split ----- //
+
+.story-split
+  > p
+    font-weight: 100
+    margin-bottom: $b-space-l
+    margin-top: $b-space-l
+    max-width: 0.5 * $b-maxWidth
+    padding-left: $b-space
+    padding-right: $b-space
+    +respond-to( $g-s )
+      font-size: 1.25 * $t-text-fontSize
+    +respond-to( $g-m )
+      margin-left: 0
+      margin-right: 0
+      padding-left: 0
+      padding-right: 0
+
+// Modifiers
+
+.story-split--r
+  display: flex
+  justify-content: flex-end
+
 // ----- Text ----- //
 
 .story-text
@@ -92,7 +87,6 @@
     font-size: 1.25 * $t-text-fontSize
   p
     letter-spacing: 0.0625em
-    max-width: 35em
     margin-bottom: 0
     padding-left: $b-space
     padding-right: $b-space

@@ -44,14 +44,14 @@
   {% endif %}
 </div>
 
-{% assign cart_collection = collection.cart %}
+{% assign cart_collection = collections.cart %}
 {% if cart_collection.products_count %}
   <div class="row row--related">
     <div class="well well--s cell">
-      <h3 class="tac ttu tr3">You may also be interested in:</h3>
+      <h3 class="tac ttu tr3">Add these to your order!</h3>
       <ul class="store-details-related nl">
-        {% for i in (1..4) %}
-          {% include 'product', product: cart_collection.products[i], is_related: true %}
+        {% for item in cart_collection.products %}
+          {% include 'product', item: item, is_related: true %}
         {% endfor %}
       </ul>
     </div>

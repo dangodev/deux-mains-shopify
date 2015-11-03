@@ -13,28 +13,20 @@
 <div class="crop crop--immerse mtl mbl">
   <img src="{{ page.metafields.story.big_1 }}" alt="© 2015 Deux Mains" />
 </div>
-<div class="has-story-bleed">
-  <div class="well cell">
-    <div class="g g--l">
-      <div class="g-b g-b--m--1of2 story-text">
-        {{ story[2] | prepend: '<p>' }}
-      </div>
-      <div class="g-b g-b--m--1of2 story-bleed">
-        <img src="{{ page.metafields.story.small_1 }}" alt="© 2015 Deux Mains" />
-      </div>
-    </div>
+<div class="g g--l g--c">
+  <div class="g-b g-b--m--1of2 story-split story-split--r">
+    {{ story[2] | prepend: '<p>' }}
+  </div>
+  <div class="g-b g-b--m--1of2 story-bleed">
+    <img src="{{ page.metafields.story.small_1 }}" alt="© 2015 Deux Mains" />
   </div>
 </div>
-<div class="has-story-bleed">
-  <div class="well cell">
-    <div class="g g--l">
-      <div class="g-b g-b--m--1of2 story-bleed story-bleed--l">
-        <img src="{{ page.metafields.story.small_2 }}" alt="© 2015 Deux Mains" />
-      </div>
-      <div class="g-b g-b--m--1of2 story-text">
-        {{ story[3] | prepend: '<p>' }}
-      </div>
-    </div>
+<div class="g g--l g--c">
+  <div class="g-b g-b--m--1of2 story-bleed story-bleed--l">
+    <img src="{{ page.metafields.story.small_2 }}" alt="© 2015 Deux Mains" />
+  </div>
+  <div class="g-b g-b--m--1of2 story-split">
+    {{ story[3] | prepend: '<p>' }}
   </div>
 </div>
 <div class="crop crop--immerse mtl mbl">

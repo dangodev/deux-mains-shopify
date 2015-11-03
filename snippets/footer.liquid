@@ -19,7 +19,7 @@
       <div class="g-b g-b--s--1of2">
         <div class="g footer-nav">
           <div class="g-b g-b--1of2 g-b--m--1of3">
-            <h5>Shop</h5>
+            <h3>Shop</h3>
             <ul class="nl">
             {% for collection in collections %}
               {% unless collection.handle == 'frontpage' or collection.handle == 'sale' or collection.handle == 'cart' %}
@@ -28,14 +28,14 @@
             {% endfor %}
           </div>
           <div class="g-b g-b--1of2 g-b--m--1of3">
-            <h5>News</h5>
+            <h3>News</h3>
             <ul class="nl">
               <li><a href="{{ blogs.news.url }}">Blog</a></li>
               <li><a href="{{ pages.in-the-news.url }}">In the News</a></li>
             </ul>
           </div>
           <div class="g-b g-b--1of2 g-b--m--1of3">
-            <h5>About</h5>
+            <h3>About</h3>
             <ul class="nl">
               <li><a href="{{ pages.about.url }}">Story / Artisans</a></li>
               <li><a href="{{ pages.contact.url }}">Contact</a></li>

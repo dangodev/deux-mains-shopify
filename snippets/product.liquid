@@ -1,28 +1,28 @@
-<li class="store-product{% if product.price < product.compare_at_price_max %} store-product--sale{% endif %}{% unless product.available %} store-product--out{% endunless %}{% if is_related %} store-product--related{% endif %}" itemscope itemtype="http://schema.org/Product">
-  <a href="{{ product.url }}" itemprop: 'url'>
-    <div class="store-product-img"><img src="{{ product | img_url: 'grande' }}" alt="{{ product.featured_image.alt | escape }}" itemprop="image"/></div>
-    <div class="store-product-name" itemtype="name">{{ product.title }}</div>
+<li class="store-product{% if item.price < item.compare_at_price_max %} store-product--sale{% endif %}{% unless item.available %} store-product--out{% endunless %}{% if is_related %} store-product--related{% endif %}" itemscope itemtype="http://schema.org/Product">
+  <a href="{{ item.url }}" itemprop: 'url'>
+    <div class="store-product-img"><img src="{{ item | img_url: 'grande' }}" alt="{{ item.featured_image.alt | escape }}" itemprop="image"/></div>
+    <div class="store-product-name" itemtype="name">{{ item.title }}</div>
     <div class="store-product-price">
       <span class="price">
         <span class="price-currency" content="{{ shop.currency }}" itemprop="priceCurrency">$</span>
-        <span class="price-amount" content="{{ product.price | money_without_currency }}" itemprop="price">
-          <span class="price-dollars">{{ product.price | money_without_currency | replace_first: '.', '</span><span class="price-cents">' }}</span>
+        <span class="price-amount" content="{{ item.price | money_without_currency }}" itemprop="price">
+          <span class="price-dollars">{{ item.price | money_without_currency | replace_first: '.', '</span><span class="price-cents">' }}</span>
         </span>
       </span>
-      {% if product.price < product.compare_at_price_max %}
+      {% if item.price < item.compare_at_price_max %}
         <span class="price price--og">
           <span class="price-currency">$</span>
           <span class="price-amount">
-            <span class="price-dollars">{{ product.compare_at_price_max | money_without_currency | replace_first: '.', '</span><span class="price-cents">' }}</span>
+            <span class="price-dollars">{{ item.compare_at_price_max | money_without_currency | replace_first: '.', '</span><span class="price-cents">' }}</span>
           </span>
         </span>
       {% endif %}
-      {% unless product.available %}
+      {% unless item.available %}
         <div class="store-product-status">Out of Stock</div>
       {% endunless %}
     </div>
-    {% if product.metafields.product.colors != blank %}
-      {% assign colors = product.metafields.product.colors | split: ',' %}
+    {% if item.metafields.item.colors != blank %}
+      {% assign colors = item.metafields.item.colors | split: ',' %}
       {% for color in colors %}
         <div class="store-product-color" style="background-color: {{ color | strip }};"></div>
       {% endfor %}

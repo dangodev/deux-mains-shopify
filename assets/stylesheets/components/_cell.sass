@@ -21,12 +21,6 @@
 //   Modifiers
 // -------------------------------------
 
-// ----- Half ----- //
-
-.cell--half
-  max-width: 0.5 * $b-maxWidth
-  margin-left: 0
-
 // ----- Story ----- //
 
 .cell--story
@@ -34,10 +28,11 @@
   p
     font-weight: 100
     letter-spacing: 0.0625em
-    margin-bottom: $b-space
     margin-left: auto
     margin-right: auto
     max-width: 30em
     +respond-to( $g-s )
       font-size: 1.25 * $t-text-fontSize
       margin-bottom: $b-space-l
+    + p
+      margin-top: $b-space-l
