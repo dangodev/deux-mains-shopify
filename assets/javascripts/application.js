@@ -49,30 +49,39 @@ window.DM.form.number = function() {
         e.preventDefault();
     });
   }
-  $( '.form-quantity-dec' ).on( 'click', function( e ) {
-    $( this ).next( 'input' ).val( function( i, val ) {
-      var number = parseInt( val );
-      var step = parseInt( $( this ).attr( 'step' ) ) || 1;
-      var min = parseInt( $( this ).attr( 'min' ) ) || null;
-      console.log( min )
-      if( min && val <= min )
-        return val;
-      else
-        return number - step;
+
+  var numberUpdate = function( button, mode ) {
+    var $input = $( button ).closest( '.form-quantity' ).find( '[type=number]' );
+    var val = parseInt( $input[0].value );
+    var step = ( $input.attr( 'step' ) ) ? parseInt( $input.attr( 'step' ) ) : 1;
+    var min, max;
+    switch( mode ) {
+      case 'inc':
+        max = ( $input.attr( 'max' ) ) ? parseInt( $input.attr( 'max' ) ) : undefined;
+        var update = val + step;
+        if( ( max && update <= max ) || max === undefined )
+          $input.val( update );
+        break;
+      case 'dec':
+        min = ( $input.attr( 'min' ) ) ? parseInt( $input.attr( 'min' ) ) : undefined;
+        var update = val - step;
+        if( ( min && update >= min ) || min === undefined )
+          $input.val( update );
+        break;
+    }
+  };
+
+  $( '.form-quantity-dec' ).each( function() {
+    $( this ).on( 'click', function( e ) {
+      numberUpdate( e.target, 'dec' );
+      e.preventDefault();
     });
-    e.preventDefault();
   });
-  $( '.form-quantity-inc' ).on( 'click', function( e ) {
-    $( this ).prev( 'input' ).val( function( i, val ) {
-      var number = parseInt( val );
-      var step = parseInt( $( this ).attr( 'step' ) ) || 1;
-      var max = parseInt( $( this ).attr( 'max' ) ) || null;
-      if( max && val >= max )
-        return val;
-      else
-        return number + step;
+  $( '.form-quantity-inc' ).each( function() {
+    $( this ).on( 'click', function( e ) {
+      numberUpdate( e.target, 'inc' );
+      e.preventDefault();
     });
-    e.preventDefault();
   });
 };
 

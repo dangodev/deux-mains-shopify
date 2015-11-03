@@ -44,6 +44,12 @@
   {% endif %}
 </div>
 
+<script>
+$( document ).ready( function() {
+  DM.form.number();
+});
+</script>
+
 {% assign cart_collection = collections.cart %}
 {% if cart_collection.products_count %}
   <div class="row row--related">
