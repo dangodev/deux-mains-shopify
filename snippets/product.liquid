@@ -3,7 +3,7 @@
     <div class="store-product-img"><img src="{{ item | img_url: 'grande' }}" alt="{{ item.featured_image.alt | escape }}" itemprop="image"/></div>
     <div class="store-product-name" itemtype="name">{{ item.title }}</div>
     <div class="store-product-price">
-      <span class="price">
+      <span class="price{% if item.price < item.compare_at_price_max %} tcr {% endif %}">
         <span class="price-currency" content="{{ shop.currency }}" itemprop="priceCurrency">$</span>
         <span class="price-amount" content="{{ item.price | money_without_currency }}" itemprop="price">
           <span class="price-dollars">{{ item.price | money_without_currency | replace_first: '.', '</span><span class="price-cents">' }}</span>
