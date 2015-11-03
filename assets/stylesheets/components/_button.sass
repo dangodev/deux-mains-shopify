@@ -31,6 +31,17 @@
 //   Modifiers
 // -------------------------------------
 
+// ----- Inverted ----- //
+
+.btn--i
+  background: none
+  box-shadow: 0 0 0 2px $c-action
+  color: $c-action
+  &:hover,
+  &:focus
+    box-shadow: 0 0 0 2px scale-color( $c-action, $lightness: 20%, $saturation: 15% )
+    color: scale-color( $c-action, $lightness: 20%, $saturation: 15% )
+
 // ----- Large ----- //
 
 .btn--l
@@ -45,22 +56,6 @@
   &:focus
     background-color: scale-color( $c-action, $saturation: 50%, $lightness: 15% )
     box-shadow: none
-
-// ----- Small ----- //
-
-.btn--s
-  background: rgba( white, 0.6 )
-  border-radius: 4px
-  box-shadow: 0 0 0 1px $c-action
-  color: $c-action
-  font-size: 0.75 * $t-text-fontSize
-  font-weight: 200
-  padding: 0.25em 1em
-  &:hover,
-  &:focus
-    background: rgba( white, 0.95 )
-    box-shadow: 0 0 0 1px $c-action
-    color: $c-action
 
 // ----- Red ----- //
 
@@ -77,6 +72,22 @@
     background: rgba( white, 0.8 )
     box-shadow: 0 0 0 1px scale-color( $ironRed, $lightness: 20%, $saturation: 15% )
     color: scale-color( $ironRed, $lightness: 20%, $saturation: 15% )
+
+// ----- Small ----- //
+
+.btn--s
+  background: rgba( white, 0.6 )
+  border-radius: 4px
+  box-shadow: 0 0 0 1px $c-action
+  color: $c-action
+  font-size: 0.75 * $t-text-fontSize
+  font-weight: 200
+  padding: 0.25em 1em
+  &:hover,
+  &:focus
+    background: rgba( white, 0.95 )
+    box-shadow: 0 0 0 1px $c-action
+    color: $c-action
 
 // -------------------------------------
 //   States

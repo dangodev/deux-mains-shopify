@@ -118,6 +118,7 @@
             $( document ).ready( function() {
               DM.form.number();
               $( '#add' ).on( 'click', function( e ) {
+                $( '.flash.is-showing' ).removeClass( 'is-showing' );
                 var $form = $( 'form[action="/cart/add"]' );
                 $.ajax( {
                   type: "POST",
@@ -127,7 +128,7 @@
                     $( '#flash_added' ).addClass( 'is-showing' );
                   },
                   error: function( data ) {
-                    $( '#flash_error' ).addClass( 'is-showing' ).find( '.error-message' ).text( data );
+                    $( '#flash_error' ).addClass( 'is-showing' );
                   }
                 });
                 e.preventDefault();
@@ -174,6 +175,16 @@
                   $( this ).closest( '.form-select' ).parent().find( 'label, .form-select' ).wrapAll( '<div class="form-pair"></div>' );
                   $( this ).closest( '.selector-wrapper' ).addClass( 'mtm' );
                 });
+                var variantUpdate = function() {
+                  if( $( '#product-variants-option-0' ).length && $( '#product-variants-option-1' ).length ) {
+                    var search = $( '#product-variants-option-0' ).val() + ' / ' + $( '#product-variants-option-1' ).val();
+                    var variant = $( 'select[name=id]' ).find( "option:contains('" + search + "')" ).val();
+                    console.log( variant );
+                    $( 'select[name=id]' ).val( variant );
+                  }
+                };
+                $( 'select:visible' ).on( 'change', variantUpdate );
+                $( 'select:visible' ).on( 'blur', variantUpdate );
               }
             });
             </script>
@@ -210,6 +221,6 @@
   <a href="javascript:" class="flash-action flash-close">✕</a>
 </div>
 <div id="flash_error" class="flash">
-  <span class="tcr">There was an error adding <span class="tfh ts18 tcr">{{ product.title }}</span> to the cart: <span class="error-message"></span></span>
+  <span class="tcr">There was an error adding <span class="tfh ts18 tcr">{{ product.title }}</span> to the cart. Try refreshing this page.</span>
   <a href="javascript:" class="flash-action flash-close">✕</a>
 </div>

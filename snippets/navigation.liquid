@@ -5,7 +5,7 @@
       <div class="logo-word"><img src="{{ 'image-deux-mains-wordmark.svg' | asset_url }}" alt="{{ shop.name }}"/></div>
     </div>
   </a>
-  {% if template == 'product' or template == 'blog' or template == 'about' or template == 'artisan' %}
+  {% if template == 'product' or template == 'blog' or template == 'cart' or template == 'about' or template == 'artisan' %}
     <a class="header-back" href="{{ shop.url }}">← Back to Shop</a>
   {% elsif template == 'article' %}
     {% unless blog.handle == 'artisans' %}
