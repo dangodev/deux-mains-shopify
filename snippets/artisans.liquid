@@ -1,7 +1,8 @@
 <h2 class="tac mbl">Our Artisans</h2>
 <nav class="artisan">
   <ul class="nl">
-    {% for artisan in blogs.artisans.articles %}
+    {% assign artisans = blogs.artisans.articles | sort: 'published_at' %}
+    {% for artisan in artisans %}
       {% assign name = artisan.title | split: ' ' %}
       <li>
         <a href="{{ artisan.url }}">

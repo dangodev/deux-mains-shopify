@@ -5,11 +5,16 @@
 <div class="row">
   <div class="well cell">
     <div class="store" itemscope itemtype="http://schema.org/Product">
-      <aside class="store-gallery">
+      {% for collection in product.collections %}
+        {% if collection.handle == 'apparel' %}
+          {% assign portrait = true %}
+        {% endif %}
+      {% endfor %}
+      <aside class="store-gallery{% if portrait == true %} store-gallery--portrait{% endif %}">
         <div class="store-gallery-lg">
           <ul class="nl">
             {% for image in product.images %}
-              <li class="crop crop--4-3"><img src="{{ image.src | product_img_url: 'grande' }}", itemprop="image" alt="{{ product.title | escape }}"/></li>
+              <li class="crop {% if portrait == true %}crop--3-4{% else %}crop--4-3{% endif %}"><img src="{{ image.src | product_img_url: 'grande' }}", itemprop="image" alt="{{ product.title | escape }}"/></li>
             {% endfor %}
           </ul>
         </div>
