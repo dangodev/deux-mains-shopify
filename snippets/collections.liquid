@@ -2,7 +2,7 @@
   <h3>Shop Collections</h3>
   <ul class="nl">
     {% for link in collections %}
-      {% unless link.handle == 'frontpage' or link.handle == 'sale' or link.handle == 'cart' %}
+      {% unless link.handle == 'frontpage' or link.handle == 'cart' %}
         <li><a href="{{ link.url }}"{% if collection.id == link.id %} class="is-current"{% endif %}>{{ link.title }}</a></li>
       {% endunless %}
     {% endfor %}

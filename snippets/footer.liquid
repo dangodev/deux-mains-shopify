@@ -21,11 +21,12 @@
           <div class="g-b g-b--1of2 g-b--m--1of3">
             <h3>Shop</h3>
             <ul class="nl">
-            {% for collection in collections %}
-              {% unless collection.handle == 'frontpage' or collection.handle == 'sale' or collection.handle == 'cart' %}
-                <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
-              {% endunless %}
-            {% endfor %}
+              <li><a href="/">Featured</a></li>
+              {% for collection in collections %}
+                {% unless collection.handle == 'frontpage' or collection.handle == 'cart' %}
+                  <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+                {% endunless %}
+              {% endfor %}
           </div>
           <div class="g-b g-b--1of2 g-b--m--1of3">
             <h3>News</h3>
