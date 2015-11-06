@@ -1,20 +1,16 @@
 {% assign add_to_cart = 'Add to cart' %}
 {% assign sold_out = 'Sold Out' %}
 {% assign unavailable = 'Unavailable' %}
+{% assign type = product.type | downcase %}
 
 <div class="row">
   <div class="well cell">
     <div class="store" itemscope itemtype="http://schema.org/Product">
-      {% for collection in product.collections %}
-        {% if collection.handle == 'apparel' %}
-          {% assign portrait = true %}
-        {% endif %}
-      {% endfor %}
-      <aside class="store-gallery{% if portrait == true %} store-gallery--portrait{% endif %}">
+      <aside class="store-gallery{% if type == 'apparel' %} store-gallery--portrait{% endif %}">
         <div class="store-gallery-lg">
           <ul class="nl">
             {% for image in product.images %}
-              <li class="crop {% if portrait == true %}crop--3-4{% else %}crop--4-3{% endif %}"><img src="{{ image.src | product_img_url: 'grande' }}", itemprop="image" alt="{{ product.title | escape }}"/></li>
+              <li class="crop {% if type == 'apparel' %}crop--3-4{% else %}crop--4-3{% endif %}"><img src="{{ image.src | product_img_url: 'grande' }}", itemprop="image" alt="{{ product.title | escape }}"/></li>
             {% endfor %}
           </ul>
         </div>
@@ -33,7 +29,6 @@
               </svg>
               <div class="icn-label">100% Haitian-made</div>
             </li>
-            {% assign type = product.type | downcase %}
             {% if type == 'sandals' %}
             <li>
               <svg aria-hidden class="icn icn--product" role="img" viewbox="0 0 512 512">
