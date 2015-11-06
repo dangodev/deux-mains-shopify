@@ -116,7 +116,7 @@
             {% assign artisan = blogs.artisans.articles[random] %}
             {% assign name = artisan.title | split: ' ' %}
           </div>
-          <a href="{{ artisan.url }}" class="artisan-leadIn">
+          <a href="{{ artisan.url }}" class="artisan-leadIn mbl">
             <div class="artisan-leadIn-img"><img src="{{ artisan.metafields.artisan.thumb }}" alt="{{ name[0] }}" /></div><span class="btn btn--s btn--r">Meet the Artisans</span><h2 class="mts ld1 mbf tck">{{ name[0] }}</h2><span class="dib tr1 tcb ld1">Hear my story &rarr;</span>
           </a>
           <script>
