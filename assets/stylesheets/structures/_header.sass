@@ -19,21 +19,6 @@
 //   Scaffolding
 // -------------------------------------
 
-// ----- Back ----- //
-
-.header-back
-  display: none
-  left: 160px
-  line-height: 1
-  padding-bottom: $b-space-s
-  padding-top: $b-space-s
-  position: absolute
-  text-align: center
-  top: 50%
-  transform: translateY( -50% )
-  +respond-to( $g-s )
-    display: block
-
 // ----- Cart ----- //
 
 .header-cart
@@ -92,10 +77,10 @@
   width: 90px
   +z-index( nav )
   +respond-to( $g-s )
-    padding-bottom: 0.75 * $b-space
+    padding-bottom: 10px
     padding-left: 0.75 * $b-space
     padding-right: 0.75 * $b-space
-    padding-top: 1.5 * $b-space
+    padding-top: 35px
     transform: translateY( -$b-space )
     transition: background-color 250ms linear, box-shadow 250ms linear, transform 250ms cubic-bezier( 0.85, 0, 0.3, 1.5 )
     width: 120px
@@ -105,15 +90,38 @@
       box-shadow: 0 -#{ $b-space } scale-color( $cerulean, $lightness: 20%, $saturation: 20% )
       transform: translateY( -1px )
 
-// ----- Title ----- //
+// ----- Nav ----- //
 
-.header-title
+.header-nav
   display: none
-  font-size: 1.5 * $t-text-fontSize
-  line-height: 2
-  margin: 0
+  left: 160px
+  line-height: 1
+  padding-bottom: $b-space-s
+  padding-top: $b-space-s
+  position: absolute
   text-align: center
-  +respond-to( $g-m )
+  top: 50%
+  transform: translateY( -50% )
+  +respond-to( $g-s )
     display: block
-    font-size: 0.5 * $t-heading-fontSize
-    line-height: 1.125 * $b-space-xl
+    font-size: 1.25 * $t-text-fontSize
+  ul
+    margin: 0
+    padding: 0
+  li
+    display: inline-block
+    margin: 0
+    padding: 0
+  a
+    display: block
+    font-weight: 100
+    letter-spacing: 0.0625em
+    margin-left: $b-space-s
+    margin-right: $b-space-s
+    padding-left: $b-space-xs
+    padding-right: $b-space-xs
+
+// States
+
+.header-nav a.is-selected
+  color: $c-border

@@ -52,17 +52,24 @@
 // ----- Content ----- //
 
 .hero-content
+  font-size: 16px
   left: 50%
-  font-size: 20px
-  letter-spacing: 0.25em
+  letter-spacing: 0.1875em
   line-height: 1.5
   max-width: $b-maxWidth
+  padding-left: $b-space
+  padding-right: $b-space
   position: absolute
   text-align: center
   top: 50%
   transform: translate( -50%, -50% )
   width: 100%
   +z-index( overlay, 1 )
+  +respond-to( $g-s )
+    font-size: 20px
+    line-height: 1.5
+  +respond-to( $g-m )
+    top: percentage( 2 / 3 )
   h1
     line-height: 1
     margin-bottom: 0

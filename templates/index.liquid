@@ -1,14 +1,18 @@
-{% if collections.frontpage.metafields.hero.url != blank %}
-  <a class="hero" href="{{ collections.frontpage.metafields.hero.url }}">
+{% assign meta = collections.frontpage.metafields.hero %}
+{% if meta.04_link != blank %}
+  <a class="hero" href="{{ meta.04_link }}">
 {% else %}
   <div class="hero">
 {% endif %}
-  <div class="hero-image" style="background-image: url('{% if collections.frontpage.metafields.hero.image != blank %}{{ collections.frontpage.metafields.hero.image }}{% else %}{{ 'image-frontpage-default.jpg' | asset_url }}{% endif %}')"></div>
+  <div class="hero-image" style="background-image: url('{% if meta.01_image != blank %}{{ meta.01_image }}{% else %}{{ 'image-frontpage-default.jpg' | asset_url }}{% endif %}')"></div>
   <div class="hero-content">
-    <h1>{{ collections.frontpage.metafields.hero.title }}</h1>
-    {{ collections.frontpage.metafields.hero.subtitle }}
+    <h1>{{ meta.02_title }}</h1>
+    {{ meta.03_subtitle }}
+    {% if meta.05_cta %}
+      <div class="mtm"><span class="btn btn--w btn--s">{{ meta.05_cta }}</span></div>
+    {% endif %}
   </div>
-{% if collections.frontpage.metafields.hero.url != blank %}
+{% if meta.04_link != blank %}
   </a>
 {% else %}
   </div>
@@ -16,7 +20,7 @@
 <div class="row row--emote">
   <a href="{{ pages.about.url }}" style="text-decoration: none;">
     <div class="ptl pbl cell tac">
-      <div class="tfh ts24 tck lh1 mbs">Haitian-made and Haitian-operated since 2013.</div>
+      <div class="tfh ts24 tck ld1 mbs">Haitian-made and Haitian-operated since 2013.</div>
       <div class="btn btn--r dib">Learn More</div>
     </div>
   </a>

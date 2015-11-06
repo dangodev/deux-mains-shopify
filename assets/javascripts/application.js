@@ -163,7 +163,6 @@ window.DM.modal = function() {
 window.DM.selectNav = function( selector ) {
   selector = selector || 'select';
   var $select = $( selector );
-  $select.val( '' );
   $select.on( 'change', function( e ) {
     if( $( this ).val()[0] === 'h' || $( this ).val()[0] === '/' )
       window.location.replace( e.target.value );
