@@ -7,7 +7,7 @@
   </a>
   <nav class="header-nav">
     <ul class="nl">
-      <li><a href="/"{% if collection.handle == 'frontpage' %} class="is-selected"{% endif %}>Shop</a></li>
+      <li><a href="/"{% if template == 'collection' or template == 'product' %} class="is-selected"{% endif %}>Shop</a></li>
       <li><a href="{{ blogs.news.url }}"{% if blog.handle == 'news' %} class="is-selected"{% endif %}>Blog</a></li>
       <li><a href="{{ pages.about.url }}"{% if page.handle == 'about' %} class="is-selected"{% endif %}>Story</a></li>
     </ul>
