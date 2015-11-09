@@ -1,13 +1,13 @@
 <h2 class="tac mbl">Our Artisans</h2>
 <nav class="artisan">
   <ul class="nl">
-    {% assign artisans = blogs.artisans.articles | sort: 'published_at' %}
-    {% for artisan in artisans %}
+    {% assign team = blogs.artisans.articles | sort: 'published_at' %}
+    {% for artisan in team %}
       {% assign name = artisan.title | split: ' ' %}
       <li>
         <a href="{{ artisan.url }}">
           <div class="artisan-photo">
-            <img src="{{ artisan.metafields.artisan.thumb }}" />
+            <img src="{{ artisan.metafields.artisan.thumb }}" alt="{{ artisan.title }}" />
           </div>
           <h3 class="artisan-name">{{ name[0] }}</h3>
           <h5 class="artisan-title">{{ artisan.metafields.artisan.job_title }}</h5>

@@ -4,15 +4,15 @@
   `artisans` blog, strangely, met the needs better than pages did. Hence this nonsense.
 {% endcomment %}
 
-{% comment %}
-  Standard article layout
-{% endcomment %}
 {% unless blog.handle == 'artisans' %}
+  {% comment %}
+    Standard article layout
+  {% endcomment %}
   {% include 'article' %}
 
-{% comment %}
-  Team member layout
-{% endcomment %}
 {% else %}
+  {% comment %}
+    Team member layout
+  {% endcomment %}
   {% include 'artisan' %}
 {% endunless %}
