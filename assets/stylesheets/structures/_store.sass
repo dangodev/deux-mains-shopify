@@ -220,6 +220,9 @@
   ul
     height: 0
     margin: 0
+    padding-bottom: 0
+    padding-left: 0
+    padding-right: 0
     padding-top: 75%
     position: relative
   li
@@ -236,6 +239,7 @@
     opacity: 1
 
 .store-gallery-thumb
+  margin-top: $b-space
   ul
     margin: 0
     padding: 0
@@ -250,6 +254,7 @@
       overflow: hidden
       position: relative
       transition: opacity 150ms linear
+      transform: translateZ( 0 )
       width: 1.75 * $b-space-l
       +respond-to( $g-s )
         height: $b-space-xl
@@ -349,8 +354,10 @@
       margin-top: 1.5 * $b-space-s
   h3
     font-family: $t-text-fontFamily
+    letter-spacing: 0.125em
     padding-bottom: $b-space-s
     padding-top: $b-space-s
+    text-transform: uppercase
     +respond-to( $g-l )
       width: 10 * $b-space
       margin-left: auto

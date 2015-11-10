@@ -57,26 +57,7 @@
           <form action="/cart/add" method="post" enctype="multipart/form-data">
         {% endif %}
           <div class="store-details-preview"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title }}"></div>
-          <h1 class="mbf"{% if product.price < product.compare_at_price_max %} data-discount="{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round }}"{% endif %} itemprop="name">{{ product.title }}</h1>
-          <div class="store-details-price">
-            <span class="price">
-              <span class="price-currency" content="{{ shop.currency }}" itemprop="priceCurrency">$</span>
-              <span class="price-amount" content="{{ product.price | money_without_currency }}" itemprop="price">
-                <span class="price-dollars">{{ product.price | money_without_currency | replace_first: '.', '</span><span class="price-cents">' }}</span>
-              </span>
-            </span>
-            {% if product.price < product.compare_at_price_max %}
-              <span class="price price--og">
-                <span class="price-currency">$</span>
-                <span class="price-amount">
-                  <span class="price-dollars">{{ product.compare_at_price_max | money_without_currency | replace_first: '.', '</span><span class="price-cents">' }}</span>
-                </span>
-              </span>
-            {% endif %}
-            {% unless product.available %}
-              <div class="store-details-status">Out of Stock</div>
-            {% endunless %}
-          </div>
+          <h1 class="mbs"{% if product.price < product.compare_at_price_max %} data-discount="{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round }}"{% endif %} itemprop="name">{{ product.title }}</h1>
           {{ product.description }}
           <div class="store-variant mtm">
             {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
@@ -103,6 +84,25 @@
             <a href="javascript:" data-modal="#size_chart">View size chart</a>
           </div>
           {% endif %}
+          <div class="store-details-price mtl tac">
+            <span class="price">
+              <span class="price-currency" content="{{ shop.currency }}" itemprop="priceCurrency">$</span>
+              <span class="price-amount" content="{{ product.price | money_without_currency }}" itemprop="price">
+                <span class="price-dollars">{{ product.price | money_without_currency | replace_first: '.', '</span><span class="price-cents">' }}</span>
+              </span>
+            </span>
+            {% if product.price < product.compare_at_price_max %}
+              <span class="price price--og">
+                <span class="price-currency">$</span>
+                <span class="price-amount">
+                  <span class="price-dollars">{{ product.compare_at_price_max | money_without_currency | replace_first: '.', '</span><span class="price-cents">' }}</span>
+                </span>
+              </span>
+            {% endif %}
+            {% unless product.available %}
+              <div class="store-details-status">Out of Stock</div>
+            {% endunless %}
+          </div>
           <div class="well tac">
             <input id="add" name="add" type="submit" class="btn btn--l" value="Add to Cart"{% if product.available == false %} disabled{% endif %} />
             {% assign max = blogs.artisans.articles_count %}
