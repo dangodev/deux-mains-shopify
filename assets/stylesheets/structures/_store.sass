@@ -166,7 +166,6 @@
   margin-bottom: $b-space-l
   margin-left: -$b-space
   margin-right: -$b-space
-  margin-top: -$b-space-l
   width: calc( 100% + #{ $b-space-l })
   +respond-to( 580px )
     display: none
@@ -470,10 +469,15 @@
   &::after
     @extend .sale
     content: "Sale"
+    font-size: 14px
     position: absolute
-    right: 1.5 * $b-space
-    top: $b-space
+    right: $b-space
+    top: $b-space-s
     +z-index( overlay, 1 )
+    +respond-to( $g-s )
+      font-size: $t-text-fontSize
+      right: 1.5 * $b-space
+      top: $b-space
   .store-product-img::after
     box-shadow: inset 0 0 0 1px scale-color( $ironRed, $lightness: 50% )
   .store-product-price

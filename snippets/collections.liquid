@@ -1,6 +1,7 @@
 <nav class="store-nav">
   <h3>Shop Collections</h3>
   <ul class="nl">
+    <li><a href="{{ shop.url }}"{% if template == 'index' or collection.handle == 'frontpage' %} class="is-current"{% endif %}>Featured</a></li>
     {% for link in collections %}
       {% unless link.handle == 'frontpage' or link.handle == 'cart' %}
         <li><a href="{{ link.url }}"{% if collection.id == link.id %} class="is-current"{% endif %}>{{ link.title }}</a></li>
@@ -12,8 +13,11 @@
   <div class="form-select">
     <select id="nav_collection">
       <option selected value="">Browse Collections</option>
+      <option value="{{ shop.url }}">Featured</option>
       {% for collection in collections %}
-        <option value="{{ collection.url }}">{{ collection.title }}</option>
+        {% if collection.handle != 'cart' && collection.handle != 'frontpage' %}
+          <option value="{{ collection.url }}">{{ collection.title }}</option>
+        {% endif %}
       {% endfor %}
     </select>
     <svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512">

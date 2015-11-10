@@ -15,6 +15,7 @@
   a
     letter-spacing: 0.125em
     text-decoration: none
+    text-transform: uppercase
 
 // -------------------------------------
 //   Scaffolding
@@ -23,7 +24,8 @@
 // ----- Cart ----- //
 
 .header-cart
-  letter-spacing: 0.0625em
+  font-size: 15px
+  font-weight: 600
   line-height: 1
   padding-right: 1.5 * $b-space-s
   position: absolute
@@ -34,13 +36,13 @@
   +respond-to( $g-s )
     padding-right: $b-space
     right: 1.5 * $b-space
-    font-size: 1.25 * $t-text-fontSize
 
 // Scaffolding
 
 .header-cart-badge
   background: scale-color( $ironRed, $lightness: 25%, $saturation: 25% )
   border-radius: 50%
+  bottom: 100%
   color: white
   font-size: 80%
   font-weight: 600
@@ -50,7 +52,6 @@
   line-height: 16px
   position: absolute
   text-align: center
-  bottom: 100%
   transform: translate( -50%, 50% )
   transition: background-color 150ms ease-out
   width: 18px
@@ -115,7 +116,8 @@
     padding: 0
   a
     display: block
-    letter-spacing: 0.0625em
+    font-size: 14px
+    letter-spacing: 0.125em
     margin-left: $b-space-s
     margin-right: $b-space-s
     padding-left: $b-space-xs

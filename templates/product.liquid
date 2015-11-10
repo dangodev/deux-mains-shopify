@@ -3,9 +3,12 @@
 {% assign unavailable = 'Unavailable' %}
 {% assign type = product.type | downcase %}
 
-<div class="row">
+<div class="row" itemscope itemtype="http://schema.org/Product">
   <div class="well cell">
-    <div class="store" itemscope itemtype="http://schema.org/Product">
+    <h1 class="tac"{% if product.price < product.compare_at_price_max %} data-discount="{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round }}"{% endif %} itemprop="name">{{ product.title }}</h1>
+  </div>
+  <div class="well cell">
+    <div class="store">
       <aside class="store-gallery{% if type == 'apparel' %} store-gallery--portrait{% endif %}">
         <div class="store-gallery-lg">
           <ul class="nl">
@@ -57,7 +60,6 @@
           <form action="/cart/add" method="post" enctype="multipart/form-data">
         {% endif %}
           <div class="store-details-preview"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title }}"></div>
-          <h1 class="mbs"{% if product.price < product.compare_at_price_max %} data-discount="{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round }}"{% endif %} itemprop="name">{{ product.title }}</h1>
           {{ product.description }}
           <div class="store-variant mtm">
             {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
