@@ -21,6 +21,19 @@
 //   Modifiers
 // -------------------------------------
 
+// ----- Page ----- //
+
+.cell--page
+  max-width: 30em
+  h4
+    color: $ironRed
+  p
+    line-height: 1.3
+    +respond-to( $g-s )
+      font-size: 1.25 * $t-text-fontSize
+    + *
+      margin-top: $b-space-l
+
 // ----- Story ----- //
 
 .cell--story

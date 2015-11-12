@@ -13,10 +13,8 @@ JavaScript is just, uh, jQuery.
 
 ### Installation
 
-Requires [Gulp](http://gulpjs.com/)
-
 ```
-npm install --save-dev gulp-autoprefixer gulp-minify-css gulp-rename gulp-sass gulp-uglify gulp-zip
+npm install
 ```
 
 ### Developing
