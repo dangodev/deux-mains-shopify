@@ -8,7 +8,7 @@
         <br/>
         {{ shop.address.street }}<br/>
         {{ shop.address.city }}, {{ shop.address.province_code }} {{ shop.address.zip }}&nbsp;
-        <a href="https://maps.apple.com/?q={{ shop.address | escape }}" class="btn btn--s">map</a>
+        <a href="https://maps.apple.com/?q={{ shop.address.summary | escape }}" class="btn btn--s">map</a>
       </div>
       <div class="well cell cell--half">
         <h5>Haiti Boutique</h5>
