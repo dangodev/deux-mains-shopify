@@ -41,6 +41,7 @@ It uses [MVCSS](http://mvcss.io/). The rules:
 3. Single-responsibility. Each file is its own **component**. The contents of one file should not affect the styling in any other file.
 4. One file per component.
 5. **Components** get loaded in first; **Structures** get loaded in second. Use this to your advantage in cascading styles that may conflict.
+6. Alphabetize everything.
 
 The syntax:
 
@@ -50,11 +51,21 @@ The syntax:
 - `.has-component`: context (always starts with `has-`). Use this if you need a wrapper for the component
 - `.is-viewing`: states (always startrs with `is-`). Use this for JavaScript-added classes to describe what it’s doing (`is-showing`, `is-hiding`, `is-alerting`, etc.)
 
-#### JavaScript
+#### JS
 
 The JavaScript is found in `javascripts/application.js`. It’s one object
 (`DM` for _Deux Mains_) with modules defined for different purposes of the site,
 arranged alphabetically.
+
+Adding something new is as simple as adding:
+
+```
+NM.myFunction = (parameter1, parameter2) {
+  // my function here
+};
+```
+
+Anywhere below `DM = {);`. Keeping it alphabetical is ideal.
 
 ### How Do I…
 

@@ -51,10 +51,11 @@ window.DM.form.number = function() {
   }
 
   var numberUpdate = function( button, mode ) {
-    var $input = $( button ).closest( '.form-quantity' ).find( '[type=number]' );
+    var $input = $( button ).parent().find( '[type=number]' );
     var val = parseInt( $input[0].value );
     var step = ( $input.attr( 'step' ) ) ? parseInt( $input.attr( 'step' ) ) : 1;
     var min, max;
+
     switch( mode ) {
       case 'inc':
         max = ( $input.attr( 'max' ) ) ? parseInt( $input.attr( 'max' ) ) : undefined;
