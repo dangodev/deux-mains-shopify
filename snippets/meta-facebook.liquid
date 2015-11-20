@@ -1,30 +1,24 @@
-{% if template contains 'product' %}
-  <meta property="og:type" content="product" />
-  <meta property="og:title" content="{{ product.title | strip_html | escape }}" />
-  {% for image in product.images %}
-  <meta property="og:image" content="http:{{ image | img_url: 'grande' }}" />
-  <meta property="og:image:secure_url" content="https:{{ image | img_url: 'grande' }}" />
-  {% endfor %}
-  <meta property="og:price:amount" content="{{ product.price | money_without_currency }}" />
-  <meta property="og:price:currency" content="{{ shop.currency }}" />
-{% elsif template contains 'article' %}
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="{{ article.title | strip_html | escape }}" />
-  {% assign img_tag = '<' | append: 'img' %}
-  {% if article.content contains img_tag %}
-    {% assign src = article.content | split: 'src="' %}
-    {% assign src = src[1] | split: '"' | first | remove: 'https:' | remove: 'http:' %}
-    {% if src %}
-      <meta property="og:image" content="http:{{ src }}" />
-      <meta property="og:image:secure_url" content="https:{{ src }}" />
-    {% endif %}
-  {% endif %}
-{% else %}
-  <meta property="og:image" content="http:{{ 'image-deux-mains-social.png' | asset_url }}" />
-  <meta property="og:image:secure_url" content="https:{{ 'image-deux-mains-social.png' | asset_url }}" />
-  <meta property="og:title" content="{{ page_title | escape }}" />
-  <meta property="og:type" content="website" />
-{% endif %}
+{% case template %}
+  {% when 'product' %}
+    <meta property="og:type" content="product" />
+    <meta property="og:title" content="{{ product.title | strip_html | escape }}" />
+    <meta property="og:image" content="http:{{ product.featured_image | img_url: 'master' }}" />
+    <meta property="og:price:amount" content="{{ product.price | money_without_currency }}" />
+    <meta property="og:price:currency" content="{{ shop.currency }}" />
+  {% when 'collection' %}
+    <meta property="og:type" content="product.group" />
+    <meta property="og:title" content="{{ collection.title | strip_html | escape }}" />
+    <meta property="og:image" content="http:{{ collection.image.src | img_url: 'master' }}" />
+  {% when 'article' %}
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{ article.title | strip_html | escape }}" />
+    <meta content="https://www.facebook.com/RGDeuxMainsDesigns" property="og:article:publisher">
+    <meta property="og:image" content="http:{{ article.image.src | img_url: 'master' }}" />
+  {% else %}
+    <meta property="og:image" content="http:{{ 'image-deux-mains-social.png' | asset_url }}" />
+    <meta property="og:title" content="{{ page_title | escape }}" />
+    <meta property="og:type" content="website" />
+{% endcase %}
 
 {% if page_description %}
   <meta property="og:description" content="{{ page_description }}" />
