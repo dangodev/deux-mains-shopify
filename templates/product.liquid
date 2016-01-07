@@ -178,12 +178,15 @@
                   $( this ).closest( '.selector-wrapper' ).addClass( 'mtm' );
                 });
                 var variantUpdate = function() {
-                  if( $( '#product-variants-option-0' ).length && $( '#product-variants-option-1' ).length ) {
-                    var search = $( '#product-variants-option-0' ).val() + ' / ' + $( '#product-variants-option-1' ).val();
-                    var variant = $( 'select[name=id]' ).find( "option:contains('" + search + "')" ).val();
-                    console.log( variant );
-                    $( 'select[name=id]' ).val( variant );
-                  }
+                  var search = '';
+                  $( 'select:visible' ).each( function( i, el ) {
+                    if( $( el ).val().length )
+                      search += ":contains('" + $( el ).val() + "')";
+                  });
+
+                  var id = $( 'select[name=id' ).find( 'option' + search ).val();
+                  if( id.length )
+                    $( 'select[name=id]' ).val( id );
                 };
                 $( 'select:visible' ).on( 'change', variantUpdate );
                 $( 'select:visible' ).on( 'blur', variantUpdate );
