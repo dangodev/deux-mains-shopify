@@ -184,7 +184,7 @@
                       search += ":contains('" + $( el ).val() + "')";
                   });
 
-                  var id = $( 'select[name=id' ).find( 'option' + search ).val();
+                  var id = $( 'select[name=id]' ).find( 'option' + search ).val();
                   if( id.length )
                     $( 'select[name=id]' ).val( id );
                 };
