@@ -207,8 +207,8 @@
     <div class="well well--s cell">
       <h3 class="tac ttu tr3">Other similar products:</h3>
       <ul class="store-details-related nl">
+        {% assign counter = 1 %}
         {% for tag in product.tags %}
-          {% assign counter = 1 %}
           {% for related_product in collections.all.products %}
             {% if related_product.tags contains tag and counter <= 4 and related_product.id != product.id %}
               {% include 'product', item: related_product, is_related: true %}
