@@ -41,7 +41,6 @@
 <tr id="cart_item_removed_{{ item.id }}" class="store-cart-item">
   <td class="store-cart-thumb"><a href="{{ item.url }}"><img src="{{ item | img_url: 'medium' }}" alt="{{ item.title }}" /></a></td>
   <td class="store-cart-name"><a href="{{ item.url }}"><h3>{{ item.title }}</h3><small>{{ item.variant.title }}</small></a></td>
-  <td class="store-cart-size"></td>
   <td class="store-cart-price"></td>
   <td class="store-cart-q tac"><small>Removed</small></td>
   <td class="store-cart-remove tar">{% comment %}<a id="undo_{{ item.id }}" href="/cart/change?line={{ forloop.index }}" class="tcs">Undo</a>{% endcomment %}</td>
