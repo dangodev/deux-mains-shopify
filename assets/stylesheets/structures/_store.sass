@@ -50,7 +50,7 @@
   width: 50%
   +respond-to( $g-s )
     float: right
-    margin-left: $b-space-l
+    margin-left: $b-space-2
     width: auto
 
 .store-cart-continue
@@ -61,11 +61,11 @@
   text-transform: uppercase
   +respond-to( $g-s )
     text-align: right
-    padding-top: $b-space-s
+    padding-top: $b-space-05
 
 .store-cart-item
   display: block
-  padding-bottom: $b-space-s
+  padding-bottom: $b-space-05
   padding-right: $b-space
   padding-top: $b-space
   position: relative
@@ -80,15 +80,15 @@
     vertical-align: middle
     +respond-to( $g-s )
       display: table-cell
-      padding-bottom: $b-space-s
-      padding-top: $b-space-s
+      padding-bottom: $b-space-05
+      padding-top: $b-space-05
   + .store-cart-item
     border-top: 1px solid $c-border
 
 .store-cart-name
   line-height: 1
   +respond-to( $g-s )
-    padding-left: $b-space-s
+    padding-left: $b-space-05
     width: 50%
   h3
     clear: none
@@ -96,7 +96,7 @@
 
 .store-cart-thumb
   float: left
-  margin-right: $b-space-s
+  margin-right: $b-space-05
   +respond-to( $g-s )
     float: none
     margin-right: 0
@@ -104,15 +104,15 @@
   a
     display: block
   img
-    width: $b-space-xl
+    width: $b-space-4
     +respond-to( $g-s )
-      width: 1.5 * $b-space-xl
+      width: 1.5 * $b-space-4
 
 .store-cart-price
   font-size: 125%
   position: absolute
   right: 0
-  top: 1.25 * $b-space-l
+  top: 1.25 * $b-space-2
   +respond-to( $g-s )
     font-size: 150%
     padding-right: $b-space
@@ -121,16 +121,16 @@
     width: 10%
 
 .store-cart-q
-  margin-top: $b-space-s
-  padding-left: $b-space-s
-  padding-right: $b-space-s
+  margin-top: $b-space-05
+  padding-left: $b-space-05
+  padding-right: $b-space-05
   +respond-to( $g-s )
     margin-top: 0
     text-align: center
     width: 25%
   label
     font-size: 75%
-    margin-right: $b-space-xs
+    margin-right: $b-space-025
   input
     min-width: 3em
     width: 3em
@@ -140,7 +140,7 @@
   right: 0
   top: $b-space
   +respond-to( $g-s )
-    padding-left: $b-space-s
+    padding-left: $b-space-05
     position: static
     width: 10%
 
@@ -152,7 +152,7 @@
   +respond-to( 580px )
     flex: 1
     order: 1
-    padding-left: $b-space-s
+    padding-left: $b-space-05
   +respond-to( $g-m )
     flex: 2
 
@@ -163,17 +163,17 @@
 // Scaffolding
 
 .store-details-preview
-  margin-bottom: $b-space-l
+  margin-bottom: $b-space-2
   margin-left: -$b-space
   margin-right: -$b-space
-  width: calc( 100% + #{ $b-space-l })
+  width: calc( 100% + #{ $b-space-2 })
   +respond-to( 580px )
     display: none
 
 .store-details-price
   font-size: 2 * $t-text-fontSize
   line-height: 1.2
-  margin-bottom: $b-space-l
+  margin-bottom: $b-space-2
 
 .store-details-related
   display: flex
@@ -181,7 +181,7 @@
   margin: 0
   padding: 0
   li
-    padding: $b-space-s
+    padding: $b-space-05
     width: 50%
     +respond-to( $g-m )
       width: 25%
@@ -209,7 +209,7 @@
   +respond-to( 580px )
     flex: 1
     order: 0
-    padding-right: $b-space-l
+    padding-right: $b-space-2
   +respond-to( $g-m )
     flex: 3
 
@@ -244,20 +244,20 @@
     padding: 0
   li
     display: inline-block
-    padding: $b-space-xs
+    padding: $b-space-025
     a
       display: block
       filter: grayscale( 80% )
-      height: 1.75 * $b-space-l
+      height: 1.75 * $b-space-2
       opacity: 0.4
       overflow: hidden
       position: relative
       transition: opacity 150ms linear
       transform: translateZ( 0 )
-      width: 1.75 * $b-space-l
+      width: 1.75 * $b-space-2
       +respond-to( $g-s )
-        height: $b-space-xl
-        width: $b-space-xl
+        height: $b-space-4
+        width: $b-space-4
       &::after
         bottom: 0
         box-shadow: inset 0 0 0 1px $cerulean
@@ -309,20 +309,20 @@
   display: flex
   flex: auto
   flex-wrap: wrap
-  margin: 0 auto $b-space-l
-  padding-left: $b-space-s
-  padding-right: $b-space-xs
+  margin: 0 auto $b-space-2
+  padding-left: $b-space-05
+  padding-right: $b-space-025
   width: 100%
   +respond-to( $g-s )
     flex: 1
     padding-left: $b-space
-    padding-right: $b-space-s
+    padding-right: $b-space-05
   li
-    margin-bottom: $b-space-l
+    margin-bottom: $b-space-2
     margin-left: 0
     margin-right: 0
     margin-top: 0
-    padding: $b-space-s
+    padding: $b-space-05
     width: percentage( 1 / 2 )
     +respond-to( $g-m )
       padding: $b-space
@@ -337,7 +337,7 @@
   font-size: 112.5%
   letter-spacing: 0.0625em
   line-height: 1.2
-  padding-right: $b-space-l
+  padding-right: $b-space-2
   width: 25%
   +respond-to( $g-s )
     display: block
@@ -350,12 +350,12 @@
   li
     margin: 0
     + li
-      margin-top: 1.5 * $b-space-s
+      margin-top: 1.5 * $b-space-05
   h3
     font-family: $t-text-fontFamily
     letter-spacing: 0.125em
-    padding-bottom: $b-space-s
-    padding-top: $b-space-s
+    padding-bottom: $b-space-05
+    padding-top: $b-space-05
     text-transform: uppercase
     +respond-to( $g-l )
       width: 10 * $b-space
@@ -375,7 +375,7 @@
 
 .store-mobileNav
   display: block
-  margin-bottom: $b-space-l
+  margin-bottom: $b-space-2
   width: 100%
   +respond-to( $g-s )
     display: none
@@ -399,7 +399,7 @@
   height: $b-space
   width: $b-space
   + .store-product-color
-    margin-left: $b-space-xs
+    margin-left: $b-space-025
 
 .store-product-color.is-out
   opacity: 0.3
@@ -460,7 +460,7 @@
 .store-product--related
   a
     background: white
-    padding: $b-space-s
+    padding: $b-space-05
     &:hover .store-product-img::after
       box-shadow: none
 
@@ -472,7 +472,7 @@
     font-size: 14px
     position: absolute
     right: $b-space
-    top: $b-space-s
+    top: $b-space-05
     +z-index( overlay, 1 )
     +respond-to( $g-s )
       font-size: $t-text-fontSize

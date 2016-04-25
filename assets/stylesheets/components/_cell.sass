@@ -32,7 +32,7 @@
     +respond-to( $g-s )
       font-size: 1.25 * $t-text-fontSize
     + *
-      margin-top: $b-space-l
+      margin-top: $b-space-2
 
 // ----- Story ----- //
 
@@ -45,6 +45,10 @@
     max-width: 30em
     +respond-to( $g-s )
       font-size: 1.25 * $t-text-fontSize
-      margin-bottom: $b-space-l
+      margin-bottom: $b-space-2
     + p
-      margin-top: $b-space-l
+      margin-top: $b-space-2
+    img
+      +respond-to( $g-m )
+        margin-left: -$b-space-2
+        max-width: calc( 100% + #{ $b-space-4 } )

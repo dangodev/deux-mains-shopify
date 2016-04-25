@@ -20,6 +20,9 @@ body
   text-rendering: optimizeLegibility
 
 *
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
   box-sizing: border-box
 
 main
@@ -38,12 +41,14 @@ q
   display: block
 
 p
+  font-size: 16px
+  font-weight: 200
   line-height: $t-text-lineHeight
   margin: 0 auto $b-space
   max-width: 42em
 
 li
-  margin-bottom: $b-space-s
+  margin-bottom: $b-space-05
   margin-top: 0
 
 blockquote
@@ -54,7 +59,7 @@ blockquote
   margin: $b-space 0
   +respond-to( $g-s )
     font-size: 0.75 * $t-heading-fontSize
-    margin: $b-space-l 0
+    margin: $b-space-2 0
 
 q
   &::before
@@ -158,6 +163,7 @@ img
 [type=text]
   border: 1px solid $c-border
   color: $c-text
+  font-weight: 400
   padding: 0.5em 0.75em
 
 [type=number]
@@ -169,3 +175,6 @@ img
 
 [type=submit]
   @extend .btn
+
+label
+  font-weight: 400

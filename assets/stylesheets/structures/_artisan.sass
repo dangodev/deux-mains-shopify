@@ -10,20 +10,20 @@
     display: flex
     flex-wrap: wrap
     justify-content: center
-    margin: 0 0 0 -#{ $b-space-s }
+    margin: 0 0 0 -#{ $b-space-05 }
     padding: 0
     +respond-to( $g-s )
       margin-left: -$b-space
   li
-    margin: 0 0 $b-space-s
-    padding-bottom: $b-space-s
-    padding-left: $b-space-s
-    padding-top: $b-space-s
-    padding-right: $b-space-s
+    margin: 0 0 $b-space-05
+    padding-bottom: $b-space-05
+    padding-left: $b-space-05
+    padding-top: $b-space-05
+    padding-right: $b-space-05
     text-align: center
     width: percentage( 1 / 3 )
     +respond-to( $g-s )
-      padding-left: $b-space-l
+      padding-left: $b-space-2
       padding-bottom: $b-space
       padding-top: $b-space
       padding-right: $b-space
@@ -56,11 +56,11 @@
   background-repeat: no-repeat
   background-size: auto 150%
   display: block
-  height: 1.5 * $b-space-xl
+  height: 1.5 * $b-space-4
   overflow: hidden
-  padding-bottom: $b-space-s
-  padding-left: 1.75 * $b-space-xl
-  padding-top: $b-space-s
+  padding-bottom: $b-space-05
+  padding-left: 1.75 * $b-space-4
+  padding-top: $b-space-05
   position: relative
   text-decoration: none
   width: 100%
@@ -68,12 +68,12 @@
 // Scaffolding
 
 .artisan-leadIn-img
-  height: 1.5 * $b-space-xl
+  height: 1.5 * $b-space-4
   left: 0
   overflow: hidden
   position: absolute
   top: 0
-  width: 1.5 * $b-space-xl
+  width: 1.5 * $b-space-4
 
 // ----- Name ----- //
 
@@ -86,11 +86,11 @@
   background: url( "{{ 'image-bg-redcanvas.png' | asset_url }}" ) no-repeat center center
   background-size: cover
   border-radius: 50%
-  margin-bottom: $b-space-s
-  padding: $b-space-xs
+  margin-bottom: $b-space-05
+  padding: $b-space-025
   +respond-to( $g-s )
     margin-bottom: $b-space
-    padding: $b-space-s
+    padding: $b-space-05
   img
     border-radius: 50%
     display: block
@@ -104,7 +104,7 @@
   font-size: 1.25 * $t-text-fontSize
   font-style: italic
   line-height: 1
-  margin-top: $b-space-s
+  margin-top: $b-space-05
   position: relative
   +respond-to( $g-s )
     display: block

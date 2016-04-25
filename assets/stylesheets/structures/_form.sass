@@ -10,6 +10,7 @@
 .form-label
   color: $c-subdue
   font-size: 0.75 * $t-text-fontSize
+  font-weight: 400
   letter-spacing: 0.125em
   text-transform: uppercase
   +respond-to( $g-s )
@@ -20,10 +21,11 @@
 .form-pair
   align-items: center
   display: flex
-  > .form-label
+  > *
+    flex: 2
+  > label,
+  > [type=submit]
     flex: 1
-    + *
-      flex: 2
 
 // ----- Quantity ----- //
 
@@ -64,12 +66,12 @@
 
 .form-quantity-dec
   border-radius: 1em 0 0 1em
-  padding-left: 1.5 * $b-space-s
-  padding-right: $b-space-s
+  padding-left: 1.5 * $b-space-05
+  padding-right: $b-space-05
 .form-quantity-inc
   border-radius: 0 1em 1em 0
-  padding-left: $b-space-s
-  padding-right: 1.5 * $b-space-s
+  padding-left: $b-space-05
+  padding-right: 1.5 * $b-space-05
 
 // ----- Select ----- //
 
@@ -83,6 +85,7 @@
     border: 1px solid $c-action
     color: $c-text
     cursor: pointer
+    font-weight: 400
     height: 1.75 * $b-space
     letter-spacing: 0.0625em
     line-height: 1.75 * $b-space
@@ -122,15 +125,15 @@
 // Scaffolding
 
 .form-select-icn
-  height: 1.25 * $b-space-s
-  margin-top: -$b-space-xs
+  height: 1.25 * $b-space-05
+  margin-top: -$b-space-025
   pointer-events: none
   position: absolute
-  right: 1.25 * $b-space-s
+  right: 1.25 * $b-space-05
   stroke: $cerulean
   stroke-width: 36
   top: 50%
-  width: 1.25 * $b-space-s
+  width: 1.25 * $b-space-05
   +z-index( overlay )
 
 // Modifiers

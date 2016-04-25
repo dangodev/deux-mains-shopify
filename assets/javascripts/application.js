@@ -136,7 +136,7 @@ window.DM.modal = function() {
   // 3. Add `Esc` close
 
   $( document ).on( 'keydown', function( e ) {
-    if (e.which === 27)
+    if ( e.which === 27 )
       DM.modal.close();
   });
 };
@@ -146,7 +146,7 @@ window.DM.modal = function() {
     var $modals = $( '.modal' );
     $modals.each( function( i, el ) {
       $( el ).removeClass( 'is-viewing' );
-      DM.vimeo.pause( $( el ).find( 'iframe' ) );
+      DM.vimeo.pause( $( el ).find( 'iframe' )[0] );
     });
   };
 
@@ -155,7 +155,7 @@ window.DM.modal = function() {
     if( $modal ) {
       $( 'body' ).addClass( 'is-modal-viewing' );
       $modal.addClass( 'is-viewing' );
-      DM.vimeo.play( $modal.find( 'iframe' ) );
+      DM.vimeo.play( $modal.find( 'iframe' )[0] );
     }
   };
 
@@ -168,6 +168,16 @@ window.DM.selectNav = function( selector ) {
     if( $( this ).val()[0] === 'h' || $( this ).val()[0] === '/' )
       window.location.replace( e.target.value );
   });
+};
+
+// ----- Signup ----- //
+
+window.DM.signup = function() {
+  if( document.cookie.replace(/(?:(?:^|.*;\s*)deux\_mains\_signup\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "skipped" ) {
+    DM.modal.open( $( '#modal_signup' ) );
+    var expires = new Date( + new Date + 12096e5 );
+    document.cookie = 'deux_mains_signup=skipped; expires=' + expires.toString();
+  }
 };
 
 // ----- Videos ----- //
