@@ -103,6 +103,23 @@ window.DM.gallery = function() {
     .eq( 0 ).addClass( 'is-showing' );
   $thumbs.removeClass( 'is-viewing' )
     .eq( 0 ).addClass( 'is-viewing' );
+  $( document ).on( 'keydown', function( e ) {
+    switch( e.which ) {
+      case 37:
+        var n = $( '.store-gallery-thumb a.is-viewing' ).parent().index();
+        if( n >= 0 && n - 1 >= 0 )
+          $( '.store-gallery-thumb a' ).eq( n - 1 ).trigger( 'click' );
+        break;
+
+      case 39:
+        var n = $( '.store-gallery-thumb a.is-viewing' ).parent().index();
+        var total = $( '.store-gallery-thumb a' ).length;
+        if( n >= 0 && n + 1 < total )
+          $( '.store-gallery-thumb a' ).eq( n + 1 ).trigger( 'click' );
+        break;
+
+    }
+  });
 };
 
 // ----- Modal ----- //
