@@ -26,7 +26,6 @@
 // ----- Cart ----- //
 
 .header-cart
-  font-size: 15px
   line-height: 1
   padding-right: 1.5 * $b-space-05
   position: absolute
@@ -116,15 +115,19 @@
     margin: 0
     padding: 0
   a
+    border-radius: 0.25em
     display: block
     font-size: 14px
     letter-spacing: 0.125em
-    margin-left: $b-space-05
-    margin-right: $b-space-05
-    padding-left: $b-space-025
-    padding-right: $b-space-025
+    margin-left: $b-space-025
+    margin-right: $b-space-025
+    padding-bottom: 0.375em
+    padding-left: 0.5em
+    padding-right: 0.5em
+    padding-top: 0.25em
 
 // States
 
 .header-nav a.is-selected
-  color: $c-border
+  background-color: $cerulean
+  color: white

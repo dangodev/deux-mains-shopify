@@ -14,10 +14,10 @@
     <select id="nav_collection">
       <option selected value="">Browse Collections</option>
       <option value="{{ shop.url }}">Featured</option>
-      {% for collection in collections %}
-        {% if collection.handle != 'cart' && collection.handle != 'frontpage' %}
-          <option value="{{ collection.url }}">{{ collection.title }}</option>
-        {% endif %}
+      {% for link in collections %}
+        {% unless link.handle == 'frontpage' or link.handle == 'cart' %}
+          <option value="{{ link.url }}">{{ link.title }}</option>
+        {% endunless %}
       {% endfor %}
     </select>
     <svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512">

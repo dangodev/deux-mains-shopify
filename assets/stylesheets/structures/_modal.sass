@@ -18,8 +18,8 @@
   cursor: pointer
   left: 0
   overflow: hidden
-  padding-left: $b-space-2
-  padding-right: $b-space-2
+  padding-left: $b-space
+  padding-right: $b-space
   position: fixed
   right: 0
   visibility: hidden
@@ -28,6 +28,9 @@
   transform: translateY( $b-space-2 )
   top: 0
   +z-index(modal, 5)
+  +respond-to( $g-s )
+    padding-left: $b-space-2
+    padding-right: $b-space-2
 
 // -------------------------------------
 //   Scaffolding
@@ -42,12 +45,16 @@
   height: $b-space-2
   line-height: $b-space-2
   position: absolute
-  right: $b-space-2
+  right: $b-space
   text-align: center
   text-decoration: none
-  top: $b-space-2
+  top: $b-space
   transition: opacity 250ms linear
   width: $b-space-2
+  +respond-to( $g-s )
+    right: $b-space-2
+    top: $b-space-2
+
   &:hover
     opacity: 0.6
     color: $gold
@@ -60,9 +67,11 @@
   cursor: default
   margin: $b-space-2 auto
   max-width: 40em
-  padding: $b-space-2
+  padding: $b-space
   transform: translateZ( 0 )
-  +respond-to( 580px )
+  +respond-to( $g-s )
+    padding: $b-space-2
+  +respond-to( $g-m )
     padding: $b-space-4
 
 // ----- Screen ----- //
@@ -97,17 +106,13 @@
     flex-direction: column
     justify-content: center
     min-height: 24em
-    padding: $b-space
-    +respond-to( $g-s )
-      padding: $b-space-2
-    +respond-to( $g-m )
-      padding: $b-space-4
     > *
       flex: none
   [type=email],
   [type=text]
     background-color: transparent
     border: none
+    border-radius: 0
     box-shadow: inset 0 0 0 1px white
     color: white
     transition: background-color 250ms

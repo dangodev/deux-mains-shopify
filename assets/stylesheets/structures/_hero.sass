@@ -52,10 +52,11 @@
 // ----- Content ----- //
 
 .hero-content
-  font-size: 16px
+  font-size: 12px
   font-weight: 400
   left: 50%
-  letter-spacing: 0.125em
+  letter-spacing: 0.1625em
+  text-transform: uppercase
   line-height: 1.5
   max-width: $b-maxWidth
   padding-left: $b-space
@@ -67,16 +68,15 @@
   width: 100%
   +z-index( overlay, 1 )
   +respond-to( $g-s )
-    font-size: 20px
+    font-size: 14px
     line-height: 1.5
   h1
+    font-size: 0.75 * $t-heading-fontSize
     line-height: 1
     margin-bottom: 0
-    font-size: 0.5 * $t-heading-fontSize
-    +respond-to( $g-s )
-      font-size: 0.75 * $t-heading-fontSize
+    text-transform: none
     +respond-to( $g-m )
-      font-size: $t-heading-fontSize
+      font-size: 50px
 
 // -------------------------------------
 //   Modifiers

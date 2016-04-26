@@ -59,7 +59,6 @@
         {% if product.available %}
           <form action="/cart/add" method="post" enctype="multipart/form-data">
         {% endif %}
-          <div class="store-details-preview"><img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title }}"></div>
           {{ product.description }}
           <div class="store-variant mtm">
             {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}

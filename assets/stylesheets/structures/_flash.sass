@@ -10,10 +10,10 @@
   box-shadow: 0 0 0 1px $c-action
   left: 0
   line-height: 1.2
-  padding-bottom: 1.5 * $b-space
-  padding-left: 1.5 * $b-space-2
-  padding-right: 1.5 * $b-space-2
-  padding-top: 1.5 * $b-space
+  padding-bottom: $b-space
+  padding-left: $b-space-2
+  padding-right: $b-space-2
+  padding-top: $b-space
   position: fixed
   right: 0
   text-align: center
@@ -23,6 +23,9 @@
   visibility: hidden
   width: 100%
   +z-index( flash )
+  +respond-to( $g-s )
+    padding-left: 1.5 * $b-space-2
+    padding-right: 1.5 * $b-space-2
 
 // -------------------------------------
 //   Scaffolding
@@ -37,11 +40,13 @@
   height: 1.5 * $b-space
   line-height: 1.5 * $b-space
   position: absolute
-  right: $b-space
+  right: $b-space-05
   text-decoration: none
   top: 50%
   transform: translateY( -50% )
   width: 1.5 * $b-space
+  +respond-to( $g-s )
+    right: $b-space
 
 // -------------------------------------
 //   States

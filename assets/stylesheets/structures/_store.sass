@@ -148,10 +148,8 @@
 
 .store-details
   flex: auto
-  order: 0
   +respond-to( 580px )
     flex: 1
-    order: 1
     padding-left: $b-space-05
   +respond-to( $g-m )
     flex: 2
@@ -161,14 +159,6 @@
       font-size: 1.125 * $t-text-fontSize
 
 // Scaffolding
-
-.store-details-preview
-  margin-bottom: $b-space-2
-  margin-left: -$b-space
-  margin-right: -$b-space
-  width: calc( 100% + #{ $b-space-2 })
-  +respond-to( 580px )
-    display: none
 
 .store-details-price
   font-size: 2 * $t-text-fontSize
@@ -181,8 +171,9 @@
   margin: 0
   padding: 0
   li
-    padding: $b-space-05
-    width: 50%
+    width: 100%
+    +respond-to( $g-s )
+      width: 50%
     +respond-to( $g-m )
       width: 25%
 
@@ -205,10 +196,8 @@
 
 .store-gallery
   flex: auto
-  order: 1
   +respond-to( 580px )
     flex: 1
-    order: 0
     padding-right: $b-space-2
   +respond-to( $g-m )
     flex: 3
@@ -309,23 +298,26 @@
   display: flex
   flex: auto
   flex-wrap: wrap
-  margin: 0 auto $b-space-2
-  padding-left: $b-space-05
-  padding-right: $b-space-025
+  margin-left: auto
+  margin-right: auto
+  padding-left: 0
   width: 100%
   +respond-to( $g-s )
     flex: 1
+    margin-bottom: $b-space-2
     padding-left: $b-space
     padding-right: $b-space-05
   li
-    margin-bottom: $b-space-2
+    margin-bottom: $b-space
     margin-left: 0
     margin-right: 0
     margin-top: 0
-    padding: $b-space-05
-    width: percentage( 1 / 2 )
+    width: 100%
+    +respond-to( $g-s )
+      margin-bottom: $b-space-2
+      padding: $b-space-05
+      width: percentage( 1 / 2 )
     +respond-to( $g-m )
-      padding: $b-space
       width: percentage( 1 / 3 )
     +respond-to( $g-l )
       width: 25%
@@ -406,9 +398,14 @@
 
 .store-product-img
   height: 0
+  margin-left: -$b-space
   overflow: hidden
   padding-top: 75%
   position: relative
+  width: calc( 100% + #{ $b-space-2 } )
+  +respond-to( $g-s )
+    margin-left: 0
+    width: 100%
   &::after
     bottom: 0
     box-shadow: inset 0 0 0 1px transparent
@@ -430,7 +427,8 @@
 .store-product-name
   color: $c-text
   font-family: $t-heading-fontFamily
-  font-size: 1.25 * $t-text-fontSize
+  font-size: 1.5 * $t-text-fontSize
+  letter-spacing: 0
   margin-top: 0.5em
   +respond-to( $g-s )
     font-size: 0.5 * $t-heading-fontSize
@@ -439,6 +437,9 @@
   color: $cerulean
   font-size: 1.25 * $t-text-fontSize
   padding-bottom: 0.4em
+  display: none
+  +respond-to( $g-s )
+    display: block
 
 .store-product-status
   color: $c-subdue
@@ -458,9 +459,12 @@
     color: scale-color( $c-text, $lightness: 60% )
 
 .store-product--related
-  a
-    background: white
+  +respond-to( $g-s )
     padding: $b-space-05
+  a
+    +respond-to( $g-s )
+      background-color: white
+      padding: $b-space-05
     &:hover .store-product-img::after
       box-shadow: none
 
