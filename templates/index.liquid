@@ -4,7 +4,7 @@
 {% else %}
   <div class="hero">
 {% endif %}
-  <div class="hero-image" style="background-image: url('{% if meta.01_image != blank %}{{ meta.01_image }}{% else %}{{ 'image-frontpage-default.jpg' | asset_url }}{% endif %}')"></div>
+  <div class="hero-image" style="background-image: url('{% if meta.01_image != blank %}{{ meta.01_image | strip }}{% else %}{{ 'image-frontpage-default.jpg' | asset_url }}{% endif %}')"></div>
   <div class="hero-content">
     <h1>{{ meta.02_title }}</h1>
     {{ meta.03_subtitle }}
