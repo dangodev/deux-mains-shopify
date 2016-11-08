@@ -39,30 +39,16 @@ $c-text: $black
 
 // ----- Typography ----- //
 
+$sofia: "sofia-pro", "Avenir", "Century Gothic", sans-serif
+
 // Heading
 
-$didot: "Diet Didot", Didot, Bodoni, Georgia, serif
-
-@font-face
-  font-family: "Diet Didot"
-  font-style: normal
-  font-weight: 400
-  src: url( "{{ 'font-diet-didot.woff2' | asset_url }}" ) format( 'woff2' ), url( "{{ 'font-diet-didot.woff' | asset_url }}" ) format( 'woff' )
-
-@font-face
-  font-family: "Diet Didot"
-  font-style: italic
-  font-weight: 400
-  src: url( "{{ 'font-diet-didot-italic.woff2' | asset_url }}" ) format( 'woff2' ), url( "{{ 'font-diet-didot-italic.woff' | asset_url }}" ) format( 'woff' )
-
-$t-heading-fontFamily: $didot
+$t-heading-fontFamily: $sofia
 $t-heading-fontSize: 40px
 $t-heading-fontWeight: 400
 $t-heading-lineHeight: 1.2
 
 // Text
-
-$sofia: "sofia-pro", "Avenir", "Century Gothic", sans-serif
 
 $t-text-fontFamily: $sofia
 $t-text-fontSize: 14px

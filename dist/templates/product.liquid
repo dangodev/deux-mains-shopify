@@ -27,29 +27,21 @@
         <div class="store-features">
           <ul class="nl tac">
             <li>
-              <svg aria-hidden class="icn icn--product" role="img" viewbox="0 0 512 512">
-                <use xlink:href="#icon_haiti"></use>
-              </svg>
+              <svg aria-hidden class="icn icn--product" role="img"><use xlink:href="#icon_haiti"></use></svg>
               <div class="icn-label">100% Haitian-made</div>
             </li>
             {% if type == 'sandals' %}
             <li>
-              <svg aria-hidden class="icn icn--product" role="img" viewbox="0 0 512 512">
-                <use xlink:href="#icon_tire"></use>
-              </svg>
+              <svg aria-hidden class="icn icn--product" role="img"><use xlink:href="#icon_tire"></use></svg>
               <div class="icn-label">Made from up-cycled tires</div>
             </li>
             {% endif %}
             <li>
-              <svg aria-hidden class="icn icn--product" role="img" viewbox="0 0 512 512">
-                <use xlink:href="#icon_eco"></use>
-              </svg>
+              <svg aria-hidden class="icn icn--product" role="img"><use xlink:href="#icon_eco"></use></svg>
               <div class="icn-label">100% Organic construction</div>
             </li>
             <li>
-              <svg aria-hidden class="icn icn--product" role="img" viewbox="0 0 512 512">
-                <use xlink:href="#icon_leather"></use>
-              </svg>
+              <svg aria-hidden class="icn icn--product" role="img"><use xlink:href="#icon_leather"></use></svg>
               <div class="icn-label">Sustainable Haitian leather</div>
             </li>
           </ul>
@@ -73,9 +65,7 @@
                       <option value="{{ option.id }}" data-price="{{ option.price | money_without_currency }}"{% if option == product.selected_or_first_available_variant %} selected="selected"{% endif %}>{{ option.title | escape }}</option>
                     {% endfor %}
                   </select>
-                  <svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512">
-                    <use xlink:href="#icon_arrow"></use>
-                  </svg>
+                  <svg aria-hidden class="form-select-icn icn icn--arrow" role="img"><use xlink:href="#icon_arrow"></use></svg>
                 </div>
               </div>
             </div>
@@ -172,7 +162,7 @@
                 $( 'select' ).each( function( i, el ) {
                   $( this ).prev( 'label' ).addClass( 'form-label' );
                   $( this ).wrap( '<div class="form-select"></div>' );
-                  $( this ).after( '<svg aria-hidden class="form-select-icn icn icn--arrow" role="img" viewbox="0 0 512 512"><use xlink:href="#icon_arrow"></use></svg>' );
+                  $( this ).after( '<svg aria-hidden class="form-select-icn icn icn--arrow" role="img"><use xlink:href="#icon_arrow"></use></svg>' );
                   $( this ).closest( '.form-select' ).parent().find( 'label, .form-select' ).wrapAll( '<div class="form-pair"></div>' );
                   $( this ).closest( '.selector-wrapper' ).addClass( 'mtm' );
                 });

@@ -10,7 +10,7 @@ settings but has product-specific settings.
 
 ### Installation
 
-1. Install [Shopify Theme Kit](http://themekit.cat/)
+1. Install [Shopify Theme Kit](https://shopify.github.io/themekit/)
 1. `npm install`
 
 ### Developing

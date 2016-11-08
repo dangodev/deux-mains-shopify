@@ -1,21 +1,13 @@
 <header class="header">
-  <a class="header-logo" href="/">
-    <div class="logo logo--v">
-      <div class="logo-mark"><img src="{{ 'image-deux-mains-logomark.svg' | asset_url }}"/></div>
-      <div class="logo-word"><img src="{{ 'image-deux-mains-wordmark.svg' | asset_url }}" alt="{{ shop.name }}"/></div>
-    </div>
-  </a>
-  <nav class="header-nav">
-    <ul class="nl">
-      <li><a href="/"{% if template == 'index' or template == 'collection' or template == 'product' %} class="is-selected"{% endif %}>Shop</a></li>
-      <li><a href="{{ blogs.news.url }}"{% if blog.handle == 'news' %} class="is-selected"{% endif %}>Blog</a></li>
-      <li><a href="{{ pages.about.url }}"{% if page.handle == 'about' %} class="is-selected"{% endif %}>Story</a></li>
-    </ul>
+  <nav class="nav">
+    <li class="nav-link"><a href="{{ collection.womens-sandals.url }}">Women’s</a></li>
+    <li class="nav-link"><a href="{{ collection.mens-sandals.url }}">Men’s</a></li>
+    <li class="nav-link nav-link--logo"><a href="{{ shop.url }}">
+      <img src="{{ 'deux-mains.svg' | asset_url }}" alt="{{ shop.name }}" />
+    </a></li>
+    <li class="nav-link"><a href="{{ page.about.url }}">About</a></li>
+    <li class="nav-link nav-link--cart">
+      <a href="{{ cart.url }}" aria-label="Cart" data-badge="{{ cart.item_count }}"><svg></svg></a>
+    </li>
   </nav>
-  <a class="header-cart" href="/cart">
-    Cart
-    {% if cart.item_count > 0 %}
-      <div class="header-cart-badge">{{ cart.item_count }}</div>
-    {% endif %}
-  </a>
 </header>

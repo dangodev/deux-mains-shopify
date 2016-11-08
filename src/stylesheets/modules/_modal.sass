@@ -59,6 +59,22 @@
     opacity: 0.6
     color: $gold
 
+// ----- Mask ----- //
+
+.modal-mask
+  background-color: rgba( white, 0.5 )
+  bottom: 0
+  cursor: pointer
+  left: 0
+  opacity: 0
+  pointer-events: none
+  position: fixed
+  right: 0
+  top: 0
+  transition: opacity 150ms linear, visibility 0ms linear 200ms
+  visibility: hidden
+  +z-index( modal )
+
 // ----- Inner ----- //
 
 .modal-inner
@@ -73,22 +89,6 @@
     padding: $b-space-2
   +respond-to( $g-m )
     padding: $b-space-4
-
-// ----- Screen ----- //
-
-.modal-screen
-  background-color: rgba( white, 0.5 )
-  bottom: 0
-  cursor: pointer
-  left: 0
-  opacity: 0
-  pointer-events: none
-  position: fixed
-  right: 0
-  top: 0
-  transition: opacity 150ms linear, visibility 0ms linear 200ms
-  visibility: hidden
-  +z-index( modal )
 
 // -------------------------------------
 //   Modifiers

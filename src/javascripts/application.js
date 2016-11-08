@@ -17,6 +17,7 @@ import styles from '../stylesheets/application.sass';
 import $ from 'jquery';
 import svg4everybody from 'svg4everybody';
 import slick from 'slick-carousel';
+
 const vendor = {
   $,
   slick,
@@ -27,12 +28,13 @@ const vendor = {
  * @section Custom JS
  */
 
-// import something from 'something';
+import legacy from './legacy';
 const library = {
+  legacy,
 };
 
 /**
  * @section Export
  */
 
-export default Object.assign(vendor, library);
+module.exports = Object.assign(vendor, library);

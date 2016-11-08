@@ -5,7 +5,9 @@
     "jquery": "^3.1.1",
     "normalize.css": "^5.0.0",
     "slick-carousel": "^1.6.0",
-    "svg4everybody": "^2.1.0"
+    "svg4everybody": "^2.1.0",
+    "vue": "^2.0.5",
+    "vue-slick": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.1",
@@ -18,6 +20,8 @@
     "node-sass": "^3.11.2",
     "postcss-loader": "^1.1.0",
     "sass-loader": "^4.0.2",
+    "vue-loader": "^9.8.0",
+    "vuex": "^2.0.0",
     "webpack": "^2.1.0-beta.25",
     "webpack-dev-server": "^2.1.0-beta.10"
   }

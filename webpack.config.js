@@ -26,11 +26,18 @@ module.exports = {
           'sass-loader',
         ]
       },
+      {
+        test: /\.vue$/,
+        use: [
+          'vue-loader',
+        ]
+      },
     ]
   },
   output: {
-    path: path.resolve(__dirname, 'dist/assets'),
     filename: 'js-[name].js',
+    library: 'DM',
+    path: path.resolve(__dirname, 'dist/assets'),
   },
   plugins: [
     new ExtractTextPlugin({
