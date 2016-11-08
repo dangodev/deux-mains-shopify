@@ -106,6 +106,8 @@
             <div class="artisan-leadIn-img"><img src="{{ artisan.metafields.artisan.thumb }}" alt="{{ name[0] }}" /></div><span class="btn btn--s btn--r">Meet the Artisans</span><h2 class="mts ld1 mbf tck">{{ name[0] }}</h2><span class="dib tr1 tcb ld1">Hear my story &rarr;</span>
           </a>
           <script>
+            var $ = DM.$ || jQuery;
+
             $( document ).ready( function() {
               DM.form.number();
               $( '#add' ).on( 'click', function( e ) {

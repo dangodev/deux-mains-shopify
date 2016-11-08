@@ -58,17 +58,6 @@ const modalOpen = ( modal ) => {
   }
 };
 
-// ----- Select Nav ----- //
-
-const selectNav = ( selector ) => {
-  selector = selector || 'select';
-  var $select = $( selector );
-  $select.on( 'change', function( e ) {
-    if( $( this ).val()[0] === 'h' || $( this ).val()[0] === '/' )
-      window.location.replace( e.target.value );
-  });
-};
-
 // ----- Signup ----- //
 
 const signup = function() {

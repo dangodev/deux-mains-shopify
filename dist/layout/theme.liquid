@@ -45,16 +45,11 @@
     {% endif %}
     {{ 'js-application.js' | asset_url | script_tag }}
     <script>
-      (function() {
-        DM.modal();
-        DM.selectNav( '#nav_collection' );
-        DM.signup();
-        DM.vids();
-        svg4everybody();
-        {% if template == 'product' %}
-          DM.gallery();
-        {% endif %}
-      })();
+      DM.modal();
+      DM.signup();
+      DM.vids();
+      DM.svg4everybody();
+      DM.slick($('.store-gallery-lg'));
     </script>
   </body>
 </html>
