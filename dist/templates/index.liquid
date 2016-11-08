@@ -27,7 +27,6 @@
 </div>
 <div class="row">
   <div class="store">
-    {% include 'collections' %}
     <ul class="store-list nl">
       {% for item in collections.frontpage.products %}
         {% include 'product', item: item %}

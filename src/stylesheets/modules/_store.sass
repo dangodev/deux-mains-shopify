@@ -317,60 +317,6 @@
       margin-bottom: $b-space-2
       padding: $b-space-05
       width: percentage( 1 / 2 )
-    +respond-to( $g-m )
-      width: percentage( 1 / 3 )
-    +respond-to( $g-l )
-      width: 25%
-
-// ----- Nav ----- //
-
-.store-nav
-  display: none
-  font-size: 112.5%
-  letter-spacing: 0.0625em
-  line-height: 1.2
-  padding-right: $b-space-2
-  width: 25%
-  +respond-to( $g-s )
-    display: block
-  ul
-    padding: 0
-    +respond-to( $g-l )
-      width: 10 * $b-space
-      margin-left: auto
-      margin-right: auto
-  li
-    margin: 0
-    + li
-      margin-top: 1.5 * $b-space-05
-  h3
-    font-family: $t-text-fontFamily
-    letter-spacing: 0.125em
-    padding-bottom: $b-space-05
-    padding-top: $b-space-05
-    text-transform: uppercase
-    +respond-to( $g-l )
-      width: 10 * $b-space
-      margin-left: auto
-      margin-right: auto
-  a
-    font-family: $t-heading-fontFamily
-    text-decoration: none
-
-  // States
-
-  a.is-current
-    color: $c-text
-    text-transform: uppercase
-
-// ----- Mobile Nav ----- //
-
-.store-mobileNav
-  display: block
-  margin-bottom: $b-space-2
-  width: 100%
-  +respond-to( $g-s )
-    display: none
 
 // ----- Product ----- //
 
