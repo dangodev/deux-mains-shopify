@@ -28,6 +28,24 @@
 
 // Modifiers
 
+.nav-link--cart
+  position: relative
+  a[data-badge]::after
+    background-color: $ironRed
+    border-radius: 50%
+    color: white
+    content: attr(data-badge)
+    font-weight: 700
+    height: 1.5em
+    letter-spacing: 0
+    line-height: 1
+    position: absolute
+    right: 0
+    text-align: center
+    top: 0
+    width: 1.5em
+    +z-index(overlay)
+
 .nav-link--logo
   img
     height: auto

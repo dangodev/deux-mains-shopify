@@ -50,12 +50,11 @@ const modalClose = () => {
   });
 };
 
-const modalOpen = ( modal ) => {
-  var $modal = modal || false;
-  if( $modal ) {
-    $( 'body' ).addClass( 'is-modal-viewing' );
-    $modal.addClass( 'is-viewing' );
-  }
+const modalOpen = (modal) => {
+  if(!$modal)
+    return false;
+  $( 'body' ).addClass( 'is-modal-viewing' );
+  $modal.addClass( 'is-viewing' );
 };
 
 // ----- Signup ----- //

@@ -15,26 +15,22 @@ import styles from '../stylesheets/application.sass';
  */
 
 import $ from 'jquery';
-import svg4everybody from 'svg4everybody';
 import slick from 'slick-carousel';
+import svg4everybody from 'svg4everybody';
 
-const vendor = {
-  $,
-  slick,
-  svg4everybody,
-};
+svg4everybody();
+$('.store-gallery-lg').slick();
 
 /**
  * @section Custom JS
  */
 
 import legacy from './legacy';
-const library = {
-  legacy,
-};
+legacy.signup();
+legacy.modal();
 
 /**
  * @section Export
  */
 
-module.exports = Object.assign(vendor, library);
+export default $;
