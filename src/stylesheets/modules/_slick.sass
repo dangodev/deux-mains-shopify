@@ -1,0 +1,78 @@
+// *************************************
+//
+//   Slick
+//   -> Styles for slick-carousel
+//
+// *************************************
+
+.slick
+  list-style-type: none
+  margin-bottom: $b-space
+  margin-left: 0
+  margin-right: 0
+  margin-top: 0
+  padding: 0
+  +respond-to($g-m)
+    margin-bottom: $b-space-2
+  li
+    margin: 0
+    outline: none
+
+// -------------------------------------
+//   Submodules
+// -------------------------------------
+
+// ----- Crop ----- //
+
+.slick-crop
+  height: 0
+  padding-top: 75%
+  position: relative
+  width: 100%
+  img
+    height: 100%
+    left: 50%
+    max-width: none
+    position: absolute
+    top: 50%
+    transform: translate(-50%, -50%)
+    width: auto
+
+// ----- Navigation ----- //
+
+.slick-nav
+  display: flex
+  flex-wrap: wrap
+  list-style-type: none
+  margin-top: 0
+  margin-left: 0
+  margin-right: 0
+  margin-bottom: $b-space-2
+  padding: 0
+  li
+    margin: 0
+    padding: $b-space-05
+    width: 25%
+    +respond-to($g-m)
+      width: 20%
+  img
+    height: 100%
+    left: 50%
+    max-width: none
+    position: absolute
+    top: 50%
+    transform: translate(-50%, -50%)
+    width: auto
+  a
+    display: block
+    height: 0
+    opacity: 0.25
+    overflow: hidden
+    padding: 100% 0 0
+    position: relative
+    transition: opacity 200ms
+    *
+      pointer-events: none
+    &.is-selected
+      box-shadow: 0 0 0 5px $black
+      opacity: 1

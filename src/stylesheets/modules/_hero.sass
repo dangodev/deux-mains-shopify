@@ -1,0 +1,159 @@
+// *************************************
+//
+//   Hero
+//   -> Head image
+//
+// *************************************
+
+.hero
+  color: white
+  display: flex
+  align-items: center
+  height: 3 * $b-space-4
+  justify-content: flex-start
+  overflow: hidden
+  padding: $b-space
+  position: relative
+  text-decoration: none
+  +respond-to( $g-m )
+    height: 62.5vh
+    padding: $b-space-2
+  &:hover,
+  &:focus
+    color: white
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- CTA ----- //
+
+.hero-cta
+  background: none
+  border: none
+  box-shadow: 0 0 0 2px $red-T
+  color: $red-T
+  display: inline-block
+  font-size: 1.25em
+  font-weight: 400
+  letter-spacing: 0.125em
+  padding: 0.5em 1.25em
+  text-transform: uppercase
+  user-select: none
+  &:hover
+    box-shadow: 0 0 0 2px $red-T
+    color: $red-T
+
+// ----- Image ----- //
+
+.hero-image
+  background-image: url( "{{ 'image-hero-default.jpg' | asset_url }}" )
+  background-position: center center
+  background-repeat: none
+  background-size: cover
+  bottom: 0
+  left: 0
+  position: absolute
+  right: 0
+  top: 0
+  +z-index( overlay )
+  &::after
+    background: rgba( black, 0.4 )
+    bottom: 0
+    content: ""
+    left: 0
+    position: absolute
+    right: 0
+    top: 0
+    transition: opacity 350ms linear
+
+// ----- Content ----- //
+
+.hero-content
+  font-size: 12px
+  font-weight: 400
+  letter-spacing: 0.1625em
+  line-height: 1.5
+  text-align: left
+  text-transform: uppercase
+  width: 62.5%
+  +z-index( overlay, 1 )
+  +respond-to( $g-s )
+    font-size: 14px
+    line-height: 1.5
+    width: 50%
+  h1
+    font-size: 0.75 * $t-heading-fontSize
+    font-weight: 700
+    line-height: 1
+    margin-bottom: 0.5em
+    text-transform: none
+    +respond-to( $g-m )
+      font-size: 50px
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- 404 ----- //
+
+.hero--404
+  +background( 'image-hero' )
+  height: calc( 100vh - #{ $b-space-4 })
+
+// ----- Image ----- //
+
+.hero--image
+  .hero-image::after
+    display: none
+
+// ----- Haiti ----- //
+
+.hero--haiti
+  +background('image-haiti')
+  background-position: left 0
+  background-size: contain
+  box-shadow: 0 10px 70px rgba($red-T, 0.2)
+  +respond-to($g-s)
+    background-position: left 12.5%
+  .hero-content
+    align-items: flex-start
+    background-color: white
+    bottom: 0
+    display: flex
+    flex-direction: column
+    justify-content: center
+    padding: $b-space
+    position: absolute
+    right: 0
+    top: 0
+    width: 50%
+    +respond-to($g-s)
+      padding: $b-space-2
+
+// ----- Home ----- //
+
+.hero--home
+  box-shadow: 0 10px 75px rgba($blue, 0.25)
+  height: 40vh
+  +respond-to($g-s)
+    height: 80vh
+  h1
+    font-size: 24px
+    text-shadow: 0 0 40px white
+    +respond-to($g-s)
+      font-size: 30px
+    +respond-to($g-m)
+      font-size: 48px
+  .hero-image
+    background-size: auto 100%
+    background-position: right 12.5%
+    +respond-to($g-s)
+      background-size: 56.25% auto
+    &::after
+      display: none
+
+// ----- Right ----- //
+
+.hero--r
+  justify-content: flex-end

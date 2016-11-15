@@ -1,0 +1,362 @@
+// *************************************
+//
+//   Store
+//   -> Product layout styles
+//
+// *************************************
+
+.store
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-start
+  margin-top: 1px
+  padding-bottom: $b-space
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Cart ----- //
+
+.store-cart
+  box-shadow: 0 1px 0 $c-border
+  display: block
+  width: 100%
+  +respond-to( $g-s )
+    display: table
+  small
+    +respond-to( $g-s )
+      display: block
+  thead,
+  tbody
+    display: block
+    +respond-to( $g-s )
+      display: table-row-group
+  .form-pair
+    display: block
+    +respond-to( $g-s )
+      display: flex
+
+// Scaffolding
+
+.store-cart-checkout
+  display: block
+  letter-spacing: 0.125em
+  margin-bottom: $b-space
+  margin-left: auto
+  margin-right: auto
+  text-transform: uppercase
+  text-align: center
+  width: 50%
+  +respond-to( $g-s )
+    float: right
+    margin-left: $b-space-2
+    width: auto
+
+.store-cart-continue
+  display: block
+  letter-spacing: 0.125em
+  text-align: center
+  text-decoration: none
+  text-transform: uppercase
+  +respond-to( $g-s )
+    text-align: right
+    padding-top: $b-space-05
+
+.store-cart-item
+  display: block
+  padding-bottom: $b-space-05
+  padding-right: $b-space
+  padding-top: $b-space
+  position: relative
+  +respond-to( $g-s )
+    display: table-row
+    padding-bottom: 0
+    padding-top: 0
+  a
+    text-decoration: none
+  td
+    display: block
+    vertical-align: middle
+    +respond-to( $g-s )
+      display: table-cell
+      padding-bottom: $b-space-05
+      padding-top: $b-space-05
+  + .store-cart-item
+    border-top: 1px solid $c-border
+
+.store-cart-name
+  line-height: 1
+  +respond-to( $g-s )
+    padding-left: $b-space-05
+    width: 50%
+  h3
+    clear: none
+    margin-bottom: 0
+
+.store-cart-thumb
+  float: left
+  margin-right: $b-space-05
+  +respond-to( $g-s )
+    float: none
+    margin-right: 0
+    width: 5%
+  a
+    display: block
+  img
+    width: $b-space-4
+    +respond-to( $g-s )
+      width: 1.5 * $b-space-4
+
+.store-cart-price
+  font-size: 125%
+  position: absolute
+  right: 0
+  top: 1.25 * $b-space-2
+  +respond-to( $g-s )
+    font-size: 150%
+    padding-right: $b-space
+    position: static
+    text-align: center
+    width: 10%
+
+.store-cart-q
+  margin-top: $b-space-05
+  padding-left: $b-space-05
+  padding-right: $b-space-05
+  +respond-to( $g-s )
+    margin-top: 0
+    text-align: center
+    width: 25%
+  label
+    font-size: 75%
+    margin-right: $b-space-025
+  input
+    min-width: 3em
+    width: 3em
+
+.store-cart-remove
+  position: absolute
+  right: 0
+  top: $b-space
+  +respond-to( $g-s )
+    padding-left: $b-space-05
+    position: static
+    width: 10%
+
+// ----- Details ----- //
+
+.store-details
+  flex: auto
+  +respond-to( 580px )
+    width: 50%
+    padding-left: $b-space-05
+  +respond-to( $g-m )
+    width: 40%
+
+  p
+    +respond-to( 960px )
+      font-size: 1.125 * $t-text-fontSize
+
+// Scaffolding
+
+.store-details-price
+  font-size: 2 * $t-text-fontSize
+  line-height: 1.2
+  margin-bottom: $b-space-2
+
+.store-details-related
+  display: flex
+  flex-wrap: wrap
+  margin: 0
+  padding: 0
+  li
+    width: 100%
+    +respond-to( $g-s )
+      width: 50%
+    +respond-to( $g-m )
+      width: 25%
+
+// Modifiers
+
+.store-details--sale
+  h1
+    position: relative
+    &::after
+      @extend .sale
+      content: attr( data-discount ) "% off"
+      font-family: $t-text-fontFamily
+      font-size: 1.125 * $t-text-fontSize
+      margin-left: 1em
+      vertical-align: top
+  .store-details-price
+    color: $ironRed
+
+// ----- Gallery ----- //
+
+.store-gallery
+  width: 100%
+  +respond-to(580px)
+    padding-right: $b-space-2
+    width: 50%
+  +respond-to($g-m)
+    width: 60%
+
+// ----- Features ----- //
+
+.store-features
+  ul
+    margin: $b-space auto
+    padding: 0
+    +respond-to( $g-m )
+      max-width: 62.5%
+  li
+    align-items: center
+    display: flex
+    margin-bottom: $b-space
+  svg
+    flex: none
+
+// ----- List ----- //
+
+.store-list
+  display: flex
+  flex-wrap: wrap
+  flex: auto
+  justify-content: space-between
+  margin-left: auto
+  margin-right: auto
+  padding-left: 0
+  width: 100%
+  +respond-to($g-s)
+    flex: 1
+    margin-bottom: $b-space-2
+    max-width: $g-l
+  li
+    margin-bottom: $b-space
+    margin-left: 0
+    margin-right: 0
+    margin-top: 0
+    width: 100%
+    +respond-to($g-s)
+      margin-bottom: $b-space-2
+      width: calc(50% - #{$b-space-05})
+    +respond-to($g-m)
+      width: calc(33.3333% - #{$b-space-05})
+
+// ----- Product ----- //
+
+.store-product
+  line-height: 1
+  a
+    display: block
+    text-decoration: none
+    &:hover .store-product-img::after
+      box-shadow: inset 0 0 0 1px scale-color( $cerulean, $lightness: 50% )
+
+// Scaffolding
+
+.store-product-color
+  border-radius: 50%
+  box-shadow: inset 0 0 0 1px $gold
+  display: inline-block
+  height: $b-space
+  width: $b-space
+  + .store-product-color
+    margin-left: $b-space-025
+
+.store-product-color.is-out
+  opacity: 0.3
+
+.store-product-img
+  height: 0
+  margin-left: -$b-space
+  overflow: hidden
+  padding-top: 75%
+  position: relative
+  width: calc( 100% + #{ $b-space-2 } )
+  +respond-to( $g-s )
+    margin-left: 0
+    width: 100%
+  &::after
+    bottom: 0
+    box-shadow: inset 0 0 0 1px transparent
+    content: ""
+    left: 0
+    position: absolute
+    right: 0
+    top: 0
+    transition: box-shadow 150ms linear
+    +z-index( overlay )
+  img
+    display: block
+    left: 50%
+    position: absolute
+    top: 0
+    transform: translateX( -50% )
+    width: 100%
+
+.store-product-name
+  color: $c-text
+  font-family: $t-heading-fontFamily
+  font-size: 1.5 * $t-text-fontSize
+  letter-spacing: 0
+  margin-top: 0.5em
+  +respond-to( $g-s )
+    font-size: 0.5 * $t-heading-fontSize
+
+.store-product-price
+  color: $cerulean
+  font-size: 1.25 * $t-text-fontSize
+  padding-bottom: 0.4em
+  display: none
+  +respond-to( $g-s )
+    display: block
+
+.store-product-status
+  color: $c-subdue
+  font-size: 0.75 * $t-text-fontSize
+  letter-spacing: 0.25em
+  padding-bottom: 0.0625em
+  text-transform: uppercase
+
+// Modifiers
+
+.store-product--out
+  .store-product-img
+    img
+      filter: grayscale( 100% )
+      opacity: 0.25
+  .store-product-price
+    color: scale-color( $c-text, $lightness: 60% )
+
+.store-product--related
+  +respond-to( $g-s )
+    padding: $b-space-05
+  a
+    +respond-to( $g-s )
+      background-color: white
+      padding: $b-space-05
+    &:hover .store-product-img::after
+      box-shadow: none
+
+.store-product--sale
+  position: relative
+  &::after
+    @extend .sale
+    content: "Sale"
+    font-size: 14px
+    position: absolute
+    right: $b-space
+    top: $b-space-05
+    +z-index( overlay, 1 )
+    +respond-to( $g-s )
+      font-size: $t-text-fontSize
+      right: 1.5 * $b-space
+      top: $b-space
+  .store-product-img::after
+    box-shadow: inset 0 0 0 1px scale-color( $ironRed, $lightness: 50% )
+  .store-product-price
+    color: $ironRed
+  a:hover .store-product-img::after
+    box-shadow: inset 0 0 0 1px $ironRed

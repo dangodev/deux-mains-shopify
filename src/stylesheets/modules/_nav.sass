@@ -1,0 +1,70 @@
+/**
+ * Navigation
+ *
+ * Styles for top nav
+ */
+
+/**
+ * @section Base
+ */
+
+.nav
+  align-items: center
+  display: flex
+  margin-left: auto
+  margin-right: auto
+  padding-left: $b-space
+  padding-right: $b-space
+  +respond-to(#{$g-l + $b-space-2})
+    padding-left: 0
+    padding-right: 0
+    max-width: $g-l
+
+/**
+ * @section Submodules
+ */
+
+.nav-link
+  display: block
+  text-align: center
+  width: 20%
+  a,
+  img
+    display: block
+  a
+    font-size: 0.875em
+    letter-spacing: 0
+    text-decoration: none
+    text-transform: uppercase
+    +respond-to($g-s)
+      font-size: 1.25em
+      letter-spacing: 0.0625em
+
+// Modifiers
+
+.nav-link--cart
+  position: relative
+  a[data-badge]::after
+    background-color: $red-T
+    border-radius: 50%
+    bottom: 100%
+    color: white
+    content: attr(data-badge)
+    font-size: 0.75em
+    font-weight: 700
+    height: 1.75em
+    letter-spacing: 0
+    left: 50%
+    line-height: 1.75
+    position: absolute
+    text-align: center
+    transform: translate(50%, 50%)
+    width: 1.75em
+    +z-index(overlay)
+
+.nav-link--logo
+  img
+    height: auto
+    margin-left: auto
+    margin-right: auto
+    width: 100px

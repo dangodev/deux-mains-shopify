@@ -1,0 +1,48 @@
+{% assign meta = collections.frontpage.metafields.hero %}
+{% if meta.04_link != blank %}
+  <a class="hero hero--home" href="{{ meta.04_link }}">
+{% else %}
+  <div class="hero">
+{% endif %}
+  <div class="hero-image" style="background-image: url('{% if meta.01_image != blank %}{{ meta.01_image | strip }}{% else %}{{ 'image-frontpage-default.jpg' | asset_url }}{% endif %}')"></div>
+  <div class="hero-content">
+    <h1 class="tck">{{ meta.02_title }}</h1>
+    {{ meta.03_subtitle }}
+    {% if meta.05_cta %}
+      <div class="mtm"><span class="hero-cta">{{ meta.05_cta }}</span></div>
+    {% endif %}
+  </div>
+{% if meta.04_link != blank %}
+  </a>
+{% else %}
+  </div>
+{% endif %}
+<div class="row">
+  <h2 class="mtl mbl tac">Shop</h2>
+  <div class="has-feature">
+    {% if settings.featured_collection_1 %}
+      {% include 'featured-collection', slug: settings.featured_collection_1 %}
+    {% endif %}
+    {% if settings.featured_collection_2 %}
+      {% include 'featured-collection', slug: settings.featured_collection_2 %}
+    {% endif %}
+    {% if settings.featured_collection_3 %}
+      {% include 'featured-collection', slug: settings.featured_collection_3 %}
+    {% endif %}
+    {% if settings.featured_collection_4 %}
+      {% include 'featured-collection', slug: settings.featured_collection_4 %}
+    {% endif %}
+  </div>
+</div>
+<div class="row">
+  <h2 class="mtm mbl tac">Featured Products</h2>
+  <div class="store">
+    <ul class="store-list nl">
+      {% for item in collections.frontpage.products %}
+        {% include 'product', item: item %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% include 'block-emote' %}
+{% include 'block-logos' %}

@@ -1,0 +1,15 @@
+<header class="header">
+  <nav class="nav">
+    <li class="nav-link"><a href="{{ collections.womens-sandals.url }}">Women’s</a></li>
+    <li class="nav-link"><a href="{{ collections.mens-sandals.url }}">Men’s</a></li>
+    <li class="nav-link nav-link--logo"><a href="{{ shop.url }}">
+      <img src="{{ 'image-deux-mains.svg' | asset_url }}" alt="{{ shop.name }}" />
+    </a></li>
+    <li class="nav-link"><a href="{{ pages.about.url }}">About</a></li>
+    <li class="nav-link nav-link--cart">
+      <a href="/cart" aria-label="Cart"{% if cart.item_count > 0 %} data-badge="{{ cart.item_count }}"{% endif %}>
+        <svg class="icn icn--cart" role="img"><use xlink:href="#icon_cart"></use></svg>
+      </a>
+    </li>
+  </nav>
+</header>

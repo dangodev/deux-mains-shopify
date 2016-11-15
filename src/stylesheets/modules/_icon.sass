@@ -1,0 +1,63 @@
+// *************************************
+//
+//   Icon
+//   -> Icon styles for vector assets
+//
+// *************************************
+
+.icn
+  fill: none
+  stroke: currentColor
+  stroke-width: 16
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+.icn-label
+  color: $ironRed
+  font-size: $t-text-fontSize
+  letter-spacing: 0.0625em
+  line-height: 1
+  margin-left: $b-space
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Arrow ----- //
+
+.icn--arrow
+  stroke-width: 48
+
+// ----- Cart ----- //
+
+.icn--cart
+  height: $b-space
+  stroke-width: 32
+  stroke: black
+  width: $b-space
+  +respond-to($g-s)
+    height: 1.5 * $b-space
+    width: 1.5 * $b-space
+
+// ----- Social ----- //
+
+.icn--social
+  fill: currentColor
+  height: 1.25 * $b-space
+  stroke-width: 0
+  width: 1.25 * $b-space
+
+// ----- Product ----- //
+
+.icn--product
+  border-radius: 50%
+  border: 1px solid $ironRed
+  color: $ironRed
+  height: $b-space-2
+  stroke-width: 12
+  width: $b-space-2
+  +respond-to( $g-m )
+    height: $b-space-2
+    width: $b-space-2

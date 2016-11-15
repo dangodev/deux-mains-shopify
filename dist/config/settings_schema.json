@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Featured Homepage Collections",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "featured_collection_1",
+        "label": "Collection 1"
+      },
+      {
+        "type": "collection",
+        "id": "featured_collection_2",
+        "label": "Collection 2"
+      },
+      {
+        "type": "collection",
+        "id": "featured_collection_3",
+        "label": "Collection 3"
+      },
+      {
+        "type": "collection",
+        "id": "featured_collection_4",
+        "label": "Collection 4"
+      }
+    ]
+  }
+]

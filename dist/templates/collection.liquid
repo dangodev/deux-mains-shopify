@@ -1,0 +1,18 @@
+<div class="hero">
+  <div class="hero-image" style="background-image: url('{{ collection.image.src | img_url: 'master' }}')"></div>
+  <div class="hero-content">
+    <h1>{{ collection.title }}</h1>
+    {{ collection.description }}
+  </div>
+</div>
+<div class="row">
+  <h2 class="mtl mbl tac">{{ collection.title }}</h2>
+  <div class="store">
+    <ul class="store-list nl">
+      {% for item in collection.products %}
+        {% include 'product' %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% include 'block-emote' %}

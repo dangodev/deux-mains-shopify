@@ -1,0 +1,181 @@
+// *************************************
+//
+//   Base
+//   -> Tag-level settings
+//
+// *************************************
+
+html
+  background: $black
+  color: $c-text
+  font-family: $t-text-fontFamily
+  font-size: $t-text-fontSize
+  font-weight: $t-text-fontWeight
+  letter-spacing: $t-text-letterSpacing
+  line-height: $t-text-lineHeight
+
+body
+  font-size: 100%
+  font-variant-ligatures: common-ligatures
+  text-rendering: optimizeLegibility
+
+*
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
+  box-sizing: border-box
+
+main
+  background: $c-background
+
+// -------------------------------------
+//   Text
+// -------------------------------------
+
+ul, p
+  letter-spacing: $t-text-letterSpacing
+  margin-bottom: $b-space
+  margin-top: 0
+
+q
+  display: block
+
+p
+  font-size: 16px
+  font-weight: 200
+  line-height: $t-text-lineHeight
+  margin: 0 auto $b-space
+  max-width: 42em
+
+li
+  margin-bottom: $b-space-05
+  margin-top: 0
+
+blockquote
+  color: $ironRed
+  font-family: $t-heading-fontFamily
+  font-size: 0.5 * $t-heading-fontSize
+  font-style: italic
+  margin: $b-space 0
+  +respond-to( $g-s )
+    font-size: 0.75 * $t-heading-fontSize
+    margin: $b-space-2 0
+
+q
+  &::before
+    content: ""
+  &::after
+    content: ""
+
+small
+  color: $c-subdue
+  letter-spacing: 0.0625em
+  text-transform: uppercase
+
+// ----- Headings ----- //
+
+h1, .h1
+  font-family: $t-heading-fontFamily
+  font-size: 0.625 * $t-heading-fontSize
+  font-weight: $t-heading-fontWeight
+  letter-spacing: 0
+  line-height: $t-heading-lineHeight
+  margin-bottom: $b-space
+  margin-top: 0
+  +respond-to( $g-s )
+    font-size: $t-heading-fontSize
+  +respond-to( $g-m )
+    font-size: 1.25 * $t-heading-fontSize
+
+h2, .h2
+  font-family: $t-heading-fontFamily
+  font-size: 0.5 * $t-heading-fontSize
+  font-weight: $t-heading-fontWeight
+  letter-spacing: 0
+  line-height: $t-heading-lineHeight
+  margin-bottom: $b-space
+  margin-top: 0
+  +respond-to( $g-s )
+    font-size: 0.75 * $t-heading-fontSize
+
+h3, .h3
+  font-family: $t-heading-fontFamily
+  font-size: 1.25 * $t-text-fontSize
+  font-weight: $t-heading-fontWeight
+  letter-spacing: 0
+  line-height: $t-heading-lineHeight
+  margin-bottom: $b-space
+  margin-top: 0
+  +respond-to( $g-s )
+    font-size: 0.5 * $t-heading-fontSize
+
+h4, .h4
+  font-family: $t-text-fontFamily
+  font-size: $t-text-fontSize
+  font-size: 1.25 * $t-text-fontSize
+  letter-spacing: 0.25em
+  line-height: $t-heading-lineHeight
+  margin-bottom: $b-space
+  margin-top: 0
+  text-transform: uppercase
+  +respond-to( $g-s )
+    font-size: 1.5 * $t-text-fontSize
+
+h5, .h5
+  color: $c-subdue
+  font-family: $t-text-fontFamily
+  font-size: 1.25 * $t-text-fontSize
+  font-weight: 600
+  letter-spacing: 0.0625em
+  line-height: $t-heading-lineHeight
+  margin-bottom: $b-space
+  margin-top: 0
+  +respond-to( $g-s )
+    font-size: 1.375 * $t-text-fontSize
+
+// -------------------------------------
+//   Inline Content
+// -------------------------------------
+
+// ----- Links ----- //
+
+a
+  color: $c-action
+  text-decoration: underline
+  &:hover,
+  &:focus
+    color: scale-color( $c-action, $saturation: 20%, $lightness: 10% )
+
+// ----- Images ----- //
+
+img
+  height: auto
+  max-width: 100%
+
+// -------------------------------------
+//   Forms
+// -------------------------------------
+
+[type=email],
+[type=number],
+[type=password],
+[type=tel],
+[type=text]
+  border: 1px solid $c-border
+  color: $c-text
+  font-family: $t-text-fontFamily
+  font-weight: 400
+  padding: 1em 1.5em
+
+[type=number]
+  -moz-appearance: textfield
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button
+    -webkit-appearance: none
+    margin: 0
+
+label
+  font-weight: 400
+
+[type=submit]
+  @extend .btn

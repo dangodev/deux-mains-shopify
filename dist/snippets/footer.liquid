@@ -1,0 +1,52 @@
+<footer class="row row--dark">
+  <div class="well well--s cell">
+    <div class="g">
+      <div class="g-b g-b--s--1of2">
+        <div class="footer-email">
+          <form action="//RebuildGlobally.us1.list-manage.com/subscribe/post?u=e15d4f9137bb664bf67464659&amp;id=27b1af55fc" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+            <div style="position: absolute; left: -5000px;"><input type="text" name="b_e15d4f9137bb664bf67464659_27b1af55fc" tabindex="-1" value=""></div>
+            <label for="mc_newsletter">Discounts and updates sent straight to your inbox</label><input id="mc_newsletter" type="email" name="EMAIL" placeholder="My email address" value=""><input type="submit" value="Sign Up">
+          </form>
+        </div>
+        <ul class="nl footer-social"><li><a target="_blank" href="https://www.facebook.com/RGDeuxMainsDesigns"><svg aria-hidden class="icn icn--social" role="img"><use xlink:href="#icon_facebook"></use></svg></a></li><li><a target="_blank" href="https://www.pinterest.com/deuxmainsdesign/"><svg aria-hidden class="icn icn--social" role="img"><use xlink:href="#icon_pinterest"></use></svg></a></li><li><a target="_blank" href="https://twitter.com/DeuxMainsDesign"><svg aria-hidden class="icn icn--social" role="img"><use xlink:href="#icon_twitter"></use></svg></a></li><li><a target="_blank" href="https://instagram.com/DeuxMainsDesigns"><svg aria-hidden class="icn icn--social" role="img"><use xlink:href="#icon_instagram"></use></svg></a></li></ul>
+        <div class="footer-logo">
+          <div class="logo logo--h">
+            <div class="logo-mark"><img src="{{ 'image-deux-mains-logomark.svg' | asset_url }}"/></div>
+            <div class="logo-word"><img src="{{ 'image-deux-mains-wordmark.svg' | asset_url }}" alt="{{ shop.name }}"/></div>
+            <div class="logo-tagline">A <a target="_blank" href="http://rebuildglobally.org">Rebuild Globally</a> Enterprise</div>
+          </div>
+        </div>
+      </div>
+      <div class="g-b g-b--s--1of2">
+        <div class="g footer-nav">
+          <div class="g-b g-b--1of2 g-b--m--1of3">
+            <h3>Shop</h3>
+            <ul class="nl">
+              <li><a href="/">Featured</a></li>
+              {% for collection in collections %}
+                {% unless collection.handle == 'frontpage' or collection.handle == 'cart' %}
+                  <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+                {% endunless %}
+              {% endfor %}
+          </div>
+          <div class="g-b g-b--1of2 g-b--m--1of3">
+            <h3>News</h3>
+            <ul class="nl">
+              <li><a href="{{ blogs.news.url }}">Blog</a></li>
+              <li><a href="{{ pages.in-the-news.url }}">In the News</a></li>
+            </ul>
+          </div>
+          <div class="g-b g-b--1of2 g-b--m--1of3">
+            <h3>About</h3>
+            <ul class="nl">
+              <li><a href="{{ pages.about.url }}">Story / Artisans</a></li>
+              <li><a href="{{ pages.contact.url }}">Contact</a></li>
+              <li><a target="_blank" href="https://www.dropbox.com/sh/y6w47g3rodsiopx/AAAuzPQ4oLZGgROW4tksctbna?dl=0">Press Kit</a></li>
+              <li><a href="{{ pages.wholesale.url }}">Wholesale</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
