@@ -16,10 +16,12 @@ import $ from 'jquery';
 
 import legacy from './legacy';
 import slider from './components/slider';
+import stepper from './components/stepper';
 
 $(document).ready(() => {
   legacy.modal();
   legacy.signup();
+  stepper();
   slider();
 });
 
