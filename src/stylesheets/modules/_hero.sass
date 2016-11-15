@@ -40,6 +40,7 @@
   padding: 0.5em 1.25em
   text-transform: uppercase
   user-select: none
+  white-space: nowrap
   &:hover
     box-shadow: 0 0 0 2px $red-T
     color: $red-T
@@ -111,10 +112,11 @@
 
 .hero--haiti
   +background('image-haiti')
-  background-position: left 0
-  background-size: contain
+  background-position: -1000% 50%
+  background-size: auto 100%
   box-shadow: 0 10px 70px rgba($red-T, 0.2)
   +respond-to($g-s)
+    background-size: contain
     background-position: left 12.5%
   .hero-content
     align-items: flex-start
@@ -127,9 +129,16 @@
     position: absolute
     right: 0
     top: 0
-    width: 50%
+    width: 56.25%
     +respond-to($g-s)
       padding: $b-space-2
+      width: 50%
+  h1
+    font-size: 24px
+    +respond-to($g-s)
+      font-size: 32px
+    +respond-to($g-m)
+      font-size: 48px
 
 // ----- Home ----- //
 
