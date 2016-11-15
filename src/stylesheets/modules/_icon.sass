@@ -33,10 +33,13 @@
 // ----- Cart ----- //
 
 .icn--cart
-  height: 1.5 * $b-space
+  height: $b-space
   stroke-width: 32
   stroke: black
-  width: 1.5 * $b-space
+  width: $b-space
+  +respond-to($g-s)
+    height: 1.5 * $b-space
+    width: 1.5 * $b-space
 
 // ----- Social ----- //
 

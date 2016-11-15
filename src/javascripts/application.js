@@ -5,26 +5,28 @@
  */
 
 /**
- * @section Stylesheets
- */
-
-import styles from '../stylesheets/application.sass';
-
-/**
  * @section Vendor JS
  */
 
-import svg4everybody from 'svg4everybody';
-svg4everybody();
+import $ from 'jquery';
 
 /**
  * @section Custom JS
  */
 
 import legacy from './legacy';
-import product from './components/product';
 import slider from './components/slider';
 
-legacy.signup();
-legacy.modal();
+$(document).ready(() => {
+  legacy.modal();
+  legacy.signup();
+  slider();
+});
 
+/**
+ * @section Stylesheets
+ */
+
+import styles from '../stylesheets/application.sass';
+
+module.exports = { $ };

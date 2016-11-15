@@ -10,8 +10,10 @@
 
 .header
   background: white
-  padding-bottom: 0.75 * $b-space
-  padding-top: 0.75 * $b-space
+  padding-top: $b-space-05
+  +respond-to($g-s)
+    padding-bottom: 0.75 * $b-space
+    padding-top: 0.75 * $b-space
 
 /**
  * @section Submodules
