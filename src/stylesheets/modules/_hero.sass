@@ -7,17 +7,20 @@
 
 .hero
   color: white
-  display: block
+  display: flex
+  align-items: center
   height: 3 * $b-space-4
+  justify-content: flex-start
   overflow: hidden
   padding: $b-space
   position: relative
+  text-decoration: none
   +respond-to( $g-m )
     height: 0
     padding: 30% 0 0
   +respond-to( $g-l )
     height: 62.5vh
-    padding: $b-space
+    padding: $b-space-2
   &:hover,
   &:focus
     color: white
@@ -25,6 +28,26 @@
 // -------------------------------------
 //   Scaffolding
 // -------------------------------------
+
+// ----- CTA ----- //
+
+.hero-cta
+  background: none
+  border: none
+  box-shadow: 0 0 0 2px $red
+  color: $red
+  display: inline-block
+  font-size: 1.25em
+  font-weight: 400
+  letter-spacing: 0.125em
+  padding: 0.5em 1.25em
+  text-transform: uppercase
+  transition: color 200ms, background-color 200ms, box-shadow 200ms
+  user-select: none
+  &:hover
+    background-color: rgba(white, 0.25)
+    box-shadow: 0 0 0 2px $red-T
+    color: $red-T
 
 // ----- Image ----- //
 
@@ -56,24 +79,19 @@
   font-weight: 400
   left: 50%
   letter-spacing: 0.1625em
-  text-transform: uppercase
   line-height: 1.5
-  max-width: $b-maxWidth
-  padding-left: $b-space
-  padding-right: $b-space
-  position: absolute
-  text-align: center
-  top: 50%
-  transform: translate( -50%, -50% )
-  width: 100%
+  text-align: left
+  text-transform: uppercase
+  width: 50%
   +z-index( overlay, 1 )
   +respond-to( $g-s )
     font-size: 14px
     line-height: 1.5
   h1
     font-size: 0.75 * $t-heading-fontSize
+    font-weight: 700
     line-height: 1
-    margin-bottom: 0
+    margin-bottom: 0.5em
     text-transform: none
     +respond-to( $g-m )
       font-size: 50px
@@ -99,3 +117,8 @@
 .hero--home
   +respond-to($g-m)
     padding-top: 50%
+
+// ----- Right ----- //
+
+.hero--r
+  justify-content: flex-end

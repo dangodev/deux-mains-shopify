@@ -47,7 +47,6 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({
       options: {
         postcss: [
-          require('cssnano'),
           require('autoprefixer'),
         ],
       },

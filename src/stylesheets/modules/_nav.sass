@@ -11,6 +11,9 @@
 .nav
   align-items: center
   display: flex
+  margin-left: auto
+  margin-right: auto
+  max-width: $g-l
 
 /**
  * @section Submodules
@@ -23,7 +26,10 @@
   a,
   img
     display: block
-    font-size: 1.2em
+  a
+    font-size: 1.25em
+    letter-spacing: 0.0625em
+    text-decoration: none
     text-transform: uppercase
 
 // Modifiers
@@ -31,19 +37,21 @@
 .nav-link--cart
   position: relative
   a[data-badge]::after
-    background-color: $ironRed
+    background-color: $red-T
     border-radius: 50%
+    bottom: 100%
     color: white
     content: attr(data-badge)
+    font-size: 0.75em
     font-weight: 700
-    height: 1.5em
+    height: 1.75em
     letter-spacing: 0
-    line-height: 1
+    left: 50%
+    line-height: 1.75
     position: absolute
-    right: 0
     text-align: center
-    top: 0
-    width: 1.5em
+    transform: translate(50%, 50%)
+    width: 1.75em
     +z-index(overlay)
 
 .nav-link--logo
@@ -51,4 +59,4 @@
     height: auto
     margin-left: auto
     margin-right: auto
-    width: 120px
+    width: 100px

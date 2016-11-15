@@ -4,7 +4,7 @@
  * Old 2.0 code
  */
 
-import $ from 'jquery';
+const $ = jQuery || window.jQuery;
 
 // ----- Modal ----- //
 

@@ -1,0 +1,63 @@
+// *************************************
+//
+//   Feature
+//   -> Homepage featured Collection
+//
+// *************************************
+
+// -------------------------------------
+//   Base
+// -------------------------------------
+
+.feature
+  align-items: flex-end
+  display: flex
+  justify-content: flex-start
+  min-height: 10 * $b-space
+  overflow: hidden
+  padding: $b-space
+  position: relative
+  text-decoration: none
+  width: calc(50% - #{$b-space-05})
+  +respond-to($g-m)
+    width: calc(25% - #{$b-space-05})
+  &::after
+    background-color: rgba(black, 0.5)
+    bottom: 0
+    content: ""
+    left: 0
+    position: absolute
+    right: 0
+    top: 0
+    transition: opacity 200ms
+  &:hover::after
+    opacity: 0.5
+
+// -------------------------------------
+//   Submodules
+// -------------------------------------
+
+// ----- Title ----- //
+
+.feature-title
+  color: white
+  font-size: 2em
+  font-weight: 700
+  line-height: 1
+  position: relative
+  text-align: left
+  +z-index(base)
+
+// -------------------------------------
+//   Context
+// -------------------------------------
+
+.has-feature
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  margin-bottom: $b-space
+  margin-left: auto
+  margin-right: auto
+  margin-top: $b-space
+  max-width: $g-l
