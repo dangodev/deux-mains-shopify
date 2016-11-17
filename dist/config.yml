@@ -1,8 +1,0 @@
-development:
-  access_token: 1ba60ca8d0643e7d5b7b8d5e55ee3859
-  password: 1ba60ca8d0643e7d5b7b8d5e55ee3859
-  theme_id: "171239620"
-  store: deux-mains.myshopify.com
-  bucket_size: 40
-  refill_rate: 2
-  timeout: 30s

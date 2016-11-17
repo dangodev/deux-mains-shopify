@@ -223,7 +223,7 @@
   display: flex
   flex-wrap: wrap
   flex: auto
-  justify-content: space-between
+  justify-content: flex-start
   margin-left: auto
   margin-right: auto
   padding-left: 0
@@ -240,9 +240,10 @@
     width: 100%
     +respond-to($g-s)
       margin-bottom: $b-space-2
-      width: calc(50% - #{$b-space-05})
+      padding: $b-space-05
+      width: 50%
     +respond-to($g-m)
-      width: calc(33.3333% - #{$b-space-05})
+      width: percentage(1/3)
 
 // ----- Product ----- //
 

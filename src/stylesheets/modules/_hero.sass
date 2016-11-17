@@ -149,16 +149,12 @@
     height: 80vh
   h1
     font-size: 24px
-    text-shadow: 0 0 40px white
     +respond-to($g-s)
       font-size: 30px
     +respond-to($g-m)
       font-size: 48px
   .hero-image
-    background-size: auto 100%
-    background-position: right 12.5%
-    +respond-to($g-s)
-      background-size: 56.25% auto
+    background-position: center top
     &::after
       display: none
 
